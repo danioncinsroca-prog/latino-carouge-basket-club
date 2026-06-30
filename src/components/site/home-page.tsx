@@ -294,27 +294,23 @@ export async function HomePage({ locale }: HomePageProps) {
           </section>
 
           <SectionShell
-            id="partners"
-            className="border-y border-[var(--color-line)] bg-white py-8 sm:py-10"
+            id="palmares"
+            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
           >
-            <div className="flex flex-col items-center gap-10">
-              <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
-                {content.partnersSection.label}
-              </h2>
-              <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-24">
-                {content.partnersSection.logos.map((partner) => (
-                  <Image
-                    key={partner.name}
-                    src={partner.src}
-                    alt={partner.name}
-                    height={80}
-                    width={partner.width}
-                    unoptimized
-                    className="h-20 w-auto object-contain"
-                  />
-                ))}
+            <div className="mb-8">
+              <div className="ink-divider space-y-3 pt-5">
+                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                  {content.palmaresSection.kicker}
+                </div>
+                <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
+                  {content.palmaresSection.title}
+                </h2>
+                <p className="max-w-2xl text-sm text-[var(--color-cream)]/65 sm:text-base">
+                  {content.palmaresSection.intro}
+                </p>
               </div>
             </div>
+            <PalmaresTimeline items={content.palmares} />
           </SectionShell>
 
           <SectionShell
@@ -377,23 +373,27 @@ export async function HomePage({ locale }: HomePageProps) {
           </SectionShell>
 
           <SectionShell
-            id="palmares"
-            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
+            id="partners"
+            className="border-y border-[var(--color-line)] bg-white py-8 sm:py-10"
           >
-            <div className="mb-8">
-              <div className="ink-divider space-y-3 pt-5">
-                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-                  {content.palmaresSection.kicker}
-                </div>
-                <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
-                  {content.palmaresSection.title}
-                </h2>
-                <p className="max-w-2xl text-sm text-[var(--color-cream)]/65 sm:text-base">
-                  {content.palmaresSection.intro}
-                </p>
+            <div className="flex flex-col items-center gap-10">
+              <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
+                {content.partnersSection.label}
+              </h2>
+              <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-24">
+                {content.partnersSection.logos.map((partner) => (
+                  <Image
+                    key={partner.name}
+                    src={partner.src}
+                    alt={partner.name}
+                    height={80}
+                    width={partner.width}
+                    unoptimized
+                    className="h-20 w-auto object-contain"
+                  />
+                ))}
               </div>
             </div>
-            <PalmaresTimeline items={content.palmares} />
           </SectionShell>
 
           <SectionShell
