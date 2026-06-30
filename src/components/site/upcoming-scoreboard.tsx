@@ -49,7 +49,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
 
       <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 px-5 py-6 sm:px-6 sm:py-7">
         <div className="flex min-w-0 flex-col items-center gap-2.5 text-center">
-          <div className="relative h-[6rem] w-[6rem] shrink-0 overflow-hidden rounded-full shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
+          <div className="relative h-[8.5rem] w-[8.5rem] shrink-0 overflow-hidden rounded-full shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
             <Image
               src="/latino-carouge-logo.png"
               alt="Latino Carouge BC"
