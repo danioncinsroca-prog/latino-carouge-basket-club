@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MediaPlaceholder } from "@/components/site/media-placeholder";
+import { NewsShowcase } from "@/components/site/news-showcase";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { TeamCourtShowcase } from "@/components/site/team-court-showcase";
@@ -84,28 +85,11 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
             ) : null}
 
             {sectionKey === "news" ? (
-              <div className="grid gap-px border border-[var(--color-line)] bg-[var(--color-line)] lg:grid-cols-3">
-                {content.news.map((item) => (
-                  <article key={item.title} className="bg-[var(--color-panel)] p-4">
-                    <MediaPlaceholder
-                      label={content.placeholders.news.label}
-                      note={content.placeholders.news.note}
-                      tone="panel"
-                      size="news"
-                      image={content.placeholders.news.image}
-                    />
-                    <div className="mt-4 font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
-                      {item.dateLabel}
-                    </div>
-                    <h2 className="mt-3 font-display text-3xl uppercase leading-none">
-                      {item.title}
-                    </h2>
-                    <p className="mt-3 text-sm text-[var(--color-muted)]">
-                      {item.excerpt}
-                    </p>
-                  </article>
-                ))}
-              </div>
+              <NewsShowcase
+                items={content.news}
+                locale={locale}
+                fallbackImage={content.placeholders.news.image}
+              />
             ) : null}
 
             {sectionKey === "matches" ? (

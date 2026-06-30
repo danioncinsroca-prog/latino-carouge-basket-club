@@ -202,6 +202,29 @@ type LocaleContent = {
     contactStatus: string;
     ticketingStatus: string;
   };
+  recruitmentSection: {
+    kicker: string;
+    title: string;
+    intro: string;
+    cta: string;
+    bullets: string[];
+  };
+  contactPage: {
+    badge: string;
+    title: string;
+    intro: string;
+    form: {
+      name: string;
+      email: string;
+      phone: string;
+      position: string;
+      message: string;
+      submit: string;
+      successTitle: string;
+      successMessage: string;
+      errorMessage: string;
+    };
+  };
 };
 
 export const sectionSlugs: Record<SectionKey, Record<Locale, string>> = {
@@ -484,7 +507,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
     ],
     palmares: [
       {
-        year: "2022",
+        year: "2009",
         title: "Fondation",
         description: "Naissance du club à Carouge. Identité bilingue posée dès le départ.",
         type: "milestone",
@@ -549,6 +572,33 @@ export const siteContent: Record<Locale, LocaleContent> = {
       kicker: "Joueurs en vue",
       title: "Ceux qui font le collectif",
       intro: "Trois profils clés dans la construction du jeu du club.",
+    },
+    recruitmentSection: {
+      kicker: "Rejoins le club",
+      title: "On recrute",
+      intro: "Tu veux jouer au basket à Carouge ? On cherche des joueurs motivés, tous niveaux confondus. Envoie-nous un message.",
+      cta: "Nous contacter",
+      bullets: [
+        "Tous niveaux bienvenus",
+        "Club bilingue FR / ES",
+        "Entraînements à Carouge",
+      ],
+    },
+    contactPage: {
+      badge: "Contact",
+      title: "Rejoins l'équipe",
+      intro: "Remplis le formulaire et on revient vers toi rapidement.",
+      form: {
+        name: "Nom complet",
+        email: "Adresse e-mail",
+        phone: "Téléphone (optionnel)",
+        position: "Poste souhaité",
+        message: "Message",
+        submit: "Envoyer",
+        successTitle: "Message envoyé !",
+        successMessage: "On revient vers toi dès que possible.",
+        errorMessage: "Une erreur s'est produite. Réessaie.",
+      },
     },
     placeholders: {
       hero: {
@@ -896,7 +946,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
     ],
     palmares: [
       {
-        year: "2022",
+        year: "2009",
         title: "Fundación",
         description: "Nacimiento del club en Carouge. Identidad bilingüe establecida desde el principio.",
         type: "milestone",
@@ -961,6 +1011,33 @@ export const siteContent: Record<Locale, LocaleContent> = {
       kicker: "Jugadores destacados",
       title: "Los que construyen el colectivo",
       intro: "Tres perfiles clave en la construcción del juego del club.",
+    },
+    recruitmentSection: {
+      kicker: "Únete al club",
+      title: "Buscamos jugadores",
+      intro: "¿Quieres jugar al baloncesto en Carouge? Buscamos jugadores motivados, todos los niveles bienvenidos.",
+      cta: "Contactarnos",
+      bullets: [
+        "Todos los niveles bienvenidos",
+        "Club bilingüe FR / ES",
+        "Entrenamientos en Carouge",
+      ],
+    },
+    contactPage: {
+      badge: "Contacto",
+      title: "Únete al equipo",
+      intro: "Rellena el formulario y te respondemos lo antes posible.",
+      form: {
+        name: "Nombre completo",
+        email: "Correo electrónico",
+        phone: "Teléfono (opcional)",
+        position: "Posición deseada",
+        message: "Mensaje",
+        submit: "Enviar",
+        successTitle: "¡Mensaje enviado!",
+        successMessage: "Nos pondremos en contacto contigo pronto.",
+        errorMessage: "Ha ocurrido un error. Inténtalo de nuevo.",
+      },
     },
     placeholders: {
       hero: {

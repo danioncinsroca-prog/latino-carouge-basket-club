@@ -396,6 +396,40 @@ export async function HomePage({ locale }: HomePageProps) {
             <PalmaresTimeline items={content.palmares} />
           </SectionShell>
 
+          <SectionShell
+            id="recruitment"
+            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
+          >
+            <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div>
+                <div className="ink-divider space-y-3 pt-5">
+                  <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                    {content.recruitmentSection.kicker}
+                  </div>
+                  <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
+                    {content.recruitmentSection.title}
+                  </h2>
+                  <p className="max-w-xl text-sm text-[var(--color-cream)]/72 sm:text-base">
+                    {content.recruitmentSection.intro}
+                  </p>
+                </div>
+                <ul className="mt-6 space-y-2">
+                  {content.recruitmentSection.bullets.map((b) => (
+                    <li key={b} className="flex items-center gap-3 text-sm text-[var(--color-cream)]/80">
+                      <span className="h-1.5 w-1.5 shrink-0 bg-[var(--color-gold)]" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="lg:shrink-0">
+                <Link href={`/${locale}/contact`} className="button-base button-gold text-base px-8 py-4">
+                  {content.recruitmentSection.cta}
+                </Link>
+              </div>
+            </div>
+          </SectionShell>
+
           <SiteFooter locale={locale} />
         </main>
       </div>
