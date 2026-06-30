@@ -12,22 +12,33 @@ function getInitials(name: string): string {
 }
 
 function ScoreboardCard({ fixture }: { fixture: Fixture }) {
-  const clubInitials = getInitials(clubConfig.shortName.replace("BASKET CLUB", "").replace("BC", "").trim() || "LC");
   const opponentInitials = getInitials(fixture.opponent);
 
   return (
-    <div className="flex flex-col bg-[var(--color-ink)] border-l-[3px] border-[var(--color-gold)] min-h-[220px]">
-      <div className="flex items-center justify-between px-5 pt-5 pb-4 border-b border-[var(--color-cream)]/10">
-        <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.28em] text-[var(--color-gold)]">
+    <div className="flex flex-col overflow-hidden bg-[var(--color-ink)] border-l-4 border-[var(--color-gold)] min-h-[210px]">
+      {/* Header strip */}
+      <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--color-cream)]/10">
+        <span className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
           {fixture.status}
-        </div>
-        <span className="phase-label text-[var(--color-cream)]/60" style={{ borderTopColor: "rgba(240,188,43,0.35)" }}>
+        </span>
+        <span className="font-condensed text-[0.62rem] font-bold uppercase tracking-[0.18em] text-[var(--color-cream)]/50">
           {fixture.phase}
         </span>
       </div>
 
-      <div className="flex flex-1 items-center gap-4 px-5 py-5">
-        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[var(--color-gold)]/40">
+      {/* Date + time row */}
+      <div className="flex items-center gap-3 px-5 pt-4">
+        <div className="font-display text-xl uppercase leading-none text-[var(--color-cream)]">
+          {fixture.shortDate}
+        </div>
+        <div className="bg-black/60 px-2.5 py-1 font-mono text-xs font-bold tracking-[0.14em] text-[var(--color-gold)]">
+          {fixture.timeLabel}
+        </div>
+      </div>
+
+      {/* Matchup */}
+      <div className="flex flex-1 items-center gap-3 px-5 py-4">
+        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-[var(--color-gold)]/50">
           <Image
             src="/latino-carouge-logo.jpg"
             alt="Latino Carouge BC"
@@ -36,39 +47,26 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
           />
         </div>
 
-        <div className="font-condensed text-sm font-bold uppercase tracking-[0.14em] text-[var(--color-cream)]/60">
+        <div className="font-condensed text-xs font-bold uppercase text-[var(--color-cream)]/50">
           vs
         </div>
 
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--color-cream)]/10 border border-[var(--color-cream)]/20">
-          <span className="font-display text-sm uppercase leading-none text-[var(--color-cream)]">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-cream)]/20 bg-[var(--color-cream)]/10">
+          <span className="font-display text-xs uppercase leading-none text-[var(--color-cream)]">
             {opponentInitials}
           </span>
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="font-display text-2xl uppercase leading-none text-[var(--color-cream)] truncate">
+          <div className="font-display text-xl uppercase leading-tight text-[var(--color-cream)] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">
             {fixture.opponent}
           </div>
-          <div className="mt-1 font-condensed text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-cream)]/50">
-            {clubConfig.shortName}
-          </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-between px-5 pb-5">
-        <div className="flex items-center gap-2">
-          <div className="bg-black/60 px-3 py-1.5 font-mono text-sm font-bold tracking-[0.15em] text-[var(--color-gold)]">
-            {fixture.timeLabel}
-          </div>
-          <div className="font-condensed text-xs font-bold uppercase tracking-[0.18em] text-[var(--color-cream)]/50">
-            {fixture.shortDate}
-          </div>
-        </div>
-      </div>
-
-      <div className="border-t border-[var(--color-cream)]/10 px-5 py-3">
-        <div className="font-condensed text-[0.68rem] uppercase tracking-[0.18em] text-[var(--color-cream)]/45 truncate">
+      {/* Venue footer */}
+      <div className="border-t border-[var(--color-cream)]/10 px-5 py-2.5">
+        <div className="truncate font-condensed text-[0.65rem] uppercase tracking-[0.16em] text-[var(--color-cream)]/40">
           {fixture.venue}
         </div>
       </div>
@@ -78,7 +76,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
 
 export function UpcomingScoreboard({ fixtures }: { fixtures: Fixture[] }) {
   return (
-    <div className="grid gap-px bg-[var(--color-gold)]/15 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-px bg-[var(--color-gold)]/20 sm:grid-cols-2 lg:grid-cols-3">
       {fixtures.map((fixture) => (
         <ScoreboardCard
           key={`${fixture.shortDate}-${fixture.opponent}`}

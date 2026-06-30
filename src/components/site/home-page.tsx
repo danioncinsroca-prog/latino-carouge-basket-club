@@ -277,82 +277,82 @@ export async function HomePage({ locale }: HomePageProps) {
             id="matches"
             className="border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
           >
-              <div className="grid gap-8 xl:grid-cols-[0.55fr_0.45fr]">
-                <div>
-                  <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                    <SectionHeading
-                      kicker={content.fixturesSection.kicker}
-                      title={content.fixturesSection.title}
-                      intro={content.fixturesSection.intro}
-                    />
-                    <Link
-                      href={getSectionPath(locale, "matches")}
-                      className="button-base button-outline-gold"
-                    >
-                      {content.fixturesSection.viewAll}
-                    </Link>
-                  </div>
-                  <div className="mt-8">
-                    <UpcomingScoreboard fixtures={fixturesPreview} />
-                  </div>
+            <div className="space-y-14">
+              <div>
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+                  <SectionHeading
+                    kicker={content.fixturesSection.kicker}
+                    title={content.fixturesSection.title}
+                    intro={content.fixturesSection.intro}
+                  />
+                  <Link
+                    href={getSectionPath(locale, "matches")}
+                    className="button-base button-outline-gold"
+                  >
+                    {content.fixturesSection.viewAll}
+                  </Link>
                 </div>
-
-                <div id="history">
-                  <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                    <SectionHeading
-                      kicker={content.historySection.kicker}
-                      title={content.historySection.title}
-                      intro={content.historySection.intro}
-                    />
-                    <Link
-                      href={getSectionPath(locale, "history")}
-                      className="button-base button-outline-gold"
-                    >
-                      {content.historySection.viewAll}
-                    </Link>
-                  </div>
-                  <div className="mt-8 overflow-hidden border border-[var(--color-line)]">
-                    <table className="w-full border-collapse">
-                      <thead className="bg-[var(--color-ink)] text-[var(--color-cream)]">
-                        <tr>
-                          <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
-                            {content.historySection.table.date}
-                          </th>
-                          <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
-                            {content.historySection.table.match}
-                          </th>
-                          <th className="w-[7.5rem] px-4 py-3 text-right font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
-                            {content.historySection.table.score}
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {content.results.map((result, index) => (
-                          <tr
-                            key={`${result.dateLabel}-${result.opponent}`}
-                            className={
-                              index % 2 === 0
-                                ? "bg-[var(--color-panel)]"
-                                : "bg-[var(--color-surface)]"
-                            }
-                          >
-                            <td className="border-t border-[var(--color-line)] px-4 py-3 text-sm text-[var(--color-muted)]">
-                              {result.dateLabel}
-                            </td>
-                            <td className="border-t border-[var(--color-line)] px-4 py-3 font-condensed text-sm font-bold uppercase tracking-[0.12em]">
-                              {clubConfig.shortName} {content.nextMatch.versus}{" "}
-                              {result.opponent}
-                            </td>
-                            <td className="w-[7.5rem] border-t border-[var(--color-line)] px-4 py-3 text-right font-display text-2xl leading-none whitespace-nowrap [font-variant-numeric:tabular-nums]">
-                              {result.score}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                <div className="mt-8">
+                  <UpcomingScoreboard fixtures={fixturesPreview} />
                 </div>
               </div>
+
+              <div id="history">
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+                  <SectionHeading
+                    kicker={content.historySection.kicker}
+                    title={content.historySection.title}
+                    intro={content.historySection.intro}
+                  />
+                  <Link
+                    href={getSectionPath(locale, "history")}
+                    className="button-base button-outline-gold"
+                  >
+                    {content.historySection.viewAll}
+                  </Link>
+                </div>
+                <div className="mt-8 overflow-hidden border border-[var(--color-line)]">
+                  <table className="w-full border-collapse">
+                    <thead className="bg-[var(--color-ink)] text-[var(--color-cream)]">
+                      <tr>
+                        <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                          {content.historySection.table.date}
+                        </th>
+                        <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                          {content.historySection.table.match}
+                        </th>
+                        <th className="w-[7.5rem] px-4 py-3 text-right font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                          {content.historySection.table.score}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {content.results.map((result, index) => (
+                        <tr
+                          key={`${result.dateLabel}-${result.opponent}`}
+                          className={
+                            index % 2 === 0
+                              ? "bg-[var(--color-panel)]"
+                              : "bg-[var(--color-surface)]"
+                          }
+                        >
+                          <td className="border-t border-[var(--color-line)] px-4 py-3 text-sm text-[var(--color-muted)]">
+                            {result.dateLabel}
+                          </td>
+                          <td className="border-t border-[var(--color-line)] px-4 py-3 font-condensed text-sm font-bold uppercase tracking-[0.12em]">
+                            {clubConfig.shortName} {content.nextMatch.versus}{" "}
+                            {result.opponent}
+                          </td>
+                          <td className="w-[7.5rem] border-t border-[var(--color-line)] px-4 py-3 text-right font-display text-2xl leading-none whitespace-nowrap [font-variant-numeric:tabular-nums]">
+                            {result.score}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </SectionShell>
 
           <SectionShell
