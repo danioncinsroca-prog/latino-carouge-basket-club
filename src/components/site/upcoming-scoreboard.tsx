@@ -49,7 +49,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
 
       <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 px-5 py-6 sm:px-6 sm:py-7">
         <div className="flex min-w-0 flex-col items-center gap-2.5 text-center">
-          <div className="relative h-[6rem] w-[6rem] shrink-0 overflow-hidden rounded-full border-[3px] border-[rgba(240,188,43,0.72)] shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
+          <div className="relative h-[6rem] w-[6rem] shrink-0 overflow-hidden rounded-full shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
             <Image
               src="/latino-carouge-logo.png"
               alt="Latino Carouge BC"
@@ -81,7 +81,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
         </div>
 
         <div className="flex min-w-0 flex-col items-center gap-2.5 text-center">
-          <div className="flex h-[6rem] w-[6rem] shrink-0 items-center justify-center rounded-full border-2 border-white/18 bg-white/8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
+          <div className="flex h-[6rem] w-[6rem] shrink-0 items-center justify-center rounded-full bg-white/8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
             <span className="font-display text-[1.6rem] uppercase leading-none text-white/78">
               {opponentInitials}
             </span>
