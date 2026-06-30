@@ -1,26 +1,240 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-cream: #f5f1e6;
+  --color-surface: #ece4cf;
+  --color-panel: #fffaf0;
+  --color-ink: #16253f;
+  --color-muted: #625d55;
+  --color-gold: #f0bc2b;
+  --color-orange: #d97c18;
+  --color-line: #16253f;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-ink);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-orange);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) var(--color-ink);
+}
+
+.font-body {
+  font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
+}
+
+.font-condensed {
+  font-family: var(--font-roboto-condensed), "Arial Narrow", sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-oswald), Impact, sans-serif;
+}
+
+.site-grid {
+  background-image: linear-gradient(to right, rgba(22, 37, 63, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(22, 37, 63, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.ink-divider {
+  position: relative;
+}
+
+.ink-divider::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 3.5rem;
+  height: 0.35rem;
+  background: var(--color-gold);
+}
+
+.meta-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding-top: 0.55rem;
+  border-top: 3px solid var(--color-gold);
+  font-family: var(--font-roboto-condensed), "Arial Narrow", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  line-height: 1;
+  color: var(--color-ink);
+}
+
+.phase-label {
+  display: inline-flex;
+  align-items: center;
+  padding-top: 0.45rem;
+  border-top: 2px solid var(--color-gold);
+  font-family: var(--font-roboto-condensed), "Arial Narrow", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  line-height: 1;
+  color: var(--color-ink);
+}
+
+.button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-line);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-roboto-condensed), "Arial Narrow", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.button-base:hover {
+  cursor: pointer;
+}
+
+.button-ink {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+.button-ink:hover {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.button-gold {
+  border-color: color-mix(in srgb, var(--color-gold) 82%, var(--color-line) 18%);
+  background: color-mix(in srgb, var(--color-gold) 76%, var(--color-cream) 24%);
+  color: var(--color-ink);
+}
+
+.button-gold:hover {
+  border-color: color-mix(in srgb, var(--color-gold) 88%, white 12%);
+  background: color-mix(in srgb, var(--color-ink) 72%, var(--color-gold) 28%);
+  color: var(--color-cream);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.button-outline:hover {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.button-outline-gold {
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.button-outline-gold:hover {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.top-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.35rem 1.05rem;
+  font-family: var(--font-roboto-condensed), "Arial Narrow", sans-serif;
+  font-size: 1.04rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  line-height: 1;
+  color: var(--color-ink);
+  transition:
+    color 160ms ease,
+    opacity 160ms ease,
+    transform 180ms ease;
+}
+
+.top-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.2rem;
+  height: 2px;
+  background: var(--color-gold);
+  transform: scaleX(0.2);
+  transform-origin: left center;
+  opacity: 0;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.top-nav-link:hover {
+  color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.top-nav-link:hover::after {
+  transform: scaleX(1);
+  opacity: 1;
 }
