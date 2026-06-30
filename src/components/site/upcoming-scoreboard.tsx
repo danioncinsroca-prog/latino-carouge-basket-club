@@ -66,22 +66,14 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
           <div className="font-condensed text-[0.98rem] font-bold uppercase tracking-[0.32em] text-white">
             {displayDate}
           </div>
-          <div className="flex items-center gap-2.5">
-            <span className="font-condensed text-lg leading-none text-[var(--color-gold)]/42">
-              &gt;
-            </span>
-            <div
-              className="min-w-[11.2rem] border border-[rgba(255,216,120,0.14)] bg-black/90 px-4 py-[0.78rem] text-center font-scoreboard text-[2.9rem] leading-none tracking-[0.04em] text-[#ffd86f] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]"
-              style={{
-                textShadow:
-                  "0 0 5px rgba(255,216,111,0.45), 0 0 14px rgba(255,216,111,0.22)",
-              }}
-            >
-              {fixture.timeLabel}
-            </div>
-            <span className="font-condensed text-lg leading-none text-[var(--color-gold)]/42">
-              &lt;
-            </span>
+          <div
+            className="min-w-[11.2rem] border border-[rgba(255,216,120,0.14)] bg-black/90 px-4 py-[0.78rem] text-center font-scoreboard text-[2.9rem] leading-none tracking-[0.04em] text-[#ffd86f] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]"
+            style={{
+              textShadow:
+                "0 0 5px rgba(255,216,111,0.45), 0 0 14px rgba(255,216,111,0.22)",
+            }}
+          >
+            {fixture.timeLabel}
           </div>
           <div className="font-condensed text-[1.35rem] font-bold uppercase leading-none tracking-[0.32em] text-[var(--color-gold)]">
             VS
