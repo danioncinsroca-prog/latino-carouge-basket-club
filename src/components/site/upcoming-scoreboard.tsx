@@ -51,7 +51,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
         <div className="flex min-w-0 flex-col items-center gap-2.5 text-center">
           <div className="relative h-[6rem] w-[6rem] shrink-0 overflow-hidden rounded-full border-[3px] border-[rgba(240,188,43,0.72)] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
             <Image
-              src="/latino-carouge-logo.jpg"
+              src="/latino-carouge-logo.png"
               alt="Latino Carouge BC"
               fill
               className="object-cover"

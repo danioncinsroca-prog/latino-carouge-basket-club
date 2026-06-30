@@ -36,7 +36,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
             aria-label={clubConfig.name}
           >
             <Image
-              src="/latino-carouge-logo.jpg"
+              src="/latino-carouge-logo.png"
               alt={clubConfig.name}
               width={76}
               height={76}
