@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FeaturedPlayers } from "@/components/site/featured-players";
-import { MediaPlaceholder } from "@/components/site/media-placeholder";
+import { NewsShowcase } from "@/components/site/news-showcase";
 import { PalmaresTimeline } from "@/components/site/palmares-timeline";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
@@ -75,54 +75,54 @@ export async function HomePage({ locale }: HomePageProps) {
 
   return (
     <>
-      <div className="min-h-screen bg-[var(--color-cream)] text-[var(--color-ink)]">
+      <div className="min-h-screen text-[var(--color-ink)]">
         <SiteHeader locale={locale} />
 
-        <main className="pt-8 sm:pt-10 lg:pt-12">
-          <SectionShell innerClassName="pb-10">
-            <section className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-              <div className="space-y-6">
+        <main>
+          <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
+            <div aria-hidden className="absolute inset-0">
+              <Image
+                src="/stock/hero-bg.png"
+                alt=""
+                fill
+                priority
+                quality={90}
+                sizes="100vw"
+                className="object-cover object-[center_35%]"
+              />
+            </div>
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(8,14,24,0.88) 0%, rgba(8,14,24,0.62) 55%, rgba(8,14,24,0.28) 100%)",
+              }}
+            />
+            <div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
+              <div className="max-w-2xl space-y-6">
                 <div className="space-y-6">
-                  <h1 className="font-display text-6xl uppercase leading-[0.9] sm:text-7xl lg:text-8xl">
+                  <h1 className="font-display text-6xl uppercase leading-[0.9] text-[var(--color-cream)] sm:text-7xl lg:text-8xl">
                     {clubConfig.shortName}
                   </h1>
-                  <p className="max-w-xl text-base text-[var(--color-muted)] sm:text-lg">
+                  <p className="max-w-xl text-base text-[var(--color-cream)]/72 sm:text-lg">
                     {content.hero.copy}
                   </p>
                 </div>
-
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    href="#next-match"
-                    className="button-base button-ink"
-                  >
+                  <Link href="#next-match" className="button-base button-gold">
                     {content.hero.primaryCta}
                   </Link>
                   <Link
                     href={getSectionPath(locale, "team")}
-                    className="button-base button-outline"
+                    className="button-base button-outline-gold"
                   >
                     {content.hero.secondaryCta}
                   </Link>
                 </div>
               </div>
-
-              <div className="border-l border-[var(--color-line)] pl-0 lg:pl-10">
-                <MediaPlaceholder
-                  label={content.placeholders.hero.label}
-                  note={content.placeholders.hero.note}
-                  tone="ink"
-                  size="hero"
-                  image={content.placeholders.hero.image}
-                  extra={
-                    <div className="font-condensed text-xs font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
-                      {content.placeholders.hero.caption}
-                    </div>
-                  }
-                />
-              </div>
-            </section>
-          </SectionShell>
+            </div>
+          </section>
 
           <SectionShell
             id="next-match"
@@ -248,42 +248,27 @@ export async function HomePage({ locale }: HomePageProps) {
             id="news"
             className="py-14 sm:py-16"
           >
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                <SectionHeading
-                  kicker={content.newsSection.kicker}
-                  title={content.newsSection.title}
-                  intro={content.newsSection.intro}
-                />
-                <Link
-                  href={getSectionPath(locale, "news")}
-                  className="button-base button-outline-gold"
-                >
-                  {content.newsSection.viewAll}
-                </Link>
-              </div>
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+              <SectionHeading
+                kicker={content.newsSection.kicker}
+                title={content.newsSection.title}
+                intro={content.newsSection.intro}
+              />
+              <Link
+                href={getSectionPath(locale, "news")}
+                className="button-base button-outline-gold"
+              >
+                {content.newsSection.viewAll}
+              </Link>
+            </div>
 
-              <div className="mt-8 grid gap-px border border-[var(--color-line)] bg-[var(--color-line)] lg:grid-cols-3">
-                {content.news.map((item) => (
-                  <article key={item.title} className="bg-[var(--color-panel)] p-4">
-                    <MediaPlaceholder
-                      label={content.placeholders.news.label}
-                      note={content.placeholders.news.note}
-                      tone="panel"
-                      size="news"
-                      image={item.image ?? content.placeholders.news.image}
-                    />
-                    <div className="mt-4 font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
-                      {item.dateLabel}
-                    </div>
-                    <h3 className="mt-3 font-display text-3xl uppercase leading-none">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-sm text-[var(--color-muted)]">
-                      {item.excerpt}
-                    </p>
-                  </article>
-                ))}
-              </div>
+            <div className="mt-8">
+              <NewsShowcase
+                items={content.news}
+                locale={locale}
+                fallbackImage={content.placeholders.news.image}
+              />
+            </div>
           </SectionShell>
 
           <SectionShell
