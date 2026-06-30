@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { FeaturedPlayers } from "@/components/site/featured-players";
 import { MediaPlaceholder } from "@/components/site/media-placeholder";
+import { PalmaresTimeline } from "@/components/site/palmares-timeline";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { TeamCourtShowcase } from "@/components/site/team-court-showcase";
+import { UpcomingScoreboard } from "@/components/site/upcoming-scoreboard";
 import {
   buildSportsEventJsonLd,
   buildSportsOrganizationJsonLd,
@@ -209,6 +212,26 @@ export async function HomePage({ locale }: HomePageProps) {
           </SectionShell>
 
           <SectionShell
+            id="featured-players"
+            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
+          >
+            <div className="mb-8">
+              <div className="ink-divider space-y-3 pt-5">
+                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                  {content.featuredPlayersSection.kicker}
+                </div>
+                <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
+                  {content.featuredPlayersSection.title}
+                </h2>
+                <p className="max-w-2xl text-sm text-[var(--color-cream)]/65 sm:text-base">
+                  {content.featuredPlayersSection.intro}
+                </p>
+              </div>
+            </div>
+            <FeaturedPlayers players={content.featuredPlayers} />
+          </SectionShell>
+
+          <SectionShell
             id="news"
             className="py-14 sm:py-16"
           >
@@ -269,41 +292,8 @@ export async function HomePage({ locale }: HomePageProps) {
                       {content.fixturesSection.viewAll}
                     </Link>
                   </div>
-                  <div className="mt-8 grid gap-px border border-[var(--color-line)] bg-[var(--color-line)]">
-                    {fixturesPreview.map((fixture) => (
-                      <div
-                        key={`${fixture.dateLabel}-${fixture.opponent}`}
-                        className="grid gap-4 bg-[var(--color-panel)] p-5 sm:grid-cols-[0.28fr_1fr_auto]"
-                      >
-                        <div>
-                          <div className="font-display text-4xl uppercase leading-none">
-                            {fixture.shortDate}
-                          </div>
-                          <div className="mt-2 font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
-                            {fixture.timeLabel}
-                          </div>
-                        </div>
-                        <div>
-                          <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
-                            {fixture.status}
-                          </div>
-                          <div className="mt-3 font-display text-3xl uppercase leading-none">
-                            {clubConfig.shortName}
-                          </div>
-                          <div className="mt-2 font-condensed text-sm font-bold uppercase tracking-[0.14em]">
-                            {content.nextMatch.versus} {fixture.opponent}
-                          </div>
-                          <div className="mt-3 text-sm text-[var(--color-muted)]">
-                            {fixture.venue}
-                          </div>
-                        </div>
-                        <div className="flex items-start">
-                          <span className="phase-label">
-                            {fixture.phase}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
+                  <div className="mt-8">
+                    <UpcomingScoreboard fixtures={fixturesPreview} />
                   </div>
                 </div>
 
@@ -363,6 +353,20 @@ export async function HomePage({ locale }: HomePageProps) {
                   </div>
                 </div>
               </div>
+          </SectionShell>
+
+          <SectionShell
+            id="palmares"
+            className="border-y border-[var(--color-line)] py-14 sm:py-16"
+          >
+            <div className="mb-8">
+              <SectionHeading
+                kicker={content.palmaresSection.kicker}
+                title={content.palmaresSection.title}
+                intro={content.palmaresSection.intro}
+              />
+            </div>
+            <PalmaresTimeline items={content.palmares} />
           </SectionShell>
 
           <SiteFooter locale={locale} />

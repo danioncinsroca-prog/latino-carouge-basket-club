@@ -55,6 +55,22 @@ export type MatchResult = {
   score: string;
 };
 
+export type PalmaresItem = {
+  year: string;
+  title: string;
+  description: string;
+  type: "trophy" | "cup" | "medal" | "milestone";
+};
+
+export type FeaturedPlayer = {
+  number: string;
+  name: string;
+  position: string;
+  highlight: string;
+  stat?: { label: string; value: string };
+  image?: MediaAsset;
+};
+
 export type ExternalLinks = {
   ticketingUrl: string | null;
   clubContactUrl: string | null;
@@ -142,6 +158,18 @@ type LocaleContent = {
     };
   };
   results: MatchResult[];
+  palmares: PalmaresItem[];
+  palmaresSection: {
+    kicker: string;
+    title: string;
+    intro: string;
+  };
+  featuredPlayers: FeaturedPlayer[];
+  featuredPlayersSection: {
+    kicker: string;
+    title: string;
+    intro: string;
+  };
   placeholders: {
     hero: MediaPlaceholder;
     coach: MediaPlaceholder;
@@ -450,6 +478,65 @@ export const siteContent: Record<Locale, LocaleContent> = {
         score: "58 — 61",
       },
     ],
+    palmares: [
+      {
+        year: "2022",
+        title: "Fondation",
+        description: "Naissance du club à Carouge. Identité bilingue posée dès le départ.",
+        type: "milestone",
+      },
+      {
+        year: "2023",
+        title: "Premier tournoi",
+        description: "Première participation au tournoi communautaire de Genève.",
+        type: "cup",
+      },
+      {
+        year: "2024",
+        title: "Coupe locale",
+        description: "Premier titre remporté — victoire en coupe de quartier.",
+        type: "trophy",
+      },
+      {
+        year: "2025",
+        title: "Record saison",
+        description: "Meilleure performance en saison régulière depuis la fondation.",
+        type: "medal",
+      },
+    ],
+    palmaresSection: {
+      kicker: "Palmarès & Histoire",
+      title: "La mémoire du club",
+      intro: "Les étapes clés du club depuis sa fondation à Carouge.",
+    },
+    featuredPlayers: [
+      {
+        number: "4",
+        name: "Joueur 01",
+        position: "Meneur",
+        highlight: "Chef d'orchestre du jeu offensif. Tempo, lecture et passes premières.",
+        stat: { label: "passes clés / match", value: "7.2" },
+      },
+      {
+        number: "7",
+        name: "Joueur 02",
+        position: "Arrière",
+        highlight: "Scoring extérieur et pression constante sur la première ligne adverse.",
+        stat: { label: "points / match", value: "15.4" },
+      },
+      {
+        number: "11",
+        name: "Joueur 04",
+        position: "Ailier fort",
+        highlight: "Présence intérieure dominante. Écrans hauts et rebond défensif.",
+        stat: { label: "rebonds / match", value: "9.1" },
+      },
+    ],
+    featuredPlayersSection: {
+      kicker: "Joueurs en vue",
+      title: "Ceux qui font le collectif",
+      intro: "Trois profils clés dans la construction du jeu du club.",
+    },
     placeholders: {
       hero: {
         label: "MATCHDAY VISUAL",
@@ -799,6 +886,65 @@ export const siteContent: Record<Locale, LocaleContent> = {
         score: "58 — 61",
       },
     ],
+    palmares: [
+      {
+        year: "2022",
+        title: "Fundación",
+        description: "Nacimiento del club en Carouge. Identidad bilingüe establecida desde el principio.",
+        type: "milestone",
+      },
+      {
+        year: "2023",
+        title: "Primer torneo",
+        description: "Primera participación en el torneo comunitario de Ginebra.",
+        type: "cup",
+      },
+      {
+        year: "2024",
+        title: "Copa local",
+        description: "Primer título — victoria en la copa de barrio.",
+        type: "trophy",
+      },
+      {
+        year: "2025",
+        title: "Récord temporada",
+        description: "Mejor rendimiento en temporada regular desde la fundación.",
+        type: "medal",
+      },
+    ],
+    palmaresSection: {
+      kicker: "Palmarés & Historia",
+      title: "La memoria del club",
+      intro: "Las etapas clave del club desde su fundación en Carouge.",
+    },
+    featuredPlayers: [
+      {
+        number: "4",
+        name: "Jugador 01",
+        position: "Base",
+        highlight: "Director del juego ofensivo. Ritmo, lectura y primeros pases.",
+        stat: { label: "asistencias / partido", value: "7.2" },
+      },
+      {
+        number: "7",
+        name: "Jugador 02",
+        position: "Escolta",
+        highlight: "Anotador exterior y presión constante sobre la primera línea rival.",
+        stat: { label: "puntos / partido", value: "15.4" },
+      },
+      {
+        number: "11",
+        name: "Jugador 04",
+        position: "Ala-pívot",
+        highlight: "Dominio interior. Bloqueos altos y rebote defensivo.",
+        stat: { label: "rebotes / partido", value: "9.1" },
+      },
+    ],
+    featuredPlayersSection: {
+      kicker: "Jugadores destacados",
+      title: "Los que construyen el colectivo",
+      intro: "Tres perfiles clave en la construcción del juego del club.",
+    },
     placeholders: {
       hero: {
         label: "MATCHDAY VISUAL",
