@@ -27,10 +27,10 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0a2c52] text-[var(--color-cream)]">
       <div className="flex w-full flex-col gap-4 px-3 py-4 sm:px-5 lg:px-8 xl:px-12">
-        <div className="flex flex-col gap-4 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:items-center">
+        <div className="flex flex-col gap-4 xl:flex xl:flex-row xl:items-center xl:justify-between">
           <Link
             href={getHomePath(locale)}
-            className="flex items-center gap-4 xl:justify-self-start"
+            className="flex items-center gap-4"
             aria-label={clubConfig.name}
           >
             <Image
@@ -50,20 +50,20 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
             </div>
           </Link>
 
-          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 xl:justify-self-center xl:gap-x-8">
-            {content.nav.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="top-nav-link px-2"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex flex-col gap-4 xl:flex xl:flex-row xl:items-center xl:gap-10">
+            <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 xl:gap-x-8">
+              {content.nav.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="top-nav-link px-2"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center xl:justify-self-end">
-            <div className="inline-flex border border-white/30">
+            <div className="inline-flex border border-white/30 xl:shrink-0">
               {localeLinks.map((option) =>
                 option.code === locale ? (
                   <span
