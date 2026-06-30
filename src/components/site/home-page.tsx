@@ -285,9 +285,10 @@ export async function HomePage({ locale }: HomePageProps) {
                     key={partner.name}
                     src={partner.src}
                     alt={partner.name}
-                    height={48}
+                    height={80}
                     width={partner.width}
-                    className="h-12 w-auto object-contain"
+                    quality={100}
+                    className="h-20 w-auto object-contain"
                   />
                 ))}
               </div>
