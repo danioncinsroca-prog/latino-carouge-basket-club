@@ -67,7 +67,7 @@ function SectionShell({
 export async function HomePage({ locale }: HomePageProps) {
   const content = siteContent[locale];
   const schedule = await getResolvedSchedule(locale);
-  const fixturesPreview = schedule.fixtures.slice(0, 3);
+  const fixturesPreview = schedule.fixtures.slice(0, 2);
   const nextMatch = fixturesPreview[0];
   const organizationJsonLd = buildSportsOrganizationJsonLd(locale);
   const eventJsonLd = buildSportsEventJsonLd(locale, schedule.fixtures);
