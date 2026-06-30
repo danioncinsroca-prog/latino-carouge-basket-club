@@ -275,10 +275,10 @@ export async function HomePage({ locale }: HomePageProps) {
             id="partners"
             className="border-y border-[var(--color-line)] bg-white py-8 sm:py-10"
           >
-            <div className="flex flex-col items-center gap-7">
-              <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-muted)]">
+            <div className="flex flex-col items-center gap-10">
+              <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
                 {content.partnersSection.label}
-              </div>
+              </h2>
               <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-24">
                 {content.partnersSection.logos.map((partner) => (
                   <Image
