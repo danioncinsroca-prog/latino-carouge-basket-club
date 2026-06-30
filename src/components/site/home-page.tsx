@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FeaturedPlayers } from "@/components/site/featured-players";
 import { MediaPlaceholder } from "@/components/site/media-placeholder";
@@ -81,18 +82,10 @@ export async function HomePage({ locale }: HomePageProps) {
           <SectionShell innerClassName="pb-10">
             <section className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
               <div className="space-y-6">
-                <div className="mb-6">
-                  <div className="meta-kicker">
-                    {content.hero.badge}
-                  </div>
-                </div>
                 <div className="space-y-6">
                   <h1 className="font-display text-6xl uppercase leading-[0.9] sm:text-7xl lg:text-8xl">
                     {clubConfig.shortName}
                   </h1>
-                  <p className="max-w-2xl font-condensed text-lg font-bold uppercase tracking-[0.16em] text-[var(--color-muted)]">
-                    {content.hero.claim}
-                  </p>
                   <p className="max-w-xl text-base text-[var(--color-muted)] sm:text-lg">
                     {content.hero.copy}
                   </p>
@@ -211,25 +204,44 @@ export async function HomePage({ locale }: HomePageProps) {
               </div>
           </SectionShell>
 
-          <SectionShell
+          <section
             id="featured-players"
-            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
+            className="relative overflow-hidden bg-[var(--color-ink)] py-14 sm:py-16"
           >
-            <div className="mb-8">
-              <div className="ink-divider space-y-3 pt-5">
-                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-                  {content.featuredPlayersSection.kicker}
-                </div>
-                <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
-                  {content.featuredPlayersSection.title}
-                </h2>
-                <p className="max-w-2xl text-sm text-[var(--color-cream)]/65 sm:text-base">
-                  {content.featuredPlayersSection.intro}
-                </p>
-              </div>
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-[var(--color-ink)]"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 opacity-[0.96]"
+            >
+              <Image
+                src="/stock/featured-players-bg.png"
+                alt=""
+                fill
+                quality={100}
+                sizes="100vw"
+                className="object-cover object-center"
+              />
             </div>
-            <FeaturedPlayers players={content.featuredPlayers} />
-          </SectionShell>
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="mb-10">
+                <div className="ink-divider space-y-3 pt-5">
+                  <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                    {content.featuredPlayersSection.kicker}
+                  </div>
+                  <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
+                    {content.featuredPlayersSection.title}
+                  </h2>
+                  <p className="max-w-2xl text-sm text-[var(--color-cream)]/72 sm:text-base">
+                    {content.featuredPlayersSection.intro}
+                  </p>
+                </div>
+              </div>
+              <FeaturedPlayers players={content.featuredPlayers} />
+            </div>
+          </section>
 
           <SectionShell
             id="news"
