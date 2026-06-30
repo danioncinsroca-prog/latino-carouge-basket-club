@@ -373,6 +373,33 @@ export async function HomePage({ locale }: HomePageProps) {
             <PalmaresTimeline items={content.palmares} />
           </SectionShell>
 
+          <SectionShell
+            id="partners"
+            className="border-t border-[var(--color-line)] bg-[var(--color-ink)] py-10 sm:py-12"
+          >
+            <div className="flex flex-col items-center gap-8">
+              <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                {content.partnersSection.label}
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-14 lg:gap-20">
+                {content.partnersSection.logos.map((partner) => (
+                  <div
+                    key={partner.name}
+                    className="relative h-12 w-auto opacity-80 grayscale brightness-[1.8] transition-all duration-200 hover:opacity-100 hover:grayscale-0 hover:brightness-100"
+                  >
+                    <Image
+                      src={partner.src}
+                      alt={partner.name}
+                      height={48}
+                      width={partner.width}
+                      className="h-12 w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </SectionShell>
+
           <SiteFooter locale={locale} />
         </main>
       </div>

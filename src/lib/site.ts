@@ -164,6 +164,10 @@ type LocaleContent = {
     title: string;
     intro: string;
   };
+  partnersSection: {
+    label: string;
+    logos: { name: string; src: string; width: number }[];
+  };
   featuredPlayers: FeaturedPlayer[];
   featuredPlayersSection: {
     kicker: string;
@@ -508,6 +512,15 @@ export const siteContent: Record<Locale, LocaleContent> = {
       kicker: "Palmarès & Histoire",
       title: "La mémoire du club",
       intro: "Les étapes clés du club depuis sa fondation à Carouge.",
+    },
+    partnersSection: {
+      label: "Nos partenaires",
+      logos: [
+        { name: "Swiss Basketball", src: "/partners/swiss-basketball.png", width: 160 },
+        { name: "République et Canton de Genève", src: "/partners/canton-geneve.webp", width: 56 },
+        { name: "ACGBA", src: "/partners/acgba.png", width: 120 },
+        { name: "Ville de Carouge", src: "/partners/ville-carouge.png", width: 140 },
+      ],
     },
     featuredPlayers: [
       {
@@ -916,6 +929,15 @@ export const siteContent: Record<Locale, LocaleContent> = {
       kicker: "Palmarés & Historia",
       title: "La memoria del club",
       intro: "Las etapas clave del club desde su fundación en Carouge.",
+    },
+    partnersSection: {
+      label: "Nuestros socios",
+      logos: [
+        { name: "Swiss Basketball", src: "/partners/swiss-basketball.png", width: 160 },
+        { name: "République et Canton de Genève", src: "/partners/canton-geneve.webp", width: 56 },
+        { name: "ACGBA", src: "/partners/acgba.png", width: 120 },
+        { name: "Ville de Carouge", src: "/partners/ville-carouge.png", width: 140 },
+      ],
     },
     featuredPlayers: [
       {
