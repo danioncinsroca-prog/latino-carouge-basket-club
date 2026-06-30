@@ -44,7 +44,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
               <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
                 {content.header.badge}
               </div>
-              <div className="font-display text-2xl uppercase leading-none sm:text-3xl">
+              <div className="font-display text-2xl uppercase leading-none whitespace-nowrap sm:text-3xl">
                 {clubConfig.shortName}
               </div>
             </div>
