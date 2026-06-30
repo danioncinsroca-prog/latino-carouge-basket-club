@@ -1,24 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## LATINO CAROUGE BASKET CLUB
+
+Landing bilingüe FR/ES en Next.js para el club, con home deportiva, secciones stub y soporte para conectar un calendario compartido de partidos.
 
 ## Getting Started
 
-First, run the development server:
+1. Instala dependencias:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Si quieres alimentar los partidos desde un calendario ICS, crea `.env.local`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+INFOMANIAK_CALENDAR_ICS_URL=https://tu-feed-publico.ics
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Arranca el servidor:
+
+```bash
+npm run dev -- --port 3024
+```
+
+4. Abre:
+
+```text
+http://127.0.0.1:3024/fr
+http://127.0.0.1:3024/es
+```
+
+## Calendar Feed
+
+- La web usa `INFOMANIAK_CALENDAR_ICS_URL` o `CALENDAR_ICS_URL` como feed ICS.
+- Si no hay URL configurada o el feed falla, la UI mantiene los partidos manuales definidos en `src/lib/site.ts`.
+- La home usa los 3 próximos partidos como preview y la página de partidos muestra el calendario completo resuelto.
 
 ## Learn More
 
