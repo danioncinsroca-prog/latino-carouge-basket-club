@@ -3,6 +3,7 @@ import { MediaPlaceholder } from "@/components/site/media-placeholder";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { TeamCourtShowcase } from "@/components/site/team-court-showcase";
+import { UpcomingScoreboard } from "@/components/site/upcoming-scoreboard";
 import {
   clubConfig,
   getHomePath,
@@ -108,41 +109,8 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
             ) : null}
 
             {sectionKey === "matches" ? (
-              <div className="grid gap-px border border-[var(--color-line)] bg-[var(--color-line)]">
-                {schedule.fixtures.map((fixture) => (
-                  <div
-                    key={`${fixture.dateLabel}-${fixture.opponent}`}
-                    className="grid gap-4 bg-[var(--color-panel)] p-5 sm:grid-cols-[0.28fr_1fr_auto]"
-                  >
-                    <div>
-                      <div className="font-display text-4xl uppercase leading-none">
-                        {fixture.shortDate}
-                      </div>
-                      <div className="mt-2 font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
-                        {fixture.timeLabel}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
-                        {fixture.status}
-                      </div>
-                      <div className="mt-3 font-display text-3xl uppercase leading-none">
-                        {clubConfig.shortName}
-                      </div>
-                      <div className="mt-2 font-condensed text-sm font-bold uppercase tracking-[0.14em]">
-                        {content.nextMatch.versus} {fixture.opponent}
-                      </div>
-                      <div className="mt-3 text-sm text-[var(--color-muted)]">
-                        {fixture.venue}
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <span className="phase-label">
-                        {fixture.phase}
-                      </span>
-                    </div>
-                  </div>
-                ))}
+              <div className="rounded-[1.2rem] border border-[var(--color-line)] bg-[var(--color-panel)] p-4 sm:p-5">
+                <UpcomingScoreboard fixtures={schedule.fixtures} />
               </div>
             ) : null}
 

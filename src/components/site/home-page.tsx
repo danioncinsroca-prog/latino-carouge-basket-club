@@ -178,7 +178,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="effectif"
-            className="border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
+            className="border-t border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
           >
               <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                 <SectionHeading
@@ -221,6 +221,7 @@ export async function HomePage({ locale }: HomePageProps) {
                 alt=""
                 fill
                 quality={100}
+                unoptimized
                 sizes="100vw"
                 className="object-cover object-center"
               />

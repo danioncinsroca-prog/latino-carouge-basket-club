@@ -49,7 +49,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
 
       <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3 px-5 py-6 sm:px-6 sm:py-7">
         <div className="flex min-w-0 flex-col items-center gap-2.5 text-center">
-          <div className="relative h-[4.65rem] w-[4.65rem] shrink-0 overflow-hidden rounded-full border-[3px] border-[rgba(240,188,43,0.72)] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
+          <div className="relative h-[6rem] w-[6rem] shrink-0 overflow-hidden rounded-full border-[3px] border-[rgba(240,188,43,0.72)] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
             <Image
               src="/latino-carouge-logo.jpg"
               alt="Latino Carouge BC"
@@ -75,14 +75,14 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
           >
             {fixture.timeLabel}
           </div>
-          <div className="font-condensed text-[1.35rem] font-bold uppercase leading-none tracking-[0.32em] text-[var(--color-gold)]">
+          <div className="font-condensed text-[1.9rem] font-bold uppercase leading-none tracking-[0.32em] text-[var(--color-gold)]">
             VS
           </div>
         </div>
 
         <div className="flex min-w-0 flex-col items-center gap-2.5 text-center">
-          <div className="flex h-[4.65rem] w-[4.65rem] shrink-0 items-center justify-center rounded-full border-2 border-white/18 bg-white/8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
-            <span className="font-display text-[1.28rem] uppercase leading-none text-white/78">
+          <div className="flex h-[6rem] w-[6rem] shrink-0 items-center justify-center rounded-full border-2 border-white/18 bg-white/8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]">
+            <span className="font-display text-[1.6rem] uppercase leading-none text-white/78">
               {opponentInitials}
             </span>
           </div>
