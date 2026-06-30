@@ -177,6 +177,55 @@ export async function HomePage({ locale }: HomePageProps) {
           </SectionShell>
 
           <SectionShell
+            id="matches"
+            className="border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
+          >
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+              <SectionHeading
+                kicker={content.fixturesSection.kicker}
+                title={content.fixturesSection.title}
+                intro={content.fixturesSection.intro}
+              />
+              <Link
+                href={getSectionPath(locale, "matches")}
+                className="button-base button-outline-gold"
+              >
+                {content.fixturesSection.viewAll}
+              </Link>
+            </div>
+            <div className="mt-8">
+              <UpcomingScoreboard fixtures={fixturesPreview} />
+            </div>
+          </SectionShell>
+
+          <SectionShell
+            id="news"
+            className="py-14 sm:py-16"
+          >
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+              <SectionHeading
+                kicker={content.newsSection.kicker}
+                title={content.newsSection.title}
+                intro={content.newsSection.intro}
+              />
+              <Link
+                href={getSectionPath(locale, "news")}
+                className="button-base button-outline-gold"
+              >
+                {content.newsSection.viewAll}
+              </Link>
+            </div>
+
+            <div className="mt-8">
+              <NewsShowcase
+                items={content.news}
+                locale={locale}
+                fallbackImage={content.placeholders.news.image}
+              />
+            </div>
+          </SectionShell>
+
+          <SectionShell
             id="effectif"
             className="border-t border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
           >
@@ -202,26 +251,6 @@ export async function HomePage({ locale }: HomePageProps) {
                   coachPlaceholder={content.placeholders.coach}
                 />
               </div>
-          </SectionShell>
-
-          <SectionShell
-            id="palmares"
-            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
-          >
-            <div className="mb-8">
-              <div className="ink-divider space-y-3 pt-5">
-                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-                  {content.palmaresSection.kicker}
-                </div>
-                <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
-                  {content.palmaresSection.title}
-                </h2>
-                <p className="max-w-2xl text-sm text-[var(--color-cream)]/65 sm:text-base">
-                  {content.palmaresSection.intro}
-                </p>
-              </div>
-            </div>
-            <PalmaresTimeline items={content.palmares} />
           </SectionShell>
 
           <section
@@ -265,115 +294,6 @@ export async function HomePage({ locale }: HomePageProps) {
           </section>
 
           <SectionShell
-            id="news"
-            className="py-14 sm:py-16"
-          >
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-              <SectionHeading
-                kicker={content.newsSection.kicker}
-                title={content.newsSection.title}
-                intro={content.newsSection.intro}
-              />
-              <Link
-                href={getSectionPath(locale, "news")}
-                className="button-base button-outline-gold"
-              >
-                {content.newsSection.viewAll}
-              </Link>
-            </div>
-
-            <div className="mt-8">
-              <NewsShowcase
-                items={content.news}
-                locale={locale}
-                fallbackImage={content.placeholders.news.image}
-              />
-            </div>
-          </SectionShell>
-
-          <SectionShell
-            id="matches"
-            className="border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
-          >
-            <div className="space-y-14">
-              <div>
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                  <SectionHeading
-                    kicker={content.fixturesSection.kicker}
-                    title={content.fixturesSection.title}
-                    intro={content.fixturesSection.intro}
-                  />
-                  <Link
-                    href={getSectionPath(locale, "matches")}
-                    className="button-base button-outline-gold"
-                  >
-                    {content.fixturesSection.viewAll}
-                  </Link>
-                </div>
-                <div className="mt-8">
-                  <UpcomingScoreboard fixtures={fixturesPreview} />
-                </div>
-              </div>
-
-              <div id="history">
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                  <SectionHeading
-                    kicker={content.historySection.kicker}
-                    title={content.historySection.title}
-                    intro={content.historySection.intro}
-                  />
-                  <Link
-                    href={getSectionPath(locale, "history")}
-                    className="button-base button-outline-gold"
-                  >
-                    {content.historySection.viewAll}
-                  </Link>
-                </div>
-                <div className="mt-8 overflow-hidden border border-[var(--color-line)]">
-                  <table className="w-full border-collapse">
-                    <thead className="bg-[var(--color-ink)] text-[var(--color-cream)]">
-                      <tr>
-                        <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
-                          {content.historySection.table.date}
-                        </th>
-                        <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
-                          {content.historySection.table.match}
-                        </th>
-                        <th className="w-[7.5rem] px-4 py-3 text-right font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
-                          {content.historySection.table.score}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {content.results.map((result, index) => (
-                        <tr
-                          key={`${result.dateLabel}-${result.opponent}`}
-                          className={
-                            index % 2 === 0
-                              ? "bg-[var(--color-panel)]"
-                              : "bg-[var(--color-surface)]"
-                          }
-                        >
-                          <td className="border-t border-[var(--color-line)] px-4 py-3 text-sm text-[var(--color-muted)]">
-                            {result.dateLabel}
-                          </td>
-                          <td className="border-t border-[var(--color-line)] px-4 py-3 font-condensed text-sm font-bold uppercase tracking-[0.12em]">
-                            {clubConfig.shortName} {content.nextMatch.versus}{" "}
-                            {result.opponent}
-                          </td>
-                          <td className="w-[7.5rem] border-t border-[var(--color-line)] px-4 py-3 text-right font-display text-2xl leading-none whitespace-nowrap [font-variant-numeric:tabular-nums]">
-                            {result.score}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </SectionShell>
-
-          <SectionShell
             id="partners"
             className="border-y border-[var(--color-line)] bg-white py-8 sm:py-10"
           >
@@ -395,6 +315,85 @@ export async function HomePage({ locale }: HomePageProps) {
                 ))}
               </div>
             </div>
+          </SectionShell>
+
+          <SectionShell
+            id="history"
+            className="border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
+          >
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+              <SectionHeading
+                kicker={content.historySection.kicker}
+                title={content.historySection.title}
+                intro={content.historySection.intro}
+              />
+              <Link
+                href={getSectionPath(locale, "history")}
+                className="button-base button-outline-gold"
+              >
+                {content.historySection.viewAll}
+              </Link>
+            </div>
+            <div className="mt-8 overflow-hidden border border-[var(--color-line)]">
+              <table className="w-full border-collapse">
+                <thead className="bg-[var(--color-ink)] text-[var(--color-cream)]">
+                  <tr>
+                    <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                      {content.historySection.table.date}
+                    </th>
+                    <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                      {content.historySection.table.match}
+                    </th>
+                    <th className="w-[7.5rem] px-4 py-3 text-right font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                      {content.historySection.table.score}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {content.results.map((result, index) => (
+                    <tr
+                      key={`${result.dateLabel}-${result.opponent}`}
+                      className={
+                        index % 2 === 0
+                          ? "bg-[var(--color-panel)]"
+                          : "bg-[var(--color-surface)]"
+                      }
+                    >
+                      <td className="border-t border-[var(--color-line)] px-4 py-3 text-sm text-[var(--color-muted)]">
+                        {result.dateLabel}
+                      </td>
+                      <td className="border-t border-[var(--color-line)] px-4 py-3 font-condensed text-sm font-bold uppercase tracking-[0.12em]">
+                        {clubConfig.shortName} {content.nextMatch.versus}{" "}
+                        {result.opponent}
+                      </td>
+                      <td className="w-[7.5rem] border-t border-[var(--color-line)] px-4 py-3 text-right font-display text-2xl leading-none whitespace-nowrap [font-variant-numeric:tabular-nums]">
+                        {result.score}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </SectionShell>
+
+          <SectionShell
+            id="palmares"
+            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
+          >
+            <div className="mb-8">
+              <div className="ink-divider space-y-3 pt-5">
+                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                  {content.palmaresSection.kicker}
+                </div>
+                <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
+                  {content.palmaresSection.title}
+                </h2>
+                <p className="max-w-2xl text-sm text-[var(--color-cream)]/65 sm:text-base">
+                  {content.palmaresSection.intro}
+                </p>
+              </div>
+            </div>
+            <PalmaresTimeline items={content.palmares} />
           </SectionShell>
 
           <SiteFooter locale={locale} />
