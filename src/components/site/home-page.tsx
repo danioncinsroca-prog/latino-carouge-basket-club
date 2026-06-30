@@ -272,30 +272,6 @@ export async function HomePage({ locale }: HomePageProps) {
           </SectionShell>
 
           <SectionShell
-            id="partners"
-            className="border-y border-[var(--color-line)] bg-white py-8 sm:py-10"
-          >
-            <div className="flex flex-col items-center gap-10">
-              <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
-                {content.partnersSection.label}
-              </h2>
-              <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-24">
-                {content.partnersSection.logos.map((partner) => (
-                  <Image
-                    key={partner.name}
-                    src={partner.src}
-                    alt={partner.name}
-                    height={80}
-                    width={partner.width}
-                    unoptimized
-                    className="h-20 w-auto object-contain"
-                  />
-                ))}
-              </div>
-            </div>
-          </SectionShell>
-
-          <SectionShell
             id="matches"
             className="border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
           >
@@ -395,6 +371,30 @@ export async function HomePage({ locale }: HomePageProps) {
               </div>
             </div>
             <PalmaresTimeline items={content.palmares} />
+          </SectionShell>
+
+          <SectionShell
+            id="partners"
+            className="border-y border-[var(--color-line)] bg-white py-8 sm:py-10"
+          >
+            <div className="flex flex-col items-center gap-10">
+              <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
+                {content.partnersSection.label}
+              </h2>
+              <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 lg:gap-24">
+                {content.partnersSection.logos.map((partner) => (
+                  <Image
+                    key={partner.name}
+                    src={partner.src}
+                    alt={partner.name}
+                    height={80}
+                    width={partner.width}
+                    unoptimized
+                    className="h-20 w-auto object-contain"
+                  />
+                ))}
+              </div>
+            </div>
           </SectionShell>
 
           <SiteFooter locale={locale} />
