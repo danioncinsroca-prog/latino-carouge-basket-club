@@ -564,11 +564,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       coach: {
         label: "COACH PORTRAIT",
         note: "Slot prévu pour le portrait officiel du coach.",
-        image: {
-          src: "/stock/hansi-flick.webp",
-          alt: "Portrait de Hansi Flick utilisé comme image de coach.",
-          position: "center 18%",
-        },
       },
       news: {
         label: "NEWS IMAGE",
@@ -981,11 +976,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       coach: {
         label: "RETRATO ENTRENADOR",
         note: "Slot reservado para el retrato oficial del entrenador.",
-        image: {
-          src: "/stock/hansi-flick.webp",
-          alt: "Retrato de Hansi Flick utilizado como imagen de entrenador.",
-          position: "center 18%",
-        },
       },
       news: {
         label: "IMAGEN NOTICIA",
