@@ -75,7 +75,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
           >
             {fixture.timeLabel}
           </div>
-          <div className="font-condensed text-[2.8rem] font-bold uppercase leading-none tracking-[0.04em] text-[var(--color-gold)]">
+          <div className="font-condensed text-[2.8rem] font-bold uppercase leading-none tracking-[-0.02em] text-[var(--color-gold)]">
             VS
           </div>
         </div>
