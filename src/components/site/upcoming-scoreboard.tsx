@@ -57,7 +57,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
               className="object-cover"
             />
           </div>
-          <div className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap font-condensed text-[0.88rem] font-bold uppercase leading-none tracking-[0.08em] text-white sm:text-[0.94rem]">
+          <div className="font-condensed text-[1.1rem] font-bold uppercase leading-tight tracking-[0.06em] text-white sm:text-[1.2rem]">
             {clubConfig.shortName}
           </div>
         </div>
@@ -86,7 +86,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
               {opponentInitials}
             </span>
           </div>
-          <div className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap font-condensed text-[0.88rem] font-bold uppercase leading-none tracking-[0.08em] text-white sm:text-[0.94rem]">
+          <div className="font-condensed text-[1.1rem] font-bold uppercase leading-tight tracking-[0.06em] text-white sm:text-[1.2rem]">
             {fixture.opponent}
           </div>
         </div>
