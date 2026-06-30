@@ -63,7 +63,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
         </div>
 
         <div className="flex shrink-0 flex-col items-center gap-1.5">
-          <div className="font-condensed text-[0.98rem] font-bold uppercase tracking-[0.32em] text-white">
+          <div className="font-condensed text-[1.3rem] font-bold uppercase tracking-[0.06em] text-white">
             {displayDate}
           </div>
           <div
