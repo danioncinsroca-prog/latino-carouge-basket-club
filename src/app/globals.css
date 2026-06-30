@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "DSEG7Classic";
+  src: url("/fonts/DSEG7Classic-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 :root {
   --color-cream: #f5f1e6;
   --color-surface: #ece4cf;
@@ -80,6 +88,10 @@ img {
 
 .font-display {
   font-family: var(--font-oswald), Impact, sans-serif;
+}
+
+.font-scoreboard {
+  font-family: "DSEG7Classic", monospace;
 }
 
 .site-grid {

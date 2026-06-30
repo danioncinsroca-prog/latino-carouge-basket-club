@@ -16,7 +16,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
 
   return (
     <div
-      className="flex flex-col overflow-hidden border-t-4 border-[var(--color-gold)] min-h-[300px]"
+      className="flex flex-col overflow-hidden rounded-xl border-t-4 border-[var(--color-gold)] min-h-[300px]"
       style={{
         background: "linear-gradient(160deg, #1e3558 0%, #0f1c30 60%, #0a1520 100%)",
       }}
@@ -48,17 +48,17 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
               className="object-cover"
             />
           </div>
-          <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--color-cream)]/80 text-center leading-tight max-w-[80px]">
+          <div className="font-condensed text-sm font-bold uppercase tracking-[0.12em] text-white whitespace-nowrap text-center">
             {clubConfig.shortName}
           </div>
         </div>
 
         {/* Digital scoreboard clock */}
-        <div className="flex shrink-0 flex-col items-center gap-2">
+        <div className="flex shrink-0 flex-col items-center gap-3">
           <div className="flex items-center gap-2">
-            <span className="text-[var(--color-gold)]/35 text-base font-bold leading-none select-none">›</span>
+            <span className="text-[var(--color-gold)]/35 text-base leading-none select-none">›</span>
             <div
-              className="bg-black/85 px-5 py-3 font-mono text-[1.8rem] font-bold leading-none tracking-[0.08em] text-[var(--color-gold)]"
+              className="font-scoreboard bg-black/85 px-5 py-3 text-[2rem] leading-none tracking-[0.06em] text-[var(--color-gold)]"
               style={{
                 textShadow:
                   "0 0 8px rgba(240,188,43,0.9), 0 0 20px rgba(240,188,43,0.5), 0 0 40px rgba(240,188,43,0.2)",
@@ -67,9 +67,9 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
             >
               {fixture.timeLabel}
             </div>
-            <span className="text-[var(--color-gold)]/35 text-base font-bold leading-none select-none">‹</span>
+            <span className="text-[var(--color-gold)]/35 text-base leading-none select-none">‹</span>
           </div>
-          <div className="font-condensed text-[0.58rem] font-bold uppercase tracking-[0.28em] text-[var(--color-cream)]/35">
+          <div className="font-condensed text-xs font-bold uppercase tracking-[0.28em] text-[var(--color-gold)]">
             VS
           </div>
         </div>
@@ -81,7 +81,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
               {opponentInitials}
             </span>
           </div>
-          <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--color-cream)]/80 text-center leading-tight max-w-[80px]">
+          <div className="font-condensed text-sm font-bold uppercase tracking-[0.12em] text-white whitespace-nowrap text-center">
             {fixture.opponent}
           </div>
         </div>
@@ -99,7 +99,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
 
 export function UpcomingScoreboard({ fixtures }: { fixtures: Fixture[] }) {
   return (
-    <div className="grid gap-px bg-[var(--color-gold)]/15 sm:grid-cols-2">
+    <div className="grid gap-6 sm:grid-cols-2">
       {fixtures.map((fixture) => (
         <ScoreboardCard
           key={`${fixture.shortDate}-${fixture.opponent}`}
