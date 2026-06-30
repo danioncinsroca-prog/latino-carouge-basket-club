@@ -287,7 +287,7 @@ export async function HomePage({ locale }: HomePageProps) {
                     alt={partner.name}
                     height={80}
                     width={partner.width}
-                    quality={100}
+                    unoptimized
                     className="h-20 w-auto object-contain"
                   />
                 ))}
