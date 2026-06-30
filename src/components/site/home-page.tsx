@@ -204,6 +204,26 @@ export async function HomePage({ locale }: HomePageProps) {
               </div>
           </SectionShell>
 
+          <SectionShell
+            id="palmares"
+            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
+          >
+            <div className="mb-8">
+              <div className="ink-divider space-y-3 pt-5">
+                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                  {content.palmaresSection.kicker}
+                </div>
+                <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
+                  {content.palmaresSection.title}
+                </h2>
+                <p className="max-w-2xl text-sm text-[var(--color-cream)]/65 sm:text-base">
+                  {content.palmaresSection.intro}
+                </p>
+              </div>
+            </div>
+            <PalmaresTimeline items={content.palmares} />
+          </SectionShell>
+
           <section
             id="featured-players"
             className="relative overflow-hidden bg-[var(--color-ink)] py-14 sm:py-16"
@@ -351,26 +371,6 @@ export async function HomePage({ locale }: HomePageProps) {
                 </div>
               </div>
             </div>
-          </SectionShell>
-
-          <SectionShell
-            id="palmares"
-            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
-          >
-            <div className="mb-8">
-              <div className="ink-divider space-y-3 pt-5">
-                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-                  {content.palmaresSection.kicker}
-                </div>
-                <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
-                  {content.palmaresSection.title}
-                </h2>
-                <p className="max-w-2xl text-sm text-[var(--color-cream)]/65 sm:text-base">
-                  {content.palmaresSection.intro}
-                </p>
-              </div>
-            </div>
-            <PalmaresTimeline items={content.palmares} />
           </SectionShell>
 
           <SectionShell
