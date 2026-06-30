@@ -17,8 +17,6 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
   const content = siteContent[locale];
-  const primaryHref =
-    clubConfig.externalLinks.ticketingUrl ?? `${getHomePath(locale)}#next-match`;
   const localeLinks = locales.map((targetLocale) => ({
     code: targetLocale,
     href: currentSection
@@ -27,7 +25,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
   }));
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--color-line)] bg-[color:color-mix(in_srgb,var(--color-panel)_92%,white_8%)]/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0a2c52] text-[var(--color-cream)]">
       <div className="flex w-full flex-col gap-4 px-3 py-4 sm:px-5 lg:px-8 xl:px-12">
         <div className="flex flex-col gap-4 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:items-center">
           <Link
@@ -43,7 +41,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
               priority
             />
             <div className="space-y-1">
-              <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
+              <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
                 {content.header.badge}
               </div>
               <div className="font-display text-2xl uppercase leading-none sm:text-3xl">
@@ -65,7 +63,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
           </nav>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center xl:justify-self-end">
-            <div className="inline-flex border border-[var(--color-line)]">
+            <div className="inline-flex border border-white/30">
               {localeLinks.map((option) =>
                 option.code === locale ? (
                   <span
@@ -78,19 +76,13 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
                   <Link
                     key={option.code}
                     href={option.href}
-                    className="px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.24em] text-[var(--color-muted)] hover:bg-[var(--color-surface)]"
+                    className="px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.24em] text-white/60 hover:bg-white/10"
                   >
                     {option.code.toUpperCase()}
                   </Link>
                 ),
               )}
             </div>
-            <Link
-              href={primaryHref}
-              className="button-base button-gold"
-            >
-              {content.header.primaryCta}
-            </Link>
           </div>
         </div>
       </div>

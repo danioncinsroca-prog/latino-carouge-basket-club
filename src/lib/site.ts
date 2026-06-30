@@ -239,7 +239,7 @@ const frNav = (locale: Locale): NavItem[] => [
   { label: "Club", href: `/${locale}#club` },
   { label: "Équipe", href: `/${locale}#effectif` },
   { label: "Actualités", href: getSectionPath(locale, "news") },
-  { label: "Matchs", href: getSectionPath(locale, "matches") },
+  { label: "Calendrier", href: `/${locale}#next-match` },
   { label: "Historique", href: getSectionPath(locale, "history") },
 ];
 
@@ -247,7 +247,7 @@ const esNav = (locale: Locale): NavItem[] => [
   { label: "Club", href: `/${locale}#club` },
   { label: "Equipo", href: `/${locale}#effectif` },
   { label: "Noticias", href: getSectionPath(locale, "news") },
-  { label: "Partidos", href: getSectionPath(locale, "matches") },
+  { label: "Calendario", href: `/${locale}#next-match` },
   { label: "Histórico", href: getSectionPath(locale, "history") },
 ];
 
