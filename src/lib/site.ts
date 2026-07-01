@@ -532,8 +532,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
     ],
     palmaresSection: {
-      kicker: "Palmarès & Histoire",
-      title: "La mémoire du club",
+      kicker: "",
+      title: "Palmarès & Histoire",
       intro: "Les étapes clés du club depuis sa fondation à Carouge.",
     },
     partnersSection: {

@@ -65,6 +65,10 @@ function SectionShell({
   );
 }
 
+function CourtDivider({ className = "" }: { className?: string }) {
+  return <div aria-hidden className={`court-divider ${className}`.trim()} />;
+}
+
 export async function HomePage({ locale }: HomePageProps) {
   const content = siteContent[locale];
   const schedule = await getResolvedSchedule(locale);
@@ -178,7 +182,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="matches"
-            className="border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
+            className="border-t border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
           >
             <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
               <SectionHeading
@@ -198,9 +202,11 @@ export async function HomePage({ locale }: HomePageProps) {
             </div>
           </SectionShell>
 
+          <CourtDivider className="bg-[var(--color-panel)]" />
+
           <SectionShell
             id="news"
-            className="py-14 sm:py-16"
+            className="bg-[var(--color-panel)] py-14 sm:py-16"
           >
             <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
               <SectionHeading
@@ -299,9 +305,11 @@ export async function HomePage({ locale }: HomePageProps) {
           >
             <div className="mb-8">
               <div className="ink-divider space-y-3 pt-5">
-                <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-                  {content.palmaresSection.kicker}
-                </div>
+                {content.palmaresSection.kicker && (
+                  <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                    {content.palmaresSection.kicker}
+                  </div>
+                )}
                 <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
                   {content.palmaresSection.title}
                 </h2>
@@ -315,7 +323,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="history"
-            className="border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
+            className="border-t border-[var(--color-line)] bg-white py-14 sm:py-16"
           >
             <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
               <SectionHeading
@@ -374,7 +382,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="partners"
-            className="border-y border-[var(--color-line)] bg-white py-8 sm:py-10"
+            className="bg-white py-8 sm:py-10"
           >
             <div className="flex flex-col items-center gap-10">
               <h2 className="font-display text-4xl uppercase leading-none sm:text-5xl">
