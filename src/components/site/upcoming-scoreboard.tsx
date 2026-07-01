@@ -26,7 +26,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
 
   return (
     <div
-      className="relative flex min-h-[228px] flex-col overflow-hidden rounded-[1.15rem] border border-[rgba(245,241,230,0.12)] shadow-[0_26px_44px_rgba(8,14,24,0.22)] sm:min-h-[236px]"
+      className="relative flex min-h-[228px] flex-col overflow-hidden rounded-[1.15rem] border border-[rgba(245,241,230,0.12)] sm:min-h-[236px]"
       style={{
         background:
           "linear-gradient(180deg, #183254 0%, #122742 48%, #0c1828 100%)",
