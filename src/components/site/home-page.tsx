@@ -104,9 +104,12 @@ export async function HomePage({ locale }: HomePageProps) {
               }}
             />
             <div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
-              <div className="max-w-2xl space-y-6">
+              <div className="max-w-3xl space-y-6">
                 <div className="space-y-6">
-                  <h1 className="font-display text-6xl uppercase leading-[0.9] text-[var(--color-cream)] sm:text-7xl lg:text-8xl">
+                  <h1
+                    className="whitespace-nowrap font-display uppercase leading-[0.9] text-[var(--color-cream)]"
+                    style={{ fontSize: "clamp(2.25rem, 6vw, 5rem)" }}
+                  >
                     {clubConfig.shortName}
                   </h1>
                   <p className="max-w-xl text-base text-[var(--color-cream)]/72 sm:text-lg">
