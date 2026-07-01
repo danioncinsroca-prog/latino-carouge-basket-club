@@ -228,10 +228,22 @@ img {
 .button-outline-gold {
   background: transparent;
   border-color: var(--color-gold);
-  color: var(--color-gold);
+  color: var(--color-ink);
 }
 
 .button-outline-gold:hover {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.button-ghost-gold {
+  background: transparent;
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.button-ghost-gold:hover {
   background: var(--color-gold);
   border-color: var(--color-gold);
   color: var(--color-ink);

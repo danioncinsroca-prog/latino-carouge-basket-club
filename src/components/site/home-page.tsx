@@ -119,7 +119,7 @@ export async function HomePage({ locale }: HomePageProps) {
                   </Link>
                   <Link
                     href={getSectionPath(locale, "team")}
-                    className="button-base button-outline-gold"
+                    className="button-base button-ghost-gold"
                   >
                     {content.hero.secondaryCta}
                   </Link>
