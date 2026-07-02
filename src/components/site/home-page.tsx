@@ -138,8 +138,8 @@ export async function HomePage({ locale }: HomePageProps) {
             className="bg-[var(--color-ink)] text-[var(--color-cream)]"
             innerClassName="py-0"
           >
-            <div className="grid gap-0 lg:min-h-[230px] lg:grid-flow-col lg:auto-cols-max lg:justify-start">
-              <div className="border-b border-[var(--color-cream)]/15 px-6 py-10 lg:border-b-0 lg:border-r lg:px-8 lg:py-12">
+            <div className="flex flex-col gap-8 px-6 py-10 lg:flex-row lg:items-center lg:gap-10 lg:px-8 lg:py-12">
+              <div className="shrink-0">
                   <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
                     {content.nextMatch.label}
                   </div>
@@ -151,7 +151,14 @@ export async function HomePage({ locale }: HomePageProps) {
                   </div>
                 </div>
 
-              <div className="flex flex-col justify-center px-6 py-10 lg:px-8 lg:py-12">
+              <div
+                aria-hidden
+                className="hidden font-display text-2xl text-[var(--color-cream)]/30 lg:block"
+              >
+                {content.nextMatch.versus}
+              </div>
+
+              <div className="shrink-0 border-t border-[var(--color-cream)]/15 pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
                   <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
                     {nextMatch.status}
                   </div>
