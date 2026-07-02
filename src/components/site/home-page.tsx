@@ -146,7 +146,7 @@ export async function HomePage({ locale }: HomePageProps) {
                   <div className="mt-4 font-display text-5xl uppercase leading-[1.08] sm:text-6xl">
                     {nextMatch.dateLabel}
                   </div>
-                  <div className="mt-3 font-condensed text-lg font-bold text-[var(--color-cream)]/84">
+                  <div className="mt-3 font-condensed text-2xl font-bold text-[var(--color-cream)]/84">
                     {nextMatch.timeLabel}
                   </div>
                 </div>
