@@ -166,21 +166,20 @@ export async function HomePage({ locale }: HomePageProps) {
                   </div>
                 </div>
 
-              <div className="flex flex-col justify-between px-6 py-10 lg:px-8 lg:py-12">
+              <div className="flex flex-col justify-center px-6 py-10 lg:px-8 lg:py-12">
                   <p className="text-sm text-[var(--color-cream)]/82">
                     {content.nextMatch.copy}
                   </p>
-                  <div className="mt-6">
-                    <Link
-                      href={
-                        clubConfig.externalLinks.ticketingUrl ??
-                        getSectionPath(locale, "matches")
-                      }
-                      className="button-base button-gold"
-                    >
-                      {content.nextMatch.cta}
-                    </Link>
-                  </div>
+                  {clubConfig.externalLinks.ticketingUrl && (
+                    <div className="mt-6">
+                      <Link
+                        href={clubConfig.externalLinks.ticketingUrl}
+                        className="button-base button-gold"
+                      >
+                        {content.nextMatch.cta}
+                      </Link>
+                    </div>
+                  )}
               </div>
             </div>
           </SectionShell>
