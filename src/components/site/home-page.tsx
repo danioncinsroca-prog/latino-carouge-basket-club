@@ -138,15 +138,15 @@ export async function HomePage({ locale }: HomePageProps) {
             className="bg-[var(--color-ink)] text-[var(--color-cream)]"
             innerClassName="py-0"
           >
-            <div className="grid gap-0 lg:min-h-[230px] lg:grid-cols-[0.4fr_1fr]">
+            <div className="grid gap-0 lg:min-h-[230px] lg:grid-flow-col lg:auto-cols-max lg:justify-start">
               <div className="border-b border-[var(--color-cream)]/15 px-6 py-10 lg:border-b-0 lg:border-r lg:px-8 lg:py-12">
                   <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
                     {content.nextMatch.label}
                   </div>
-                  <div className="mt-3 font-display text-5xl uppercase leading-none sm:text-6xl">
+                  <div className="mt-4 font-display text-5xl uppercase leading-[1.08] sm:text-6xl">
                     {nextMatch.dateLabel}
                   </div>
-                  <div className="mt-2 text-sm text-[var(--color-cream)]/78">
+                  <div className="mt-3 text-sm text-[var(--color-cream)]/78">
                     {nextMatch.timeLabel}
                   </div>
                 </div>
