@@ -49,15 +49,17 @@ function SectionShell({
   id,
   className = "",
   innerClassName = "",
+  style,
   children,
 }: Readonly<{
   id?: string;
   className?: string;
   innerClassName?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }>) {
   return (
-    <section id={id} className={className}>
+    <section id={id} className={className} style={style}>
       <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${innerClassName}`}>
         {children}
       </div>
@@ -409,7 +411,8 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="recruitment"
-            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
+            className="border-y border-[var(--color-line)] py-14 sm:py-16"
+            style={{ background: "color-mix(in srgb, var(--color-ink) 82%, black 18%)" }}
           >
             <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
