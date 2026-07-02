@@ -138,7 +138,7 @@ export async function HomePage({ locale }: HomePageProps) {
             className="bg-[var(--color-ink)] text-[var(--color-cream)]"
             innerClassName="py-0"
           >
-            <div className="grid gap-0 lg:min-h-[230px] lg:grid-cols-[0.32fr_1fr_0.36fr]">
+            <div className="grid gap-0 lg:min-h-[230px] lg:grid-cols-[0.4fr_1fr]">
               <div className="border-b border-[var(--color-cream)]/15 px-6 py-10 lg:border-b-0 lg:border-r lg:px-8 lg:py-12">
                   <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
                     {content.nextMatch.label}
@@ -151,7 +151,7 @@ export async function HomePage({ locale }: HomePageProps) {
                   </div>
                 </div>
 
-              <div className="border-b border-[var(--color-cream)]/15 px-6 py-10 lg:border-b-0 lg:border-r lg:px-8 lg:py-12">
+              <div className="flex flex-col justify-center px-6 py-10 lg:px-8 lg:py-12">
                   <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
                     {nextMatch.status}
                   </div>
@@ -164,12 +164,6 @@ export async function HomePage({ locale }: HomePageProps) {
                   <div className="mt-3 text-sm text-[var(--color-cream)]/78">
                     {nextMatch.venue}
                   </div>
-                </div>
-
-              <div className="flex flex-col justify-center px-6 py-10 lg:px-8 lg:py-12">
-                  <p className="text-sm text-[var(--color-cream)]/82">
-                    {content.nextMatch.copy}
-                  </p>
                   {clubConfig.externalLinks.ticketingUrl && (
                     <div className="mt-6">
                       <Link
