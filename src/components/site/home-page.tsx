@@ -153,7 +153,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
               <div
                 aria-hidden
-                className="hidden font-display text-2xl text-[var(--color-cream)]/30 lg:block"
+                className="hidden font-display text-4xl uppercase text-[var(--color-gold)] lg:block"
               >
                 {content.nextMatch.versus}
               </div>
