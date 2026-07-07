@@ -414,7 +414,7 @@ export async function HomePage({ locale }: HomePageProps) {
             className="border-y border-[var(--color-line)] py-14 sm:py-16"
             style={{ background: "color-mix(in srgb, var(--color-ink) 82%, black 18%)" }}
           >
-            <div className="space-y-8 sm:space-y-10">
+            <div className="space-y-5 sm:space-y-6">
               <div className="flex flex-col gap-6 sm:gap-8 lg:grid lg:grid-cols-[1fr_auto] lg:items-start">
                 <div>
                   <div className="ink-divider space-y-3 pt-5">
@@ -444,7 +444,7 @@ export async function HomePage({ locale }: HomePageProps) {
                 </div>
               </div>
 
-              <div className="border-t border-[var(--color-line)]/30 pt-8 sm:pt-10">
+              <div className="border-t border-[var(--color-line)]/30 pt-4 sm:pt-5">
                 <div className="space-y-3 sm:space-y-4">
                   <div className="space-y-1.5 sm:space-y-2">
                     <p className="text-xs font-semibold text-[var(--color-gold)] sm:text-sm">
@@ -457,11 +457,11 @@ export async function HomePage({ locale }: HomePageProps) {
 
                   <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-3 lg:grid-cols-6">
                     {content.recruitmentSection.categories.map((cat) => (
-                      <div key={cat.code} className="rounded border border-[var(--color-gold)]/30 bg-[var(--color-ink)]/30 px-2 py-1.5 text-center sm:px-3 sm:py-2">
-                        <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[var(--color-gold)] sm:text-xs">
+                      <div key={cat.code} className="rounded border border-[var(--color-gold)]/30 bg-[var(--color-ink)]/30 px-2.5 py-2 text-center sm:px-3 sm:py-2.5">
+                        <div className="font-condensed text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-gold)] sm:text-sm">
                           {cat.code}
                         </div>
-                        <div className="text-[0.6rem] text-[var(--color-cream)]/70 mt-0.5 sm:text-[0.70rem] sm:mt-1">
+                        <div className="text-[0.8rem] text-[var(--color-cream)]/70 mt-1 sm:text-sm sm:mt-1.5">
                           {cat.label}
                         </div>
                       </div>
