@@ -26,49 +26,50 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0a2c52] text-[var(--color-cream)]">
-      <div className="flex w-full flex-col gap-4 px-3 py-4 sm:px-5 lg:px-8 xl:px-12">
-        <div className="flex flex-col gap-4 xl:flex xl:flex-row xl:items-center xl:justify-between">
+      <div className="flex w-full flex-col gap-3 px-3 py-3 sm:gap-4 sm:px-5 sm:py-4 lg:px-8 xl:px-12">
+        <div className="flex items-center justify-between gap-3 sm:gap-4">
           <Link
             href={getHomePath(locale)}
-            className="flex items-center gap-4"
+            className="flex shrink-0 items-center gap-2 sm:gap-3"
             aria-label={clubConfig.name}
           >
             <Image
               src="/latino-carouge-logo.png"
               alt={clubConfig.name}
-              width={76}
-              height={76}
+              width={56}
+              height={56}
               priority
+              className="sm:h-[76px] sm:w-[76px]"
             />
-            <div className="space-y-1">
-              <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
+            <div className="space-y-0.5">
+              <div className="font-condensed text-[0.6rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)] sm:text-[0.72rem]">
                 {content.header.badge}
               </div>
-              <div className="font-display text-2xl uppercase leading-none whitespace-nowrap sm:text-3xl">
+              <div className="font-display text-lg uppercase leading-none whitespace-nowrap sm:text-2xl lg:text-3xl">
                 {clubConfig.shortName}
               </div>
             </div>
           </Link>
 
-          <div className="flex flex-col gap-4 xl:flex xl:flex-row xl:items-center xl:gap-10">
-            <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 xl:gap-x-8">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-4">
+            <nav className="hidden items-center gap-x-4 sm:flex lg:gap-x-8">
               {content.nav.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="top-nav-link px-2"
+                  className="top-nav-link px-1 text-sm sm:px-2 sm:text-base"
                 >
                   {item.label}
                 </Link>
               ))}
             </nav>
 
-            <div className="inline-flex border border-white/30 xl:shrink-0">
+            <div className="inline-flex shrink-0 border border-white/30">
               {localeLinks.map((option) =>
                 option.code === locale ? (
                   <span
                     key={option.code}
-                    className="bg-[var(--color-gold)] px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.24em] text-[var(--color-ink)]"
+                    className="bg-[var(--color-gold)] px-2 py-1.5 font-condensed text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[var(--color-ink)] sm:px-4 sm:py-2 sm:text-xs"
                   >
                     {option.code.toUpperCase()}
                   </span>
@@ -76,7 +77,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
                   <Link
                     key={option.code}
                     href={option.href}
-                    className="px-4 py-2 font-condensed text-xs font-bold uppercase tracking-[0.24em] text-white/60 hover:bg-white/10"
+                    className="px-2 py-1.5 font-condensed text-[0.65rem] font-bold uppercase tracking-[0.24em] text-white/60 hover:bg-white/10 sm:px-4 sm:py-2 sm:text-xs"
                   >
                     {option.code.toUpperCase()}
                   </Link>
@@ -85,6 +86,18 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
             </div>
           </div>
         </div>
+
+        <nav className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:hidden">
+          {content.nav.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="font-condensed text-[0.75rem] font-bold uppercase tracking-[0.14em] text-white/80 hover:text-[var(--color-gold)]"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   );

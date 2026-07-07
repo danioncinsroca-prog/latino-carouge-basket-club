@@ -54,17 +54,17 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
               </div>
             </div>
 
-            <div className="mt-10 overflow-hidden border border-[var(--color-line)]">
-              <table className="w-full border-collapse">
+            <div className="mt-8 overflow-x-auto border border-[var(--color-line)]">
+              <table className="w-full min-w-full border-collapse">
                 <thead className="bg-[var(--color-ink)] text-[var(--color-cream)]">
                   <tr>
-                    <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                    <th className="px-3 py-2 text-left font-condensed text-[0.6rem] font-bold uppercase tracking-[0.24em] sm:px-4 sm:py-3 sm:text-[0.68rem]">
                       {content.historySection.table.date}
                     </th>
-                    <th className="px-4 py-3 text-left font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                    <th className="px-3 py-2 text-left font-condensed text-[0.6rem] font-bold uppercase tracking-[0.24em] sm:px-4 sm:py-3 sm:text-[0.68rem]">
                       {content.historySection.table.match}
                     </th>
-                    <th className="w-[7.5rem] px-4 py-3 text-right font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em]">
+                    <th className="px-3 py-2 text-right font-condensed text-[0.6rem] font-bold uppercase tracking-[0.24em] sm:px-4 sm:py-3 sm:text-[0.68rem]">
                       {content.historySection.table.score}
                     </th>
                   </tr>
@@ -79,14 +79,14 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
                           : "bg-[var(--color-surface)]"
                       }
                     >
-                      <td className="border-t border-[var(--color-line)] px-4 py-3 text-sm text-[var(--color-muted)]">
+                      <td className="border-t border-[var(--color-line)] px-3 py-2 text-[0.75rem] text-[var(--color-muted)] sm:px-4 sm:py-3 sm:text-sm">
                         {result.dateLabel}
                       </td>
-                      <td className="border-t border-[var(--color-line)] px-4 py-3 font-condensed text-sm font-bold uppercase tracking-[0.12em]">
+                      <td className="border-t border-[var(--color-line)] px-3 py-2 font-condensed text-[0.75rem] font-bold uppercase tracking-[0.12em] sm:px-4 sm:py-3 sm:text-sm">
                         {clubConfig.shortName} {content.nextMatch.versus}{" "}
                         {result.opponent}
                       </td>
-                      <td className="w-[7.5rem] border-t border-[var(--color-line)] px-4 py-3 text-right font-display text-2xl leading-none whitespace-nowrap [font-variant-numeric:tabular-nums]">
+                      <td className="border-t border-[var(--color-line)] px-3 py-2 text-right font-display text-lg leading-none whitespace-nowrap [font-variant-numeric:tabular-nums] sm:px-4 sm:py-3 sm:text-2xl">
                         {result.score}
                       </td>
                     </tr>
@@ -106,8 +106,8 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
     <div className="min-h-screen bg-[var(--color-cream)] text-[var(--color-ink)]">
       <SiteHeader locale={locale} currentSection={sectionKey} />
 
-      <main className="pt-8 sm:pt-10 lg:pt-12">
-        <section className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_0.75fr] lg:px-8">
+      <main className="pt-6 sm:pt-8 lg:pt-12">
+        <section className="mx-auto grid max-w-7xl gap-6 px-4 sm:gap-8 sm:px-6 lg:gap-10 lg:grid-cols-[1fr_0.75fr] lg:px-8">
           <div className="space-y-2">
             <div className="meta-kicker">{section.badge}</div>
             <h1 className="mt-6 font-display text-5xl uppercase leading-none sm:text-6xl">
@@ -130,7 +130,7 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
             </div>
           </div>
 
-          <div className="border-l border-[var(--color-line)] pl-0 lg:pl-10">
+          <div className="border-t border-[var(--color-line)] pt-6 sm:pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
             <MediaPlaceholder
               label={section.placeholder.label}
               note={section.placeholder.note}

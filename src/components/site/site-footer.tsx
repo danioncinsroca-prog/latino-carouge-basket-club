@@ -52,7 +52,7 @@ export function SiteFooter({ locale }: SiteFooterProps) {
       id="footer"
       className="border-t border-[var(--color-line)] bg-[var(--color-ink)] text-[var(--color-cream)]"
     >
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:gap-8 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-8">
         <div className="space-y-4">
           <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
             {content.footer.kicker}

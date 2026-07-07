@@ -88,7 +88,7 @@ export function NewsShowcase({
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[1.12fr_0.88fr]">
+    <div className="grid gap-4 grid-cols-1 lg:grid-cols-[1.12fr_0.88fr]">
       <NewsCard
         item={lead}
         badge={getNewsBadge(lead.dateLabel)}
@@ -96,7 +96,7 @@ export function NewsShowcase({
         size="feature"
       />
 
-      <div className="grid gap-4">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-1">
         {stackedItems.map((item) => (
           <NewsCard
             key={`${locale}-${item.title}`}

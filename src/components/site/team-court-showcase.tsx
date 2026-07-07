@@ -38,8 +38,8 @@ export function TeamCourtShowcase({
   const labels = sectionLabels[locale];
 
   return (
-    <div className="grid gap-px border border-[var(--color-line)] bg-[var(--color-line)] lg:grid-cols-[0.42fr_0.58fr]">
-      <div className="bg-[var(--color-panel)] p-6 sm:p-8">
+    <div className="grid gap-px border border-[var(--color-line)] bg-[var(--color-line)] grid-cols-1 lg:grid-cols-[0.42fr_0.58fr]">
+      <div className="bg-[var(--color-panel)] p-4 sm:p-6 lg:p-8">
         <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
           {labels.coach}
         </div>
