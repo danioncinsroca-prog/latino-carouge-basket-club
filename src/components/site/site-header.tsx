@@ -9,6 +9,7 @@ import {
   type Locale,
   type SectionKey,
 } from "@/lib/site";
+import { SiteMobileMenu } from "./site-mobile-menu";
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -26,7 +27,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#0a2c52] text-[var(--color-cream)]">
-      <div className="flex w-full flex-col gap-3 px-3 py-3 sm:gap-4 sm:px-5 sm:py-4 lg:px-8 xl:px-12">
+      <div className="flex w-full flex-col px-3 py-3 sm:px-5 sm:py-4 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between gap-3 sm:gap-4">
           <Link
             href={getHomePath(locale)}
@@ -84,20 +85,13 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
                 ),
               )}
             </div>
+
+            {/* Mobile menu button */}
+            <div className="relative sm:hidden">
+              <SiteMobileMenu items={content.nav} />
+            </div>
           </div>
         </div>
-
-        <nav className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:hidden">
-          {content.nav.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="font-condensed text-[0.75rem] font-bold uppercase tracking-[0.14em] text-white/80 hover:text-[var(--color-gold)]"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
       </div>
     </header>
   );
