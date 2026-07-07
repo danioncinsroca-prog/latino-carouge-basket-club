@@ -97,14 +97,6 @@ export async function HomePage({ locale }: HomePageProps) {
                 className="object-cover object-[center_35%]"
               />
             </div>
-            <div
-              aria-hidden
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgba(8,14,24,0.88) 0%, rgba(8,14,24,0.62) 55%, rgba(8,14,24,0.28) 100%)",
-              }}
-            />
             <div className="relative z-10 mx-auto max-w-7xl px-4 pb-6 sm:pb-8 sm:px-6 lg:pb-10 lg:px-8">
               <div className="max-w-3xl space-y-4 sm:space-y-6">
                 <div className="space-y-3 sm:space-y-6">
