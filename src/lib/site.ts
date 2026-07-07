@@ -198,6 +198,9 @@ type LocaleContent = {
     quickLinksTitle: string;
     homeLabel: string;
     ticketingLabel: string;
+    contactTitle: string;
+    contactPhone: string;
+    contactEmail: string;
     statusTitle: string;
     contactStatus: string;
     ticketingStatus: string;
@@ -206,8 +209,14 @@ type LocaleContent = {
     kicker: string;
     title: string;
     intro: string;
+    subtitle: string;
+    trialOffer: string;
     cta: string;
     bullets: string[];
+    categories: Array<{
+      code: string;
+      label: string;
+    }>;
   };
   contactPage: {
     badge: string;
@@ -219,6 +228,7 @@ type LocaleContent = {
       phone: string;
       position: string;
       message: string;
+      consent: string;
       submit: string;
       successTitle: string;
       successMessage: string;
@@ -249,13 +259,13 @@ export const clubConfig: {
   city: "Carouge, Genève",
   areaServed: "Carouge, Geneva, Switzerland",
   sport: "Basketball",
-  venue: "Salle de quartier à confirmer, Carouge",
+  venue: "École de la Vigne rouge, Carouge",
   league: "Compétition locale et communauté bilingue",
   externalLinks: {
     ticketingUrl: null,
     clubContactUrl: null,
     socialLinks: [
-      { label: "Instagram", url: null },
+      { label: "Instagram", url: "https://instagram.com/latinocarougebasket" },
       { label: "Facebook", url: null },
       { label: "YouTube", url: null },
     ],
@@ -577,11 +587,23 @@ export const siteContent: Record<Locale, LocaleContent> = {
       kicker: "Rejoins le club",
       title: "On recrute",
       intro: "Tu veux jouer au basket à Carouge ? On cherche des joueurs motivés, tous niveaux confondus. Envoie-nous un message.",
+      subtitle: "Toutes les catégories du mouvement jeunes, places disponibles pour la rentrée scolaire.",
+      trialOffer: "Deux séances d'essai gratuites pour découvrir le club, sans engagement.",
       cta: "Nous contacter",
       bullets: [
-        "Tous niveaux bienvenus",
-        "Club bilingue FR / ES",
-        "Entraînements à Carouge",
+        "Encadrement qualifié, formateur diplômé",
+        "Valeurs fortes : respect, solidarité, engagement",
+        "Entraînements adaptés à chaque âge et niveau",
+        "Ambiance familiale et conviviale",
+        "Championnats et tournois toute la saison",
+      ],
+      categories: [
+        { code: "U8", label: "Mini Basket" },
+        { code: "U10", label: "Apprentissage et plaisir" },
+        { code: "U12", label: "Progression et équipe" },
+        { code: "U14", label: "Développement et intensité" },
+        { code: "U16", label: "Compétition et rigueur" },
+        { code: "U18+", label: "Seniors et loisirs" },
       ],
     },
     contactPage: {
@@ -594,6 +616,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         phone: "Téléphone (optionnel)",
         position: "Poste souhaité",
         message: "Message",
+        consent: "J'autorise le club à conserver et utiliser les informations de ce formulaire pour traiter ma demande d'inscription.",
         submit: "Envoyer",
         successTitle: "Message envoyé !",
         successMessage: "On revient vers toi dès que possible.",
@@ -712,8 +735,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
       quickLinksTitle: "Liens rapides",
       homeLabel: "Home",
       ticketingLabel: "Calendrier / matchs",
+      contactTitle: "Nous contacter",
+      contactPhone: "+41 78 758 71 54",
+      contactEmail: "basket-club-latino-carouge@bluewin.ch",
       statusTitle: "Statut du projet",
-      contactStatus: "Coordonnées complètes du club à brancher dès que disponibles.",
+      contactStatus: "Rejoins-nous : places disponibles pour toutes les catégories.",
       ticketingStatus:
         "Un calendrier partagé peut alimenter automatiquement les prochains matchs du club.",
     },
@@ -1016,11 +1042,23 @@ export const siteContent: Record<Locale, LocaleContent> = {
       kicker: "Únete al club",
       title: "Buscamos jugadores",
       intro: "¿Quieres jugar al baloncesto en Carouge? Buscamos jugadores motivados, todos los niveles bienvenidos.",
+      subtitle: "Todas las categorías del movimiento juvenil, plazas disponibles para el inicio de curso.",
+      trialOffer: "Dos sesiones de prueba gratuitas para conocer el club, sin compromiso.",
       cta: "Contactarnos",
       bullets: [
-        "Todos los niveles bienvenidos",
-        "Club bilingüe FR / ES",
-        "Entrenamientos en Carouge",
+        "Formador cualificado y titulado",
+        "Valores fuertes: respeto, solidaridad, compromiso",
+        "Entrenamientos adaptados a cada edad y nivel",
+        "Ambiente familiar y cercano",
+        "Campeonatos y torneos durante toda la temporada",
+      ],
+      categories: [
+        { code: "U8", label: "Mini Baloncesto" },
+        { code: "U10", label: "Aprendizaje y diversión" },
+        { code: "U12", label: "Progresión y equipo" },
+        { code: "U14", label: "Desarrollo e intensidad" },
+        { code: "U16", label: "Competición y rigor" },
+        { code: "U18+", label: "Séniors y ocio" },
       ],
     },
     contactPage: {
@@ -1033,6 +1071,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         phone: "Teléfono (opcional)",
         position: "Posición deseada",
         message: "Mensaje",
+        consent: "Autorizo al club a conservar y utilizar la información de este formulario para tramitar mi solicitud de inscripción.",
         submit: "Enviar",
         successTitle: "¡Mensaje enviado!",
         successMessage: "Nos pondremos en contacto contigo pronto.",
@@ -1151,9 +1190,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
       quickLinksTitle: "Enlaces rápidos",
       homeLabel: "Home",
       ticketingLabel: "Calendario / partidos",
+      contactTitle: "Contactarnos",
+      contactPhone: "+41 78 758 71 54",
+      contactEmail: "basket-club-latino-carouge@bluewin.ch",
       statusTitle: "Estado del proyecto",
-      contactStatus:
-        "Datos completos del club listos para conectar cuando estén disponibles.",
+      contactStatus: "Únete: plazas disponibles para todas las categorías.",
       ticketingStatus:
         "Un calendario compartido puede alimentar automáticamente los próximos partidos del club.",
     },

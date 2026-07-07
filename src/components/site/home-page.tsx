@@ -414,32 +414,60 @@ export async function HomePage({ locale }: HomePageProps) {
             className="border-y border-[var(--color-line)] py-14 sm:py-16"
             style={{ background: "color-mix(in srgb, var(--color-ink) 82%, black 18%)" }}
           >
-            <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div>
-                <div className="ink-divider space-y-3 pt-5">
-                  <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-                    {content.recruitmentSection.kicker}
+            <div className="space-y-10">
+              <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start">
+                <div>
+                  <div className="ink-divider space-y-3 pt-5">
+                    <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                      {content.recruitmentSection.kicker}
+                    </div>
+                    <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
+                      {content.recruitmentSection.title}
+                    </h2>
+                    <p className="max-w-xl text-sm text-[var(--color-cream)]/72 sm:text-base">
+                      {content.recruitmentSection.intro}
+                    </p>
                   </div>
-                  <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
-                    {content.recruitmentSection.title}
-                  </h2>
-                  <p className="max-w-xl text-sm text-[var(--color-cream)]/72 sm:text-base">
-                    {content.recruitmentSection.intro}
-                  </p>
+                  <ul className="mt-6 space-y-2">
+                    {content.recruitmentSection.bullets.map((b) => (
+                      <li key={b} className="flex items-center gap-3 text-sm text-[var(--color-cream)]/80">
+                        <span className="h-1.5 w-1.5 shrink-0 bg-[var(--color-gold)]" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="mt-6 space-y-2">
-                  {content.recruitmentSection.bullets.map((b) => (
-                    <li key={b} className="flex items-center gap-3 text-sm text-[var(--color-cream)]/80">
-                      <span className="h-1.5 w-1.5 shrink-0 bg-[var(--color-gold)]" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+                <div className="lg:shrink-0">
+                  <Link href={`/${locale}/contact`} className="button-base button-gold text-base px-8 py-4">
+                    {content.recruitmentSection.cta}
+                  </Link>
+                </div>
               </div>
-              <div className="lg:shrink-0">
-                <Link href={`/${locale}/contact`} className="button-base button-gold text-base px-8 py-4">
-                  {content.recruitmentSection.cta}
-                </Link>
+
+              <div className="border-t border-[var(--color-line)]/30 pt-10">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <p className="text-sm font-semibold text-[var(--color-gold)]">
+                      {content.recruitmentSection.subtitle}
+                    </p>
+                    <p className="text-sm text-[var(--color-cream)]/80">
+                      {content.recruitmentSection.trialOffer}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+                    {content.recruitmentSection.categories.map((cat) => (
+                      <div key={cat.code} className="rounded border border-[var(--color-gold)]/30 bg-[var(--color-ink)]/30 px-3 py-2 text-center">
+                        <div className="font-condensed text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-gold)]">
+                          {cat.code}
+                        </div>
+                        <div className="text-[0.70rem] text-[var(--color-cream)]/70 mt-1">
+                          {cat.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </SectionShell>

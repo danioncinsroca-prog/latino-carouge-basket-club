@@ -15,9 +15,10 @@ export async function submitContactForm(
     const phone = formData.get("phone");
     const position = formData.get("position");
     const message = formData.get("message");
+    const consent = formData.get("consent");
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !message || !consent) {
       return { error: "Missing required fields" };
     }
 
@@ -29,6 +30,7 @@ export async function submitContactForm(
       phone,
       position,
       message,
+      consent,
       submittedAt: new Date().toISOString(),
     });
 

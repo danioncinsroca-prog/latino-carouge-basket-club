@@ -23,6 +23,7 @@ type ContactPageContent = {
     phone: string;
     position: string;
     message: string;
+    consent: string;
     submit: string;
     successTitle: string;
     successMessage: string;
@@ -168,6 +169,24 @@ export function ContactForm({
               className="mt-2 w-full rounded border border-[var(--color-line)] bg-white px-4 py-3 text-[var(--color-ink)] placeholder-[var(--color-muted)]/50 focus:border-[var(--color-gold)] focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]/20 disabled:bg-[var(--color-surface)]"
               placeholder={content.form.message}
             />
+          </div>
+
+          {/* Consent checkbox */}
+          <div className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              id="consent"
+              name="consent"
+              required
+              disabled={isPending}
+              className="mt-1 h-4 w-4 rounded border border-[var(--color-line)] bg-white accent-[var(--color-gold)] focus:ring-2 focus:ring-[var(--color-gold)]/20 disabled:bg-[var(--color-surface)]"
+            />
+            <label
+              htmlFor="consent"
+              className="text-sm text-[var(--color-ink)]"
+            >
+              {content.form.consent}
+            </label>
           </div>
 
           {/* Submit button */}

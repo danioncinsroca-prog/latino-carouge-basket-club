@@ -93,11 +93,20 @@ export function SiteFooter({ locale }: SiteFooterProps) {
 
         <div className="space-y-4">
           <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-            {content.footer.statusTitle}
+            {content.footer.contactTitle}
           </div>
-          <div className="space-y-3 text-sm text-[var(--color-cream)]/82">
-            <p>{content.footer.contactStatus}</p>
-            <p>{content.footer.ticketingStatus}</p>
+          <div className="space-y-2 text-sm text-[var(--color-cream)]/82">
+            <p className="text-[var(--color-cream)]/90 font-semibold">
+              <a href={`tel:${content.footer.contactPhone}`} className="hover:text-[var(--color-gold)] transition-colors">
+                {content.footer.contactPhone}
+              </a>
+            </p>
+            <p className="text-[var(--color-cream)]/90 font-semibold">
+              <a href={`mailto:${content.footer.contactEmail}`} className="hover:text-[var(--color-gold)] transition-colors">
+                {content.footer.contactEmail}
+              </a>
+            </p>
+            <p className="text-xs">{content.footer.contactStatus}</p>
           </div>
           <div className="flex flex-wrap gap-3 pt-2">
             {clubConfig.externalLinks.socialLinks.map((social) => {
