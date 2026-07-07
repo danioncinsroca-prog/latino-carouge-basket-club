@@ -87,7 +87,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
             </div>
 
             {/* Mobile menu button */}
-            <div className="relative sm:hidden">
+            <div className="sm:hidden">
               <SiteMobileMenu items={content.nav} />
             </div>
           </div>
