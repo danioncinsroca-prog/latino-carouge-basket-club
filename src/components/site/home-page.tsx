@@ -92,7 +92,7 @@ export async function HomePage({ locale }: HomePageProps) {
                 alt=""
                 fill
                 priority
-                quality={90}
+                unoptimized
                 sizes="100vw"
                 className="object-cover object-[center_35%]"
               />
