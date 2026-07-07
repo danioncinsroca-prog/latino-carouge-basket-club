@@ -44,17 +44,43 @@ const icons: Record<PalmaresItem["type"], React.FC<{ className?: string }>> = {
 
 export function PalmaresTimeline({ items }: { items: PalmaresItem[] }) {
   const count = items.length;
-  const baseWidth = 140;
-  const minWidth = 120;
 
   return (
-    <div className="overflow-x-auto pb-3 sm:pb-4">
+    <>
+      {/* Mobile: vertical timeline, no horizontal scroll */}
+      <div className="flex flex-col gap-6 sm:hidden">
+        {items.map((item, index) => {
+          const Icon = icons[item.type];
+          return (
+            <div key={`m-${item.year}-${item.title}`} className="flex gap-4">
+              <div className="flex flex-col items-center">
+                <div className="text-[var(--color-gold)]">
+                  <Icon className="h-8 w-8" />
+                </div>
+                {index < count - 1 && (
+                  <div className="mt-2 w-px flex-1 bg-[var(--color-cream)]/20" />
+                )}
+              </div>
+              <div className="pb-2">
+                <div className="font-display text-lg uppercase leading-none text-[var(--color-gold)]">
+                  {item.year}
+                </div>
+                <div className="mt-2 font-condensed text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--color-cream)]">
+                  {item.title}
+                </div>
+                <p className="mt-1.5 text-[0.65rem] leading-relaxed text-[var(--color-cream)]/55">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Tablet/desktop: horizontal timeline */}
       <div
-        className="grid"
-        style={{
-          gridTemplateColumns: `repeat(${count}, minmax(${minWidth}px, 1fr))`,
-          minWidth: `${count * baseWidth}px`,
-        }}
+        className="hidden sm:grid"
+        style={{ gridTemplateColumns: `repeat(${count}, minmax(120px, 1fr))` }}
       >
         {/* Row 1: Year + Icon */}
         {items.map((item) => {
@@ -62,13 +88,13 @@ export function PalmaresTimeline({ items }: { items: PalmaresItem[] }) {
           return (
             <div
               key={`top-${item.year}-${item.title}`}
-              className="flex flex-col items-center gap-2 px-3 pb-3 sm:gap-4 sm:px-6 sm:pb-6"
+              className="flex flex-col items-center gap-4 px-6 pb-6"
             >
-              <div className="font-display text-lg uppercase leading-none text-[var(--color-gold)] sm:text-2xl">
+              <div className="font-display text-2xl uppercase leading-none text-[var(--color-gold)]">
                 {item.year}
               </div>
               <div className="text-[var(--color-gold)]">
-                <Icon className="h-8 w-8 sm:h-12 sm:w-12" />
+                <Icon className="h-12 w-12" />
               </div>
             </div>
           );
@@ -78,7 +104,7 @@ export function PalmaresTimeline({ items }: { items: PalmaresItem[] }) {
         {items.map((item, index) => (
           <div
             key={`line-${item.year}-${item.title}`}
-            className="relative flex h-7 items-center justify-center sm:h-10"
+            className="relative flex h-10 items-center justify-center"
           >
             <div
               className={`absolute top-1/2 h-px -translate-y-1/2 bg-[var(--color-cream)]/20 ${
@@ -89,25 +115,22 @@ export function PalmaresTimeline({ items }: { items: PalmaresItem[] }) {
                     : "left-0 right-0"
               }`}
             />
-            <div className="relative z-10 h-7 w-px bg-[var(--color-gold)]/70 sm:h-10" />
+            <div className="relative z-10 h-10 w-px bg-[var(--color-gold)]/70" />
           </div>
         ))}
 
         {/* Row 3: Title + Description */}
         {items.map((item) => (
-          <div
-            key={`bottom-${item.year}-${item.title}`}
-            className="px-3 pt-3 text-center sm:px-6 sm:pt-6"
-          >
-            <div className="font-condensed text-[0.7rem] font-bold uppercase tracking-[0.14em] text-[var(--color-cream)] sm:text-sm">
+          <div key={`bottom-${item.year}-${item.title}`} className="px-6 pt-6 text-center">
+            <div className="font-condensed text-sm font-bold uppercase tracking-[0.14em] text-[var(--color-cream)]">
               {item.title}
             </div>
-            <p className="mt-1.5 text-[0.65rem] leading-relaxed text-[var(--color-cream)]/55 sm:mt-2 sm:text-xs">
+            <p className="mt-2 text-xs leading-relaxed text-[var(--color-cream)]/55">
               {item.description}
             </p>
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
