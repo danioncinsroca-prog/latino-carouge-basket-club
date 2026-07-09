@@ -7,7 +7,6 @@ import {
   isLocale,
   locales,
   siteContent,
-  type Locale,
   getHomePath,
 } from "@/lib/site";
 import { ContactForm } from "./contact-form";

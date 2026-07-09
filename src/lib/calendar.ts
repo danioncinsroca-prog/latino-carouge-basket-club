@@ -1,16 +1,25 @@
 import { cache } from "react";
-import { clubConfig, siteContent, type Fixture, type Locale } from "@/lib/site";
+import { clubConfig, type Fixture, type Locale } from "@/lib/site";
+import { getTeamLogoSrc } from "@/lib/team-logos";
 
 const CALENDAR_ENV_KEYS = [
   "INFOMANIAK_CALENDAR_ICS_URL",
   "CALENDAR_ICS_URL",
 ] as const;
+const BASKETPLAN_SEARCH_URL = "https://www.basketplan.ch/showSearchGames.do";
+const BASKETPLAN_GAME_BASE_URL = "https://www.basketplan.ch/";
+const BASKETPLAN_FEDERATION_ID = process.env.BASKETPLAN_FEDERATION_ID ?? "5";
+const BASKETPLAN_CLUB_ID = process.env.BASKETPLAN_CLUB_ID ?? "327";
+const BASKETPLAN_CLUB_NAME =
+  process.env.BASKETPLAN_CLUB_NAME ?? "Latino Carouge";
+const BASKETPLAN_MAX_RESULTS = process.env.BASKETPLAN_MAX_RESULTS ?? "500";
 const DEFAULT_CALENDAR_TIME_ZONE = "Europe/Zurich";
-const MAX_CALENDAR_FIXTURES = 12;
+const MAX_SCHEDULE_FIXTURES = 80;
 
-type ResolvedSchedule = {
+export type ResolvedSchedule = {
   fixtures: Fixture[];
-  source: "calendar" | "fallback";
+  pastFixtures: Fixture[];
+  source: "basketplan" | "calendar" | "fallback";
   calendarUrlConfigured: boolean;
 };
 
@@ -36,9 +45,31 @@ type ParsedCalendarEvent = {
   start: ParsedDate;
 };
 
+type ParsedBasketplanGame = {
+  dateLabel: string;
+  federation: string;
+  league: string;
+  round: string;
+  gameNumber: string;
+  venue: string;
+  homeTeam: string;
+  awayTeam: string;
+  homeScore?: string;
+  awayScore?: string;
+  scoreStatus?: string;
+  start: ParsedDate;
+  gameUrl?: string;
+};
+
+type BasketplanFixtureMode = "future" | "past" | "all";
+
 const clubAliases = [
   clubConfig.name,
   clubConfig.shortName,
+  BASKETPLAN_CLUB_NAME,
+  "BASKET CLUB LATINO CAROUGE",
+  "LATINO",
+  "LATINO BASKET",
   "LATINO CAROUGE",
   "LATINO CAROUGE BC",
   "LATINO CAROUGE BASKET CLUB",
@@ -55,6 +86,7 @@ const calendarCopy = {
     friendly: "Amical",
     playoffs: "Playoffs",
     allDay: "Toute la journée",
+    round: "Journee",
   },
   es: {
     home: "En casa",
@@ -66,57 +98,72 @@ const calendarCopy = {
     friendly: "Amistoso",
     playoffs: "Playoffs",
     allDay: "Toda la jornada",
+    round: "Jornada",
   },
 } as const;
 
 export const getResolvedSchedule = cache(
   async (locale: Locale): Promise<ResolvedSchedule> => {
-    const fallbackFixtures = siteContent[locale].fixtures;
     const calendarUrl = getCalendarFeedUrl();
 
-    if (!calendarUrl) {
-      return {
-        fixtures: fallbackFixtures,
-        source: "fallback",
-        calendarUrlConfigured: false,
-      };
-    }
+    if (calendarUrl) {
+      try {
+        const response = await fetch(calendarUrl, {
+          headers: {
+            accept: "text/calendar, text/plain;q=0.9, */*;q=0.1",
+          },
+          next: { revalidate: 900 },
+        });
 
-    try {
-      const response = await fetch(calendarUrl, {
-        headers: {
-          accept: "text/calendar, text/plain;q=0.9, */*;q=0.1",
-        },
-        next: { revalidate: 900 },
-      });
+        if (!response.ok) {
+          throw new Error(`Calendar feed returned ${response.status}`);
+        }
 
-      if (!response.ok) {
-        throw new Error(`Calendar feed returned ${response.status}`);
-      }
+        const rawCalendar = await response.text();
+        const fixtures = parseCalendarToFixtures(rawCalendar, locale);
 
-      const rawCalendar = await response.text();
-      const fixtures = parseCalendarToFixtures(rawCalendar, locale);
+        if (fixtures.length === 0) {
+          return {
+            fixtures: [],
+            pastFixtures: [],
+            source: "fallback",
+            calendarUrlConfigured: true,
+          };
+        }
 
-      if (fixtures.length === 0) {
         return {
-          fixtures: fallbackFixtures,
+          fixtures,
+          pastFixtures: [],
+          source: "calendar",
+          calendarUrlConfigured: true,
+        };
+      } catch (error) {
+        console.error("Failed to load calendar feed", error);
+
+        return {
+          fixtures: [],
+          pastFixtures: [],
           source: "fallback",
           calendarUrlConfigured: true,
         };
       }
+    }
 
+    try {
+      const schedule = await getBasketplanSchedule(locale);
       return {
-        fixtures,
-        source: "calendar",
-        calendarUrlConfigured: true,
+        ...schedule,
+        source: "basketplan",
+        calendarUrlConfigured: false,
       };
     } catch (error) {
-      console.error("Failed to load calendar feed", error);
+      console.error("Failed to load Basketpl@n schedule", error);
 
       return {
-        fixtures: fallbackFixtures,
+        fixtures: [],
+        pastFixtures: [],
         source: "fallback",
-        calendarUrlConfigured: true,
+        calendarUrlConfigured: false,
       };
     }
   },
@@ -134,6 +181,99 @@ function getCalendarFeedUrl() {
   return null;
 }
 
+async function getBasketplanSchedule(locale: Locale) {
+  const now = new Date();
+  const currentRange = {
+    from: getBasketplanSeasonStart(now),
+    to: getBasketplanSeasonEnd(now),
+  };
+
+  const fixtures = await fetchBasketplanFixturesForRange(
+    {
+      from: now,
+      to: currentRange.to,
+    },
+    locale,
+    "future",
+  );
+
+  let pastFixtures = await fetchBasketplanFixturesForRange(
+    {
+      from: currentRange.from,
+      to: now,
+    },
+    locale,
+    "past",
+  );
+
+  if (pastFixtures.length > 0 || fixtures.length > 0) {
+    return { fixtures, pastFixtures };
+  }
+
+  const previousSeasonEnd = new Date(
+    Date.UTC(currentRange.to.getUTCFullYear() - 1, 5, 30, 12, 0, 0),
+  );
+  const previousSeasonStart = new Date(
+    Date.UTC(previousSeasonEnd.getUTCFullYear() - 1, 6, 1, 12, 0, 0),
+  );
+
+  pastFixtures = await fetchBasketplanFixturesForRange(
+    {
+      from: previousSeasonStart,
+      to: previousSeasonEnd,
+    },
+    locale,
+    "past",
+  );
+
+  return { fixtures, pastFixtures };
+}
+
+async function fetchBasketplanFixturesForRange(
+  range: { from: Date; to: Date },
+  locale: Locale,
+  mode: BasketplanFixtureMode,
+) {
+  const form = new URLSearchParams({
+    actionType: "searchGames",
+    gameNumber: "",
+    from: formatBasketplanFormDate(range.from),
+    to: formatBasketplanFormDate(range.to),
+    maxResult: BASKETPLAN_MAX_RESULTS,
+    statusID: "-1",
+    messageLevel: "",
+    forfaitID: "",
+    locationName: "",
+    locationZip: "",
+    locationCity: "",
+    federationId: BASKETPLAN_FEDERATION_ID,
+    clubId: BASKETPLAN_CLUB_ID,
+    teamId: "-1",
+    leagueId: "-1",
+    leagueLevelId: "",
+    leagueGroupId: "",
+    playerCategoryId: "0",
+  });
+
+  const response = await fetch(BASKETPLAN_SEARCH_URL, {
+    method: "POST",
+    headers: {
+      accept: "text/html,application/xhtml+xml;q=0.9,*/*;q=0.1",
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
+      "user-agent": "Latino Carouge Basket Club schedule sync",
+    },
+    body: form.toString(),
+    next: { revalidate: 900 },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Basketpl@n returned ${response.status}`);
+  }
+
+  const html = await response.text();
+  return parseBasketplanFixtures(html, locale, mode);
+}
+
 function parseCalendarToFixtures(rawCalendar: string, locale: Locale) {
   const nowInCalendarTime = formatComparableInTimeZone(
     new Date(),
@@ -145,8 +285,123 @@ function parseCalendarToFixtures(rawCalendar: string, locale: Locale) {
     .filter((event): event is ParsedCalendarEvent => event !== null)
     .filter((event) => event.start.sortValue >= nowInCalendarTime)
     .sort((left, right) => left.start.sortValue.localeCompare(right.start.sortValue))
-    .slice(0, MAX_CALENDAR_FIXTURES)
+    .slice(0, MAX_SCHEDULE_FIXTURES)
     .map((event) => mapEventToFixture(event, locale));
+}
+
+function parseBasketplanFixtures(
+  html: string,
+  locale: Locale,
+  mode: BasketplanFixtureMode,
+) {
+  const nowInCalendarTime = formatComparableInTimeZone(
+    new Date(),
+    DEFAULT_CALENDAR_TIME_ZONE,
+  );
+
+  return getBasketplanGameRows(html)
+    .map((row) => parseBasketplanGame(row))
+    .filter((game): game is ParsedBasketplanGame => game !== null)
+    .filter((game) => {
+      if (mode === "future") {
+        return game.start.sortValue >= nowInCalendarTime;
+      }
+
+      if (mode === "past") {
+        return game.start.sortValue < nowInCalendarTime;
+      }
+
+      return true;
+    })
+    .sort((left, right) =>
+      mode === "past"
+        ? right.start.sortValue.localeCompare(left.start.sortValue)
+        : left.start.sortValue.localeCompare(right.start.sortValue),
+    )
+    .slice(0, MAX_SCHEDULE_FIXTURES)
+    .map((game) => mapBasketplanGameToFixture(game, locale));
+}
+
+function getBasketplanGameRows(html: string) {
+  return Array.from(html.matchAll(/<tr\b[\s\S]*?<\/tr>/gi))
+    .map((match) => match[0])
+    .filter((row) => row.includes("showGameOverview.do?gameId="));
+}
+
+function parseBasketplanGame(row: string): ParsedBasketplanGame | null {
+  const cells = Array.from(row.matchAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi)).map(
+    (match) => cleanHtmlCell(match[1]),
+  );
+
+  if (cells.length < 9) {
+    return null;
+  }
+
+  const start = parseBasketplanDate(cells[0]);
+
+  if (!start) {
+    return null;
+  }
+
+  const gamePath = row.match(/href="([^"]*showGameOverview\.do\?gameId=\d+)"/i)?.[1];
+
+  return {
+    dateLabel: cells[0],
+    federation: cells[2],
+    league: cells[3],
+    round: cells[4],
+    gameNumber: cells[5],
+    venue: cells[6],
+    homeTeam: cleanBasketplanTeamName(cells[7]),
+    awayTeam: cleanBasketplanTeamName(cells[8]),
+    homeScore: normalizeBasketplanScore(cells[11]),
+    awayScore: normalizeBasketplanScore(cells[13]),
+    scoreStatus: normalizeBasketplanScoreStatus(cells[14]),
+    start,
+    gameUrl: gamePath ? new URL(gamePath, BASKETPLAN_GAME_BASE_URL).toString() : undefined,
+  };
+}
+
+function mapBasketplanGameToFixture(
+  game: ParsedBasketplanGame,
+  locale: Locale,
+): Fixture {
+  const labels = calendarCopy[locale];
+  const homeIsClub = containsClubAlias(game.homeTeam);
+  const awayIsClub = containsClubAlias(game.awayTeam);
+  const teamName = homeIsClub
+    ? game.homeTeam
+    : awayIsClub
+      ? game.awayTeam
+      : BASKETPLAN_CLUB_NAME;
+  const opponent = homeIsClub ? game.awayTeam : game.homeTeam;
+  const categoryLabel = getFixtureCategoryLabel(teamName);
+
+  return {
+    teamName,
+    homeTeam: game.homeTeam,
+    awayTeam: game.awayTeam,
+    teamLogoSrc: getTeamLogoSrc(teamName),
+    opponentLogoSrc: getTeamLogoSrc(opponent),
+    categoryId: normalizeForMatchText(categoryLabel),
+    categoryLabel,
+    categorySort: getFixtureCategorySort(teamName),
+    federation: game.federation,
+    gameNumber: game.gameNumber,
+    roundLabel: game.round ? `${labels.round} ${game.round}` : undefined,
+    homeScore: game.homeScore,
+    awayScore: game.awayScore,
+    scoreStatus: game.scoreStatus,
+    opponent,
+    dateLabel: formatLongDate(game.start, locale),
+    shortDate: formatShortDate(game.start, locale),
+    timeLabel: formatTimeLabel(game.start, locale),
+    venue: game.venue,
+    phase: game.league || labels.league,
+    status: homeIsClub ? labels.home : awayIsClub ? labels.away : labels.scheduled,
+    isoDate: game.start.isoDate,
+    gameUrl: game.gameUrl,
+  };
 }
 
 function getEventBlocks(rawCalendar: string) {
@@ -344,6 +599,96 @@ function parseDateParts(rawValue: string) {
   };
 }
 
+function parseBasketplanDate(value: string): ParsedDate | null {
+  const match = value.match(/(\d{2})\.(\d{2})\.(\d{2})\s+(\d{2}):(\d{2})/);
+
+  if (!match) {
+    return null;
+  }
+
+  const [, rawDay, rawMonth, rawYear, rawHour, rawMinute] = match;
+  const year = 2000 + Number(rawYear);
+  const offset = getEuropeZurichOffset(year, Number(rawMonth), Number(rawDay));
+  const isoDate =
+    `${year}-${rawMonth}-${rawDay}T${rawHour}:${rawMinute}:00${offset}`;
+
+  return {
+    allDay: false,
+    displayDate: new Date(isoDate),
+    formatTimeZone: DEFAULT_CALENDAR_TIME_ZONE,
+    isoDate,
+    sortValue: `${year}-${rawMonth}-${rawDay}T${rawHour}:${rawMinute}:00`,
+  };
+}
+
+function formatBasketplanFormDate(date: Date) {
+  const parts = getDatePartsInTimeZone(date, DEFAULT_CALENDAR_TIME_ZONE);
+  return `${parts.day}.${parts.month}.${parts.year.slice(2)}`;
+}
+
+function getBasketplanSeasonEnd(date: Date) {
+  const parts = getDatePartsInTimeZone(date, DEFAULT_CALENDAR_TIME_ZONE);
+  const seasonEndYear =
+    Number(parts.month) >= 7 ? Number(parts.year) + 1 : Number(parts.year);
+
+  return new Date(Date.UTC(seasonEndYear, 5, 30, 12, 0, 0));
+}
+
+function getBasketplanSeasonStart(date: Date) {
+  const parts = getDatePartsInTimeZone(date, DEFAULT_CALENDAR_TIME_ZONE);
+  const seasonStartYear =
+    Number(parts.month) >= 7 ? Number(parts.year) : Number(parts.year) - 1;
+
+  return new Date(Date.UTC(seasonStartYear, 6, 1, 12, 0, 0));
+}
+
+function getDatePartsInTimeZone(date: Date, timeZone: string) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    timeZone,
+  }).formatToParts(date);
+  const map = Object.fromEntries(
+    parts
+      .filter((part) => part.type !== "literal")
+      .map((part) => [part.type, part.value]),
+  );
+
+  return {
+    year: map.year,
+    month: map.month,
+    day: map.day,
+  };
+}
+
+function getEuropeZurichOffset(year: number, month: number, day: number) {
+  const dateKey = formatDateKey(year, month, day);
+  const dstStart = getLastSundayDateKey(year, 3);
+  const dstEnd = getLastSundayDateKey(year, 10);
+
+  return dateKey >= dstStart && dateKey < dstEnd ? "+02:00" : "+01:00";
+}
+
+function getLastSundayDateKey(year: number, month: number) {
+  const date = new Date(Date.UTC(year, month, 0));
+  date.setUTCDate(date.getUTCDate() - date.getUTCDay());
+
+  return formatDateKey(
+    date.getUTCFullYear(),
+    date.getUTCMonth() + 1,
+    date.getUTCDate(),
+  );
+}
+
+function formatDateKey(year: number, month: number, day: number) {
+  return [
+    year.toString().padStart(4, "0"),
+    month.toString().padStart(2, "0"),
+    day.toString().padStart(2, "0"),
+  ].join("-");
+}
+
 function splitCategories(value: string | null) {
   if (!value) {
     return [];
@@ -358,8 +703,16 @@ function splitCategories(value: string | null) {
 function mapEventToFixture(event: ParsedCalendarEvent, locale: Locale): Fixture {
   const labels = calendarCopy[locale];
   const opponentAndStatus = inferOpponentAndStatus(event, locale);
+  const teamName = clubConfig.shortName;
+  const categoryLabel = getFixtureCategoryLabel(teamName);
 
   return {
+    teamName,
+    teamLogoSrc: getTeamLogoSrc(teamName),
+    opponentLogoSrc: getTeamLogoSrc(opponentAndStatus.opponent),
+    categoryId: normalizeForMatchText(categoryLabel),
+    categoryLabel,
+    categorySort: getFixtureCategorySort(teamName),
     opponent: opponentAndStatus.opponent,
     dateLabel: formatLongDate(event.start, locale),
     shortDate: formatShortDate(event.start, locale),
@@ -561,6 +914,101 @@ function cleanOpponentLabel(summary: string) {
   return withoutClubName || summary;
 }
 
+function cleanBasketplanTeamName(value: string) {
+  return value.replace(/\s*\([^)]*\)\s*$/g, "").replace(/\s+/g, " ").trim();
+}
+
+function normalizeBasketplanScore(value: string | undefined) {
+  const score = value?.trim();
+
+  if (!score || !/^\d+$/.test(score)) {
+    return undefined;
+  }
+
+  return score;
+}
+
+function normalizeBasketplanScoreStatus(value: string | undefined) {
+  const status = value?.replace(/\u00a0/g, " ").trim();
+
+  return status || undefined;
+}
+
+function cleanHtmlCell(value: string) {
+  return decodeHtmlEntities(
+    value
+      .replace(/<br\s*\/?>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " "),
+  ).trim();
+}
+
+function getFixtureCategoryLabel(teamName: string) {
+  const normalized = normalizeForMatchText(teamName);
+
+  if (normalized.includes("u10")) {
+    return "U10";
+  }
+
+  if (normalized.includes("u12")) {
+    return "U12";
+  }
+
+  if (normalized.includes("u14f")) {
+    return "U14 F";
+  }
+
+  if (normalized.includes("u14m")) {
+    return "U14 M";
+  }
+
+  if (normalized.includes("u16")) {
+    return "U16 M";
+  }
+
+  if (normalized.includes("u18")) {
+    return "U18 M";
+  }
+
+  if (normalized.includes("u20")) {
+    return "U20 F";
+  }
+
+  if (normalized.includes("2lcf")) {
+    return "Seniors F";
+  }
+
+  if (normalized.includes("2lcm")) {
+    return "Seniors 2LCM";
+  }
+
+  if (normalized.includes("3lcm")) {
+    return "Seniors 3LCM";
+  }
+
+  return "Seniors";
+}
+
+function getFixtureCategorySort(teamName: string) {
+  const category = getFixtureCategoryLabel(teamName);
+  const order = [
+    "Seniors 3LCM",
+    "Seniors 2LCM",
+    "Seniors F",
+    "Seniors",
+    "U20 F",
+    "U18 M",
+    "U16 M",
+    "U14 M",
+    "U14 F",
+    "U12",
+    "U10",
+  ];
+  const index = order.indexOf(category);
+
+  return index === -1 ? 99 : index;
+}
+
 function containsClubAlias(value: string) {
   const normalized = normalizeForMatchText(value);
   return clubAliases.some((alias) => normalized.includes(alias));
@@ -592,4 +1040,29 @@ function decodeCalendarText(value: string) {
     .replace(/\\;/g, ";")
     .replace(/\\\\/g, "\\")
     .trim();
+}
+
+function decodeHtmlEntities(value: string) {
+  const entities: Record<string, string> = {
+    amp: "&",
+    gt: ">",
+    lt: "<",
+    nbsp: " ",
+    quot: '"',
+    apos: "'",
+  };
+
+  return value.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (entity, code: string) => {
+    const normalizedCode = code.toLowerCase();
+
+    if (normalizedCode.startsWith("#x")) {
+      return String.fromCodePoint(Number.parseInt(normalizedCode.slice(2), 16));
+    }
+
+    if (normalizedCode.startsWith("#")) {
+      return String.fromCodePoint(Number.parseInt(normalizedCode.slice(1), 10));
+    }
+
+    return entities[normalizedCode] ?? entity;
+  });
 }

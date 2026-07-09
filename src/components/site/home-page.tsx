@@ -130,16 +130,16 @@ export async function HomePage({ locale }: HomePageProps) {
             className="bg-[var(--color-ink)] text-[var(--color-cream)]"
             innerClassName="py-0"
           >
-            <div className="flex flex-col gap-6 px-4 py-6 sm:gap-8 sm:px-6 sm:py-10 lg:flex-row lg:items-center lg:gap-10 lg:px-8 lg:py-12">
-              <div className="shrink-0">
+            <div className="grid gap-6 px-4 py-6 sm:gap-8 sm:px-6 sm:py-10 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-8 lg:px-8 lg:py-12">
+              <div className="min-w-0">
                   <div className="font-condensed text-[0.6rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
                     {content.nextMatch.label}
                   </div>
-                  <div className="mt-3 font-display text-3xl uppercase leading-[1.08] sm:mt-4 sm:text-5xl lg:text-6xl">
-                    {nextMatch.dateLabel}
+                  <div className="mt-3 font-display text-3xl uppercase leading-[1.08] [overflow-wrap:anywhere] sm:mt-4 sm:text-5xl lg:text-6xl">
+                    {nextMatch?.dateLabel ?? content.fixturesSection.emptyTitle}
                   </div>
                   <div className="mt-2 font-condensed text-lg font-bold text-[var(--color-cream)]/84 sm:mt-3 sm:text-2xl">
-                    {nextMatch.timeLabel}
+                    {nextMatch?.timeLabel ?? "Basketpl@n"}
                   </div>
                 </div>
 
@@ -150,18 +150,18 @@ export async function HomePage({ locale }: HomePageProps) {
                 {content.nextMatch.versus}
               </div>
 
-              <div className="shrink-0 border-t border-[var(--color-cream)]/15 pt-6 sm:pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
+              <div className="min-w-0 border-t border-[var(--color-cream)]/15 pt-6 sm:pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
                   <div className="font-condensed text-[0.6rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
-                    {nextMatch.status}
+                    {nextMatch?.status ?? content.fixturesSection.kicker}
                   </div>
-                  <div className="mt-3 font-display text-3xl uppercase leading-none sm:mt-3 sm:text-5xl lg:text-6xl">
-                    {nextMatch.opponent}
+                  <div className="mt-3 font-display text-3xl uppercase leading-none [overflow-wrap:anywhere] sm:mt-3 sm:text-5xl lg:text-6xl">
+                    {nextMatch?.opponent ?? "Latino Carouge"}
                   </div>
                   <div className="mt-1.5 font-condensed text-sm font-bold uppercase tracking-[0.14em] text-[var(--color-cream)]/84 sm:mt-2 sm:text-lg">
                     {content.nextMatch.opponentLabel}
                   </div>
                   <div className="mt-2 text-xs text-[var(--color-cream)]/78 sm:mt-3 sm:text-sm">
-                    {nextMatch.venue}
+                    {nextMatch?.venue ?? content.fixturesSection.emptyBody}
                   </div>
                   {clubConfig.externalLinks.ticketingUrl && (
                     <div className="mt-6">
@@ -195,7 +195,11 @@ export async function HomePage({ locale }: HomePageProps) {
               </Link>
             </div>
             <div className="mt-8">
-              <UpcomingScoreboard fixtures={fixturesPreview} />
+              <UpcomingScoreboard
+                fixtures={fixturesPreview}
+                emptyTitle={content.fixturesSection.emptyTitle}
+                emptyBody={content.fixturesSection.emptyBody}
+              />
             </div>
           </SectionShell>
 
@@ -316,65 +320,6 @@ export async function HomePage({ locale }: HomePageProps) {
               </div>
             </div>
             <PalmaresTimeline items={content.palmares} />
-          </SectionShell>
-
-          <SectionShell
-            id="history"
-            className="border-t border-[var(--color-line)] bg-white py-14 sm:py-16"
-          >
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-              <SectionHeading
-                kicker={content.historySection.kicker}
-                title={content.historySection.title}
-                intro={content.historySection.intro}
-              />
-              <Link
-                href={getSectionPath(locale, "history")}
-                className="button-base button-outline-gold"
-              >
-                {content.historySection.viewAll}
-              </Link>
-            </div>
-            <div className="mt-8 overflow-x-auto border border-[var(--color-line)]">
-              <table className="w-full min-w-full border-collapse">
-                <thead className="bg-[var(--color-ink)] text-[var(--color-cream)]">
-                  <tr>
-                    <th className="px-3 py-2 text-left font-condensed text-[0.6rem] font-bold uppercase tracking-[0.24em] sm:px-4 sm:py-3 sm:text-[0.68rem]">
-                      {content.historySection.table.date}
-                    </th>
-                    <th className="px-3 py-2 text-left font-condensed text-[0.6rem] font-bold uppercase tracking-[0.24em] sm:px-4 sm:py-3 sm:text-[0.68rem]">
-                      {content.historySection.table.match}
-                    </th>
-                    <th className="px-3 py-2 text-right font-condensed text-[0.6rem] font-bold uppercase tracking-[0.24em] sm:px-4 sm:py-3 sm:text-[0.68rem]">
-                      {content.historySection.table.score}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {content.results.map((result, index) => (
-                    <tr
-                      key={`${result.dateLabel}-${result.opponent}`}
-                      className={
-                        index % 2 === 0
-                          ? "bg-[var(--color-panel)]"
-                          : "bg-[var(--color-surface)]"
-                      }
-                    >
-                      <td className="border-t border-[var(--color-line)] px-3 py-2 text-[0.75rem] text-[var(--color-muted)] sm:px-4 sm:py-3 sm:text-sm">
-                        {result.dateLabel}
-                      </td>
-                      <td className="border-t border-[var(--color-line)] px-3 py-2 font-condensed text-[0.75rem] font-bold uppercase tracking-[0.12em] sm:px-4 sm:py-3 sm:text-sm">
-                        {clubConfig.shortName} {content.nextMatch.versus}{" "}
-                        {result.opponent}
-                      </td>
-                      <td className="border-t border-[var(--color-line)] px-3 py-2 text-right font-display text-lg leading-none whitespace-nowrap [font-variant-numeric:tabular-nums] sm:px-4 sm:py-3 sm:text-2xl">
-                        {result.score}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </SectionShell>
 
           <SectionShell

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { clubConfig, type Fixture } from "@/lib/site";
+import { getTeamLogoSrc } from "@/lib/team-logos";
 
 function getInitials(name: string): string {
   return name
@@ -20,8 +21,51 @@ function getDisplayDate(fixture: Fixture): string {
   return year ? `${shortDate} ${year}` : shortDate;
 }
 
+function TeamBadge({
+  name,
+  logoSrc,
+  size = "large",
+}: {
+  name: string;
+  logoSrc?: string;
+  size?: "large" | "small";
+}) {
+  const initials = getInitials(name);
+  const dimensions =
+    size === "large"
+      ? "h-[5.6rem] w-[5.6rem] sm:h-[8.5rem] sm:w-[8.5rem]"
+      : "h-[4.7rem] w-[4.7rem] sm:h-[6rem] sm:w-[6rem]";
+  const textSize =
+    size === "large"
+      ? "text-[1.25rem] sm:text-[2rem]"
+      : "text-[1.1rem] sm:text-[1.6rem]";
+
+  return (
+    <div
+      className={`relative flex ${dimensions} shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/92 shadow-[0_8px_16px_rgba(0,0,0,0.28)] ring-1 ring-white/10 sm:shadow-[0_10px_24px_rgba(0,0,0,0.28)]`}
+    >
+      {logoSrc ? (
+        <Image
+          src={logoSrc}
+          alt={`${name} logo`}
+          fill
+          sizes={size === "large" ? "136px" : "96px"}
+          className="object-contain p-3"
+        />
+      ) : (
+        <span className={`font-display ${textSize} uppercase leading-none text-[#183254]`}>
+          {initials}
+        </span>
+      )}
+    </div>
+  );
+}
+
 function ScoreboardCard({ fixture }: { fixture: Fixture }) {
-  const opponentInitials = getInitials(fixture.opponent);
+  const teamName = fixture.teamName ?? clubConfig.shortName;
+  const teamLogoSrc = fixture.teamLogoSrc ?? getTeamLogoSrc(teamName);
+  const opponentLogoSrc =
+    fixture.opponentLogoSrc ?? getTeamLogoSrc(fixture.opponent);
   const displayDate = getDisplayDate(fixture);
 
   return (
@@ -47,18 +91,11 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
         className="pointer-events-none absolute inset-[1px] rounded-[0.95rem] border border-white/6 sm:rounded-[1rem]"
       />
 
-      <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 px-3 py-4 sm:gap-3 sm:px-5 sm:py-6 lg:px-6 lg:py-7">
+      <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-1 px-2 py-4 sm:gap-3 sm:px-5 sm:py-6 lg:px-6 lg:py-7">
         <div className="flex min-w-0 flex-col items-center gap-2 text-center sm:gap-2.5">
-          <div className="relative h-[6.5rem] w-[6.5rem] shrink-0 overflow-hidden rounded-full shadow-[0_8px_16px_rgba(0,0,0,0.28)] sm:h-[8.5rem] sm:w-[8.5rem] sm:shadow-[0_10px_24px_rgba(0,0,0,0.28)]">
-            <Image
-              src="/latino-carouge-logo.png"
-              alt="Latino Carouge BC"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="font-condensed text-[0.9rem] font-bold uppercase leading-tight tracking-[0.06em] text-white sm:text-[1.1rem] lg:text-[1.2rem]">
-            {clubConfig.shortName}
+          <TeamBadge name={teamName} logoSrc={teamLogoSrc} />
+          <div className="max-w-full font-condensed text-[0.78rem] font-bold uppercase leading-tight tracking-[0.045em] text-white [overflow-wrap:anywhere] sm:text-[1.1rem] sm:tracking-[0.06em] lg:text-[1.2rem]">
+            {teamName}
           </div>
         </div>
 
@@ -67,7 +104,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
             {displayDate}
           </div>
           <div
-            className="min-w-[9.2rem] border border-[rgba(255,216,120,0.14)] bg-black/90 px-3 py-[0.6rem] text-center font-scoreboard text-[2rem] leading-none tracking-[0.04em] text-[#ffd86f] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] sm:min-w-[11.2rem] sm:px-4 sm:py-[0.78rem] sm:text-[2.9rem]"
+            className="min-w-[6.8rem] border border-[rgba(255,216,120,0.14)] bg-black/90 px-1.5 py-[0.55rem] text-center font-scoreboard text-[1.7rem] leading-none tracking-[0.04em] text-[#ffd86f] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] sm:min-w-[11.2rem] sm:px-4 sm:py-[0.78rem] sm:text-[2.9rem]"
             style={{
               textShadow:
                 "0 0 5px rgba(255,216,111,0.45), 0 0 14px rgba(255,216,111,0.22)",
@@ -81,12 +118,12 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
         </div>
 
         <div className="flex min-w-0 flex-col items-center gap-2 text-center sm:gap-2.5">
-          <div className="flex h-[5rem] w-[5rem] shrink-0 items-center justify-center rounded-full bg-white/8 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)] sm:h-[6rem] sm:w-[6rem]">
-            <span className="font-display text-[1.3rem] uppercase leading-none text-white/78 sm:text-[1.6rem]">
-              {opponentInitials}
-            </span>
-          </div>
-          <div className="font-condensed text-[0.9rem] font-bold uppercase leading-tight tracking-[0.06em] text-white sm:text-[1.1rem] lg:text-[1.2rem]">
+          <TeamBadge
+            name={fixture.opponent}
+            logoSrc={opponentLogoSrc}
+            size="small"
+          />
+          <div className="max-w-full font-condensed text-[0.78rem] font-bold uppercase leading-tight tracking-[0.045em] text-white [overflow-wrap:anywhere] sm:text-[1.1rem] sm:tracking-[0.06em] lg:text-[1.2rem]">
             {fixture.opponent}
           </div>
         </div>
@@ -95,12 +132,35 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
   );
 }
 
-export function UpcomingScoreboard({ fixtures }: { fixtures: Fixture[] }) {
+export function UpcomingScoreboard({
+  fixtures,
+  emptyTitle,
+  emptyBody,
+}: {
+  fixtures: Fixture[];
+  emptyTitle?: string;
+  emptyBody?: string;
+}) {
+  if (fixtures.length === 0) {
+    return (
+      <div className="border border-[var(--color-line)] bg-[var(--color-surface)] px-5 py-6 text-center sm:px-6 sm:py-8">
+        <div className="font-display text-3xl uppercase leading-none text-[var(--color-ink)] sm:text-4xl">
+          {emptyTitle ?? "Calendrier a venir"}
+        </div>
+        {emptyBody ? (
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-[var(--color-muted)] sm:text-base">
+            {emptyBody}
+          </p>
+        ) : null}
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-4 sm:gap-5 grid-cols-1 lg:grid-cols-2">
       {fixtures.map((fixture) => (
         <ScoreboardCard
-          key={`${fixture.shortDate}-${fixture.opponent}`}
+          key={`${fixture.isoDate ?? fixture.shortDate}-${fixture.opponent}`}
           fixture={fixture}
         />
       ))}

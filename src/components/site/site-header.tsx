@@ -53,7 +53,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
           </Link>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-4">
-            <nav className="hidden items-center gap-x-4 sm:flex lg:gap-x-8">
+            <nav className="hidden items-center gap-x-8 2xl:flex">
               {content.nav.map((item) => (
                 <Link
                   key={item.label}
@@ -87,7 +87,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
             </div>
 
             {/* Mobile menu button */}
-            <div className="sm:hidden">
+            <div className="2xl:hidden">
               <SiteMobileMenu items={content.nav} />
             </div>
           </div>

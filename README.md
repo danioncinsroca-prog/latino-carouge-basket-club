@@ -10,7 +10,16 @@ Landing bilingüe FR/ES en Next.js para el club, con home deportiva, secciones s
 npm install
 ```
 
-2. Si quieres alimentar los partidos desde un calendario ICS, crea `.env.local`:
+2. Por defecto, la web consulta Basketpl@n para los partidos de Latino Carouge:
+
+```bash
+BASKETPLAN_FEDERATION_ID=5
+BASKETPLAN_CLUB_ID=327
+BASKETPLAN_CLUB_NAME=Latino Carouge
+BASKETPLAN_MAX_RESULTS=500
+```
+
+Si quieres alimentar los partidos desde un calendario ICS en vez de Basketpl@n, crea `.env.local`:
 
 ```bash
 INFOMANIAK_CALENDAR_ICS_URL=https://tu-feed-publico.ics
@@ -31,9 +40,11 @@ http://127.0.0.1:3024/es
 
 ## Calendar Feed
 
-- La web usa `INFOMANIAK_CALENDAR_ICS_URL` o `CALENDAR_ICS_URL` como feed ICS.
-- Si no hay URL configurada o el feed falla, la UI mantiene los partidos manuales definidos en `src/lib/site.ts`.
-- La home usa los 3 próximos partidos como preview y la página de partidos muestra el calendario completo resuelto.
+- La web usa `INFOMANIAK_CALENDAR_ICS_URL` o `CALENDAR_ICS_URL` como override ICS si existe.
+- Si no hay ICS, consulta Basketpl@n con `BASKETPLAN_FEDERATION_ID=5` y `BASKETPLAN_CLUB_ID=327`.
+- Next.js revalida la consulta cada 15 minutos, así los partidos se actualizan sin editarlos manualmente.
+- Si Basketpl@n no tiene partidos futuros publicados, la web consulta la temporada publicada anterior para no quedarse vacía. Si Basketpl@n falla, la UI mantiene los partidos manuales definidos en `src/lib/site.ts`.
+- La home usa los 2 próximos partidos como preview y la página de partidos muestra el calendario resuelto.
 
 ## Learn More
 
