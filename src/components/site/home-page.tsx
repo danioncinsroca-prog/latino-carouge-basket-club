@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FeaturedPlayers } from "@/components/site/featured-players";
 import { NewsShowcase } from "@/components/site/news-showcase";
 import { PalmaresTimeline } from "@/components/site/palmares-timeline";
 import { SiteFooter } from "@/components/site/site-footer";
@@ -234,17 +233,23 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="effectif"
-            className="border-t border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
+            className="scroll-mt-20 border-t border-white/12 bg-[var(--color-ink)] py-14 sm:scroll-mt-28 sm:py-16"
           >
               <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-                <SectionHeading
-                  kicker={content.team.kicker}
-                  title={content.team.title}
-                  intro={content.team.intro}
-                />
+                <div className="ink-divider space-y-3 pt-5">
+                  <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
+                    {content.team.kicker}
+                  </div>
+                  <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
+                    {content.team.title}
+                  </h2>
+                  <p className="max-w-2xl text-sm text-[var(--color-cream)]/72 sm:text-base">
+                    {content.team.intro}
+                  </p>
+                </div>
                 <Link
                   href={getSectionPath(locale, "team")}
-                  className="button-base button-outline-gold"
+                  className="button-base button-ghost-gold"
                 >
                   {content.team.viewAll}
                 </Link>
@@ -259,46 +264,6 @@ export async function HomePage({ locale }: HomePageProps) {
                 />
               </div>
           </SectionShell>
-
-          <section
-            id="featured-players"
-            className="relative overflow-hidden bg-[var(--color-ink)] py-14 sm:py-16"
-          >
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-[var(--color-ink)]"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 opacity-[0.96]"
-            >
-              <Image
-                src="/stock/featured-players-bg.png"
-                alt=""
-                fill
-                quality={100}
-                unoptimized
-                sizes="100vw"
-                className="object-cover object-center"
-              />
-            </div>
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="mb-10">
-                <div className="ink-divider space-y-3 pt-5">
-                  <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-                    {content.featuredPlayersSection.kicker}
-                  </div>
-                  <h2 className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
-                    {content.featuredPlayersSection.title}
-                  </h2>
-                  <p className="max-w-2xl text-sm text-[var(--color-cream)]/72 sm:text-base">
-                    {content.featuredPlayersSection.intro}
-                  </p>
-                </div>
-              </div>
-              <FeaturedPlayers players={content.featuredPlayers} />
-            </div>
-          </section>
 
           <SectionShell
             id="palmares"

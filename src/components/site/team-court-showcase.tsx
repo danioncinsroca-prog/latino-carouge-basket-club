@@ -27,6 +27,11 @@ const sectionLabels: Record<
     players: "Jugadores",
     rosterTitle: "Plantilla",
   },
+  en: {
+    coach: "Head Coach",
+    players: "Players",
+    rosterTitle: "Roster",
+  },
 };
 
 export function TeamCourtShowcase({
@@ -38,20 +43,20 @@ export function TeamCourtShowcase({
   const labels = sectionLabels[locale];
 
   return (
-    <div className="grid gap-px border border-[var(--color-line)] bg-[var(--color-line)] grid-cols-1 lg:grid-cols-[0.42fr_0.58fr]">
-      <div className="bg-[var(--color-panel)] p-4 sm:p-6 lg:p-8">
-        <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
+    <div className="grid gap-px border border-white/12 bg-white/8 grid-cols-1 lg:grid-cols-[0.42fr_0.58fr]">
+      <div className="bg-[var(--color-ink)] p-4 sm:p-6 lg:p-8">
+        <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
           {labels.coach}
         </div>
 
-        <div className="mt-4 border-b border-[var(--color-line)] pb-6">
-          <div className="font-display text-4xl uppercase leading-none sm:text-5xl">
+        <div className="mt-4 border-b border-white/12 pb-6">
+          <div className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
             {coach.name}
           </div>
-          <div className="mt-2 font-condensed text-sm font-bold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+          <div className="mt-2 font-condensed text-sm font-bold uppercase tracking-[0.14em] text-[var(--color-cream)]/72">
             {coach.role}
           </div>
-          <p className="mt-4 max-w-md text-sm text-[var(--color-muted)]">
+          <p className="mt-4 max-w-md text-sm text-[var(--color-cream)]/72 leading-relaxed">
             {coach.bio}
           </p>
         </div>
@@ -66,28 +71,28 @@ export function TeamCourtShowcase({
         />
       </div>
 
-      <div className="bg-[var(--color-panel)] p-6 sm:p-8">
-        <div className="border-b border-[var(--color-line)] pb-6">
-          <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
+      <div className="bg-[var(--color-ink)] p-6 sm:p-8">
+        <div className="border-b border-white/12 pb-6">
+          <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
             {labels.players}
           </div>
-          <div className="mt-3 font-display text-4xl uppercase leading-none sm:text-5xl">
+          <div className="mt-3 font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
             {labels.rosterTitle}
           </div>
         </div>
 
-        <div className="mt-8 grid gap-px border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-px border border-white/12 bg-white/8 sm:grid-cols-2 xl:grid-cols-3">
           {roster.map((player) => (
             <div
               key={player.number}
-              className="flex min-h-[224px] flex-col justify-between bg-[var(--color-panel)] p-4"
+              className="flex min-h-[224px] flex-col justify-between bg-[var(--color-ink)] p-4"
             >
               <div>
-                <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-muted)]">
+                <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
                   {player.position}
                 </div>
-                <div className="mt-3 flex items-end justify-between gap-4 border-b border-[var(--color-line)] pb-3">
-                  <div className="font-display text-3xl uppercase leading-none">
+                <div className="mt-3 flex items-end justify-between gap-4 border-b border-white/12 pb-3">
+                  <div className="font-display text-3xl uppercase leading-none text-[var(--color-cream)]">
                     {player.name}
                   </div>
                   <div className="font-display text-5xl leading-none text-[var(--color-gold)]">
@@ -96,7 +101,7 @@ export function TeamCourtShowcase({
                 </div>
               </div>
 
-              <p className="mt-4 text-sm text-[var(--color-muted)]">
+              <p className="mt-4 text-sm text-[var(--color-cream)]/72">
                 {player.note}
               </p>
             </div>
