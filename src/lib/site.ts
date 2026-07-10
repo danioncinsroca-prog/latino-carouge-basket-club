@@ -25,6 +25,29 @@ export type CoachProfile = {
   bio: string;
 };
 
+export type CommitteeMember = {
+  name: string;
+  role: string;
+};
+
+export type CommitteeContent = {
+  label: string;
+  intro: string;
+  members: CommitteeMember[];
+};
+
+export type TeamCategory = {
+  name: string;
+  status: "active" | "coming-soon";
+};
+
+export type TeamCategoriesContent = {
+  label: string;
+  imagePending: string;
+  comingSoon: string;
+  items: TeamCategory[];
+};
+
 export type MediaAsset = {
   src: string;
   alt: string;
@@ -147,6 +170,8 @@ type LocaleContent = {
   };
   coach: CoachProfile;
   roster: RosterPlayer[];
+  committee: CommitteeContent;
+  teamCategories: TeamCategoriesContent;
   newsSection: {
     kicker: string;
     title: string;
@@ -372,10 +397,10 @@ export const siteContent: Record<Locale, LocaleContent> = {
       ],
     },
     team: {
-      kicker: "Coach + effectif",
-      title: "Une structure nette pour présenter le groupe",
+      kicker: "Comité + Catégories",
+      title: "La structure qui porte le club",
       intro:
-        "Le système est pensé pour accueillir un coach principal, la rotation et les profils joueurs sans transformer la home en base de données froide.",
+        "Un aperçu de qui dirige le club au quotidien et des catégories qui composent le projet sportif.",
       viewAll: "Voir la page équipe",
     },
     coach: {
@@ -423,6 +448,31 @@ export const siteContent: Record<Locale, LocaleContent> = {
         note: "Énergie de banc et intensité sur plusieurs postes.",
       },
     ],
+    committee: {
+      label: "Comité",
+      intro:
+        "Une équipe engagée chaque jour pour organiser la vie du club et le faire avancer.",
+      members: [
+        { name: "Nom à venir", role: "Président" },
+        { name: "Nom à venir", role: "Vice-présidente" },
+        { name: "Nom à venir", role: "Responsable sportif" },
+        { name: "Nom à venir", role: "Trésorière" },
+        { name: "Nom à venir", role: "Secrétaire" },
+      ],
+    },
+    teamCategories: {
+      label: "Catégories",
+      imagePending: "IMAGE D'ÉQUIPE À VENIR",
+      comingSoon: "À VENIR",
+      items: [
+        { name: "U10", status: "active" },
+        { name: "U18", status: "active" },
+        { name: "U16", status: "active" },
+        { name: "U14", status: "active" },
+        { name: "Senior", status: "active" },
+        { name: "Équipe Féminine", status: "coming-soon" },
+      ],
+    },
     newsSection: {
       kicker: "Actualités",
       title: "Des cartes éditoriales simples et sportives",
@@ -850,10 +900,10 @@ export const siteContent: Record<Locale, LocaleContent> = {
       ],
     },
     team: {
-      kicker: "Entrenador + plantilla",
-      title: "Una estructura clara para presentar el grupo",
+      kicker: "Comité + Categorías",
+      title: "La estructura que sostiene el club",
       intro:
-        "El sistema está pensado para alojar entrenador principal, rotación y perfiles de jugadores sin convertir la home en una base fría.",
+        "Un vistazo a quién dirige el club día a día y a las categorías que forman el proyecto deportivo.",
       viewAll: "Ver la página de equipo",
     },
     coach: {
@@ -901,6 +951,31 @@ export const siteContent: Record<Locale, LocaleContent> = {
         note: "Energía desde el banquillo y intensidad multi-posición.",
       },
     ],
+    committee: {
+      label: "Comité",
+      intro:
+        "Un equipo comprometido cada día para organizar la vida del club y hacerlo avanzar.",
+      members: [
+        { name: "Nombre pendiente", role: "Presidente" },
+        { name: "Nombre pendiente", role: "Vicepresidenta" },
+        { name: "Nombre pendiente", role: "Responsable deportivo" },
+        { name: "Nombre pendiente", role: "Tesorera" },
+        { name: "Nombre pendiente", role: "Secretario" },
+      ],
+    },
+    teamCategories: {
+      label: "Categorías",
+      imagePending: "IMAGEN DE EQUIPO PRÓXIMAMENTE",
+      comingSoon: "PRÓXIMAMENTE",
+      items: [
+        { name: "U10", status: "active" },
+        { name: "U18", status: "active" },
+        { name: "U16", status: "active" },
+        { name: "U14", status: "active" },
+        { name: "Senior", status: "active" },
+        { name: "Equipo Femenino", status: "coming-soon" },
+      ],
+    },
     newsSection: {
       kicker: "Noticias",
       title: "Tarjetas editoriales simples y deportivas",

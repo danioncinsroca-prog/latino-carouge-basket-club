@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ClubStructureShowcase } from "@/components/site/club-structure-showcase";
 import { NewsShowcase } from "@/components/site/news-showcase";
 import { PalmaresTimeline } from "@/components/site/palmares-timeline";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
-import { TeamCourtShowcase } from "@/components/site/team-court-showcase";
 import { UpcomingScoreboard } from "@/components/site/upcoming-scoreboard";
 import {
   buildSportsEventJsonLd,
@@ -256,11 +256,9 @@ export async function HomePage({ locale }: HomePageProps) {
               </div>
 
               <div className="mt-8">
-                <TeamCourtShowcase
-                  locale={locale}
-                  coach={content.coach}
-                  roster={content.roster}
-                  coachPlaceholder={content.placeholders.coach}
+                <ClubStructureShowcase
+                  committee={content.committee}
+                  teamCategories={content.teamCategories}
                 />
               </div>
           </SectionShell>
