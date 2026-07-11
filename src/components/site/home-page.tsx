@@ -85,7 +85,7 @@ export async function HomePage({ locale }: HomePageProps) {
         <SiteHeader locale={locale} />
 
         <main>
-          <section className="relative overflow-hidden min-h-[100dvh] flex flex-col">
+          <section className="relative overflow-hidden min-h-[90dvh] flex flex-col">
             <div aria-hidden className="absolute inset-0">
               <Image
                 src="/stock/hero-dunk-illustration.png"
@@ -97,8 +97,8 @@ export async function HomePage({ locale }: HomePageProps) {
                 className="object-cover object-right sm:object-center"
               />
             </div>
-            <div className="relative z-10 mx-auto max-w-7xl px-4 flex flex-col justify-center flex-1 sm:px-6 lg:px-8">
-              <div className="max-w-3xl space-y-4 sm:space-y-6 py-12">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 flex flex-col justify-end flex-1 sm:px-6 lg:px-8">
+              <div className="max-w-3xl space-y-4 sm:space-y-6 pb-16">
                 <div className="space-y-3 sm:space-y-6">
                   <h1
                     className="font-display uppercase leading-[0.9] text-[var(--color-cream)]"
