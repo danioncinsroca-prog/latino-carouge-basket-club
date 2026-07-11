@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ClubStructureShowcase } from "@/components/site/club-structure-showcase";
 import { NewsShowcase } from "@/components/site/news-showcase";
 import { PalmaresTimeline } from "@/components/site/palmares-timeline";
+import { RecruitmentForm } from "@/components/site/recruitment-form";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { UpcomingScoreboard } from "@/components/site/upcoming-scoreboard";
@@ -312,60 +313,133 @@ export async function HomePage({ locale }: HomePageProps) {
           <SectionShell
             id="recruitment"
             className="border-y border-[var(--color-line)] py-14 sm:py-16"
-            style={{ background: "color-mix(in srgb, var(--color-ink) 82%, black 18%)" }}
+            style={{ background: "var(--color-cream)" }}
           >
-            <div className="space-y-5 sm:space-y-6">
-              <div className="flex flex-col gap-6 sm:gap-8 lg:grid lg:grid-cols-[1fr_auto] lg:items-start">
-                <div>
-                  <div className="ink-divider space-y-3 pt-5">
-                    <div className="font-condensed text-[0.6rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
-                      {content.recruitmentSection.kicker}
+            <div className="space-y-8 sm:space-y-10">
+              {/* Main 2-column layout: Left content + Right form */}
+              <div className="flex flex-col gap-8 sm:gap-10 lg:grid lg:grid-cols-[1fr_400px] lg:gap-12 lg:items-start">
+                {/* Left column: Content */}
+                <div className="space-y-8 sm:space-y-10">
+                  {/* Header with kicker, title, intro */}
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="h-px flex-1 bg-[var(--color-gold)]" />
+                      <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem] whitespace-nowrap">
+                        {content.recruitmentSection.kicker}
+                      </div>
                     </div>
-                    <h2 className="font-display text-3xl uppercase leading-none text-[var(--color-cream)] sm:text-4xl lg:text-5xl">
+                    <h2 className="font-display text-3xl uppercase leading-none text-[var(--color-ink)] sm:text-4xl lg:text-5xl">
                       {content.recruitmentSection.title}
                     </h2>
-                    <p className="max-w-xl text-xs text-[var(--color-cream)]/72 sm:text-sm lg:text-base">
+                    <p className="max-w-md text-sm text-[var(--color-ink)]/80 sm:text-base">
                       {content.recruitmentSection.intro}
                     </p>
                   </div>
-                  <ul className="mt-5 space-y-2 sm:mt-6">
-                    {content.recruitmentSection.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2.5 text-xs text-[var(--color-cream)]/80 sm:gap-3 sm:text-sm">
-                        <span className="h-1.5 w-1.5 shrink-0 bg-[var(--color-gold)]" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="lg:shrink-0">
-                  <Link href={`/${locale}/contact`} className="button-base button-gold text-sm px-6 py-3 sm:text-base sm:px-8 sm:py-4 w-full sm:w-auto">
-                    {content.recruitmentSection.cta}
-                  </Link>
-                </div>
-              </div>
 
-              <div className="border-t border-[var(--color-line)]/30 pt-4 sm:pt-5">
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="space-y-1.5 sm:space-y-2">
-                    <p className="text-xs font-semibold text-[var(--color-gold)] sm:text-sm">
-                      {content.recruitmentSection.subtitle}
-                    </p>
-                    <p className="text-xs text-[var(--color-cream)]/80 sm:text-sm">
-                      {content.recruitmentSection.trialOffer}
+                  {/* CTA Button + Secondary text */}
+                  <div className="flex flex-col gap-2 sm:gap-3">
+                    <button className="button-base button-gold text-sm px-6 py-3 sm:text-base sm:px-8 sm:py-4 w-full sm:w-auto">
+                      {content.recruitmentSection.ctaButton}
+                    </button>
+                    <p className="text-xs text-[var(--color-ink)]/70 sm:text-sm">
+                      {content.recruitmentSection.ctaSecondary}
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-3 lg:grid-cols-6">
-                    {content.recruitmentSection.categories.map((cat) => (
-                      <div key={cat.code} className="rounded border border-[var(--color-gold)]/30 bg-[var(--color-ink)]/30 px-2.5 py-2 text-center sm:px-3 sm:py-2.5">
-                        <div className="font-condensed text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-gold)] sm:text-sm">
-                          {cat.code}
-                        </div>
-                        <div className="text-[0.8rem] text-[var(--color-cream)]/70 mt-1 sm:text-sm sm:mt-1.5">
-                          {cat.label}
-                        </div>
+                  {/* Separator */}
+                  <div className="h-px bg-[var(--color-line)]/30" />
+
+                  {/* Why Join Us section */}
+                  <div className="space-y-4 sm:space-y-5">
+                    <div className="space-y-1.5">
+                      <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
+                        {content.recruitmentSection.whyJoinKicker}
                       </div>
-                    ))}
+                      <h3 className="font-display text-xl uppercase leading-none text-[var(--color-ink)] sm:text-2xl">
+                        {content.recruitmentSection.whyJoinTitle}
+                      </h3>
+                    </div>
+                    {/* Numbered bullets in 2-column grid */}
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+                      {content.recruitmentSection.bullets.map((bullet, idx) => (
+                        <div key={bullet} className="flex gap-3 sm:gap-4">
+                          <span className="font-condensed text-sm font-bold text-[var(--color-gold)] uppercase tracking-[0.1em] flex-shrink-0 w-8 sm:w-10">
+                            {String(idx + 1).padStart(2, "0")}
+                          </span>
+                          <p className="text-xs text-[var(--color-ink)]/80 sm:text-sm leading-relaxed">
+                            {bullet}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Categories section */}
+                  <div className="space-y-4 sm:space-y-5">
+                    <div className="space-y-1.5">
+                      <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
+                        {content.recruitmentSection.categoriesKicker}
+                      </div>
+                      <h3 className="font-display text-xl uppercase leading-none text-[var(--color-ink)] sm:text-2xl">
+                        {content.recruitmentSection.categoriesTitle}
+                      </h3>
+                      <p className="text-xs text-[var(--color-ink)]/70 sm:text-sm">
+                        {content.recruitmentSection.categoriesIntro}
+                      </p>
+                    </div>
+                    {/* Categories grid with radio selection */}
+                    <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-3">
+                      {content.recruitmentSection.categories.map((cat) => (
+                        <label
+                          key={cat.code}
+                          className="relative rounded border border-[var(--color-line)] bg-white p-3 sm:p-4 cursor-pointer transition-all hover:border-[var(--color-gold)] hover:shadow-sm"
+                        >
+                          <input
+                            type="radio"
+                            name="recruitment-category"
+                            value={cat.code}
+                            className="absolute top-2 right-2 sm:top-3 sm:right-3 w-4 h-4 cursor-pointer accent-[var(--color-gold)]"
+                          />
+                          <div className="pr-6">
+                            <div className="font-condensed text-xs font-bold uppercase tracking-[0.16em] text-[var(--color-ink)] sm:text-sm">
+                              {cat.code}
+                            </div>
+                            <div className="text-[0.8rem] text-[var(--color-ink)]/70 mt-1 sm:text-sm">
+                              {cat.label}
+                            </div>
+                            <div className="text-[0.65rem] font-semibold text-[var(--color-gold)] uppercase tracking-[0.1em] mt-2 sm:mt-2.5">
+                              {content.recruitmentSection.categoriesAvailable}
+                            </div>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right column: Form card */}
+                <div className="lg:sticky lg:top-8">
+                  <div className="rounded-lg border border-[var(--color-line)] bg-white p-6 sm:p-8 shadow-sm">
+                    {/* Form badge */}
+                    <div className="mb-5 inline-block rounded-full bg-[var(--color-panel)] px-3 py-1.5 sm:px-4">
+                      <span className="text-xs font-semibold text-[var(--color-ink)] uppercase tracking-[0.1em]">
+                        {content.recruitmentSection.formBadge}
+                      </span>
+                    </div>
+
+                    {/* Form title and intro */}
+                    <h3 className="font-display text-2xl uppercase leading-none text-[var(--color-ink)] mb-2 sm:text-3xl">
+                      {content.recruitmentSection.formTitle}
+                    </h3>
+                    <p className="text-xs text-[var(--color-ink)]/70 sm:text-sm mb-6 sm:mb-8">
+                      {content.recruitmentSection.formIntro}
+                    </p>
+
+                    {/* Form component */}
+                    <RecruitmentForm
+                      content={content.recruitmentSection}
+                      locale={locale}
+                    />
                   </div>
                 </div>
               </div>

@@ -251,14 +251,42 @@ type LocaleContent = {
     kicker: string;
     title: string;
     intro: string;
-    subtitle: string;
-    trialOffer: string;
-    cta: string;
+    ctaButton: string;
+    ctaSecondary: string;
+    whyJoinKicker: string;
+    whyJoinTitle: string;
+    categoriesKicker: string;
+    categoriesTitle: string;
+    categoriesIntro: string;
+    formBadge: string;
+    formTitle: string;
+    formIntro: string;
+    formCta: string;
+    formCtaSecondary: string;
+    formCategoryLabel: string;
+    formCategoryPlaceholder: string;
+    categoriesAvailable: string;
+    responseTime: string;
     bullets: string[];
     categories: Array<{
       code: string;
       label: string;
     }>;
+    form: {
+      name: string;
+      email: string;
+      phone: string;
+      phonePlaceholder: string;
+      category: string;
+      categoryPlaceholder: string;
+      message: string;
+      messagePlaceholder: string;
+      consent: string;
+      submit: string;
+      successTitle: string;
+      successMessage: string;
+      errorMessage: string;
+    };
   };
   contactPage: {
     badge: string;
@@ -658,12 +686,25 @@ export const siteContent: Record<Locale, LocaleContent> = {
       intro: "Trois profils clés dans la construction du jeu du club.",
     },
     recruitmentSection: {
-      kicker: "Rejoins le club",
+      kicker: "REJOINS LE CLUB",
       title: "On recrute",
-      intro: "Tu veux jouer au basket à Carouge ? On cherche des joueurs motivés, tous niveaux confondus. Envoie-nous un message.",
-      subtitle: "Toutes les catégories du mouvement jeunes, places disponibles pour la rentrée scolaire.",
-      trialOffer: "Deux séances d'essai gratuites pour découvrir le club, sans engagement.",
-      cta: "Nous contacter",
+      intro: "Tu veux jouer au basket à Carouge ? On cherche des joueurs motivés, tous niveaux confondus.",
+      ctaButton: "RÉSERVER MES ESSAIS GRATUITS",
+      ctaSecondary: "Deux séances d'essai gratuites pour découvrir le club, sans engagement.",
+      whyJoinKicker: "POURQUOI NOUS REJOINDRE",
+      whyJoinTitle: "Pourquoi nous rejoindre",
+      categoriesKicker: "CHOISIS TA CATÉGORIE",
+      categoriesTitle: "Choisis ta catégorie",
+      categoriesIntro: "Sélectionne la catégorie qui te convient.",
+      formBadge: "2 SÉANCES OFFERTES · SANS ENGAGEMENT",
+      formTitle: "REJOINS L'ÉQUIPE",
+      formIntro: "Remplis le formulaire et on revient vers toi rapidement.",
+      formCta: "ENVOYER MA DEMANDE",
+      formCtaSecondary: "Réponse sous 48 h · Aucun engagement",
+      formCategoryLabel: "Catégorie souhaitée",
+      formCategoryPlaceholder: "Sélectionne une catégorie",
+      categoriesAvailable: "PLACES DISPONIBLES",
+      responseTime: "Réponse sous 48 h · Aucun engagement",
       bullets: [
         "Encadrement qualifié, formateur diplômé",
         "Valeurs fortes : respect, solidarité, engagement",
@@ -679,6 +720,21 @@ export const siteContent: Record<Locale, LocaleContent> = {
         { code: "U16", label: "Compétition et rigueur" },
         { code: "U18+", label: "Seniors et loisirs" },
       ],
+      form: {
+        name: "Nom complet",
+        email: "Adresse e-mail",
+        phone: "Téléphone",
+        phonePlaceholder: "+41 XX XXX XX XX",
+        category: "Catégorie souhaitée",
+        categoryPlaceholder: "Sélectionne une catégorie",
+        message: "Message",
+        messagePlaceholder: "Optionnel · indique l'âge et l'expérience du joueur si tu le souhaites.",
+        consent: "J'autorise le club à conserver et utiliser les informations de ce formulaire pour traiter ma demande d'inscription.",
+        submit: "ENVOYER MA DEMANDE",
+        successTitle: "Message envoyé !",
+        successMessage: "On revient vers toi dès que possible.",
+        errorMessage: "Une erreur s'est produite. Réessaie.",
+      },
     },
     contactPage: {
       badge: "Contact",
@@ -1161,14 +1217,27 @@ export const siteContent: Record<Locale, LocaleContent> = {
       intro: "Tres perfiles clave en la construcción del juego del club.",
     },
     recruitmentSection: {
-      kicker: "Únete al club",
+      kicker: "ÚNETE AL CLUB",
       title: "Buscamos jugadores",
       intro: "¿Quieres jugar al baloncesto en Carouge? Buscamos jugadores motivados, todos los niveles bienvenidos.",
-      subtitle: "Todas las categorías del movimiento juvenil, plazas disponibles para el inicio de curso.",
-      trialOffer: "Dos sesiones de prueba gratuitas para conocer el club, sin compromiso.",
-      cta: "Contactarnos",
+      ctaButton: "RESERVA MIS PRUEBAS GRATIS",
+      ctaSecondary: "Dos sesiones de prueba gratuitas para conocer el club, sin compromiso.",
+      whyJoinKicker: "POR QUÉ UNIRNOS",
+      whyJoinTitle: "Por qué unirnos",
+      categoriesKicker: "ELIGE TU CATEGORÍA",
+      categoriesTitle: "Elige tu categoría",
+      categoriesIntro: "Selecciona la categoría que se adapte a ti.",
+      formBadge: "2 SESIONES GRATIS · SIN COMPROMISO",
+      formTitle: "ÚNETE AL EQUIPO",
+      formIntro: "Rellena el formulario y te respondemos lo antes posible.",
+      formCta: "ENVIAR MI SOLICITUD",
+      formCtaSecondary: "Respuesta en 48 h · Sin compromiso",
+      formCategoryLabel: "Categoría deseada",
+      formCategoryPlaceholder: "Selecciona una categoría",
+      categoriesAvailable: "PLAZAS DISPONIBLES",
+      responseTime: "Respuesta en 48 h · Sin compromiso",
       bullets: [
-        "Formador cualificado y titulado",
+        "Entrenador cualificado y titulado",
         "Valores fuertes: respeto, solidaridad, compromiso",
         "Entrenamientos adaptados a cada edad y nivel",
         "Ambiente familiar y cercano",
@@ -1182,6 +1251,21 @@ export const siteContent: Record<Locale, LocaleContent> = {
         { code: "U16", label: "Competición y rigor" },
         { code: "U18+", label: "Séniors y ocio" },
       ],
+      form: {
+        name: "Nombre completo",
+        email: "Correo electrónico",
+        phone: "Teléfono",
+        phonePlaceholder: "+41 XX XXX XX XX",
+        category: "Categoría deseada",
+        categoryPlaceholder: "Selecciona una categoría",
+        message: "Mensaje",
+        messagePlaceholder: "Opcional · indica la edad y experiencia del jugador si lo deseas.",
+        consent: "Autorizo al club a conservar y utilizar la información de este formulario para procesar mi solicitud de inscripción.",
+        submit: "ENVIAR MI SOLICITUD",
+        successTitle: "¡Mensaje enviado!",
+        successMessage: "Te respondemos lo antes posible.",
+        errorMessage: "Algo salió mal. Inténtalo de nuevo.",
+      },
     },
     contactPage: {
       badge: "Contacto",
