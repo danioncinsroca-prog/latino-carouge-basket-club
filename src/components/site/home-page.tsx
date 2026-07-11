@@ -139,7 +139,7 @@ export async function HomePage({ locale }: HomePageProps) {
                     {nextMatch?.dateLabel ?? content.fixturesSection.emptyTitle}
                   </div>
                   <div className="mt-2 font-condensed text-lg font-bold text-[var(--color-cream)]/84 sm:mt-3 sm:text-2xl">
-                    {nextMatch?.timeLabel ?? "Basketpl@n"}
+                    {nextMatch?.timeLabel ?? content.fixturesSection.soonLabel}
                   </div>
                 </div>
 

@@ -9,9 +9,9 @@ const copy = {
   fr: {
     teamSelector: "Equipe",
     phaseSelector: "Competition",
-    noRanking: "Basketpl@n ne publie pas encore de classement pour cette equipe.",
+    noRanking: "Classement de cette equipe pas encore publie.",
     noRankingTitle: "Classement non publie",
-    source: "Voir sur Basketpl@n",
+    source: "Voir la source officielle",
     publishedSeason: "Saison publiee",
     unavailable: "Non publie",
     columns: {
@@ -30,9 +30,9 @@ const copy = {
   es: {
     teamSelector: "Equipo",
     phaseSelector: "Competicion",
-    noRanking: "Basketpl@n todavia no publica clasificacion para este equipo.",
+    noRanking: "Clasificacion de este equipo aun no publicada.",
     noRankingTitle: "Clasificacion no publicada",
-    source: "Ver en Basketpl@n",
+    source: "Ver fuente oficial",
     publishedSeason: "Temporada publicada",
     unavailable: "No publicado",
     columns: {
@@ -51,9 +51,9 @@ const copy = {
   en: {
     teamSelector: "Team",
     phaseSelector: "Competition",
-    noRanking: "Basketpl@n doesn't yet publish standings for this team.",
+    noRanking: "This team's standings aren't published yet.",
     noRankingTitle: "Standings not published",
-    source: "View on Basketpl@n",
+    source: "View official source",
     publishedSeason: "Published season",
     unavailable: "Not published",
     columns: {

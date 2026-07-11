@@ -186,6 +186,7 @@ type LocaleContent = {
     viewAll: string;
     emptyTitle: string;
     emptyBody: string;
+    soonLabel: string;
   };
   fixtures: Fixture[];
   historySection: {
@@ -373,8 +374,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         team: "Effectif, coach principal et structure sportive du club.",
         news: "Actualités du club et rythme éditorial matchday.",
         matches: "Calendrier, prochain match et future billetterie.",
-        standings: "Classements Basketpl@n automatisés par équipe du club.",
-        history: "Résultats Basketpl@n par équipe, catégorie et mois.",
+        standings: "Classement automatisé de chaque équipe du club.",
+        history: "Résultats du club par équipe, catégorie et mois.",
       },
     },
     header: {
@@ -553,7 +554,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
       viewAll: "Voir tous les matchs",
       emptyTitle: "Aucun match officiel publié",
       emptyBody:
-        "Basketpl@n ne liste pas encore de prochain match pour Latino Carouge. La page se mettra à jour automatiquement dès que le calendrier sera publié.",
+        "Pas de prochain match publié pour l'instant. Cette page se met à jour dès que le calendrier est disponible.",
+      soonLabel: "Bientôt disponible",
     },
     fixtures: [
       {
@@ -839,8 +841,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         badge: "Page classement",
         title: "Classement",
         intro:
-          "Classements Basketpl@n automatisés pour les équipes Latino Carouge avec changement de vue par catégorie.",
-        comingSoon: "Synchronisation automatique depuis Basketpl@n.",
+          "Le classement de chaque équipe, mis à jour automatiquement et consultable par catégorie.",
+        comingSoon: "Le classement se met à jour après chaque match.",
         backHome: "Retour à la home",
         jumpLabel: "Voir les matchs",
         placeholder: {
@@ -857,8 +859,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         badge: "Page resultats",
         title: "Resultats",
         intro:
-          "Les résultats Basketpl@n sont regroupés par équipe, catégorie et mois avec les scores déjà joués.",
-        comingSoon: "Archive synchronisée depuis Basketpl@n.",
+          "Tous les résultats du club, classés par équipe, catégorie et mois.",
+        comingSoon: "L'archive se met à jour après chaque match.",
         backHome: "Retour à la home",
         jumpLabel: "Voir les matchs",
         placeholder: {
@@ -897,8 +899,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         team: "Plantilla, entrenador principal y base deportiva del club.",
         news: "Noticias del club y ritmo editorial matchday.",
         matches: "Calendario, próximo partido y futura billetterie.",
-        standings: "Clasificaciones de Basketpl@n automatizadas por equipo del club.",
-        history: "Resultados de Basketpl@n por equipo, categoría y mes.",
+        standings: "Clasificación automatizada de cada equipo del club.",
+        history: "Resultados del club por equipo, categoría y mes.",
       },
     },
     header: {
@@ -1077,7 +1079,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
       viewAll: "Ver todos los partidos",
       emptyTitle: "Ningún partido oficial publicado",
       emptyBody:
-        "Basketpl@n todavía no lista próximos partidos para Latino Carouge. La página se actualizará automáticamente cuando el calendario esté publicado.",
+        "Todavía no hay próximo partido publicado. Esta página se actualiza en cuanto el calendario esté disponible.",
+      soonLabel: "Próximamente",
     },
     fixtures: [
       {
@@ -1363,8 +1366,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         badge: "Página clasificación",
         title: "Clasificación",
         intro:
-          "Clasificaciones de Basketpl@n automatizadas para los equipos de Latino Carouge con cambio de vista por categoría.",
-        comingSoon: "Sincronización automática desde Basketpl@n.",
+          "La clasificación de cada equipo, actualizada automáticamente y disponible por categoría.",
+        comingSoon: "La clasificación se actualiza después de cada partido.",
         backHome: "Volver a la home",
         jumpLabel: "Ver partidos",
         placeholder: {
@@ -1381,8 +1384,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         badge: "Página resultados",
         title: "Resultados",
         intro:
-          "Los resultados de Basketpl@n se agrupan por equipo, categoría y mes con los marcadores ya jugados.",
-        comingSoon: "Archivo sincronizado desde Basketpl@n.",
+          "Todos los resultados del club, agrupados por equipo, categoría y mes.",
+        comingSoon: "El archivo se actualiza después de cada partido.",
         backHome: "Volver a la home",
         jumpLabel: "Ver partidos",
         placeholder: {
@@ -1421,8 +1424,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         team: "Roster, head coach and sports structure of the club.",
         news: "Club news and matchday editorial rhythm.",
         matches: "Calendar, next match and future ticketing.",
-        standings: "Automated Basketpl@n standings by club team.",
-        history: "Basketpl@n results by team, category and month.",
+        standings: "Automated standings for every team in the club.",
+        history: "Club results by team, category and month.",
       },
     },
     header: {
@@ -1601,7 +1604,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
       viewAll: "View all matches",
       emptyTitle: "No official match published",
       emptyBody:
-        "Basketpl@n does not yet list upcoming matches for Latino Carouge. The page will update automatically when the calendar is published.",
+        "No upcoming match published yet. This page updates once the calendar is available.",
+      soonLabel: "Coming soon",
     },
     fixtures: [
       {
@@ -1887,8 +1891,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         badge: "Standings page",
         title: "Standings",
         intro:
-          "Automated Basketpl@n standings for Latino Carouge teams with view switching by category.",
-        comingSoon: "Automatic sync from Basketpl@n.",
+          "Every team's standings, updated automatically and viewable by category.",
+        comingSoon: "Standings update after every match.",
         backHome: "Back to home",
         jumpLabel: "View matches",
         placeholder: {
@@ -1905,8 +1909,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
         badge: "Results page",
         title: "Results",
         intro:
-          "Basketpl@n results are grouped by team, category and month with already played scores.",
-        comingSoon: "Archive synced from Basketpl@n.",
+          "All club results, grouped by team, category and month.",
+        comingSoon: "The archive updates after every match.",
         backHome: "Back to home",
         jumpLabel: "View matches",
         placeholder: {

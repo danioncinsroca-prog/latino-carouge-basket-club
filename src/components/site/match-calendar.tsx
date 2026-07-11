@@ -27,7 +27,7 @@ const copy = {
     upcomingTitle: "Prochains matchs",
     noResultsTitle: "Aucun resultat publie",
     noResultsBody:
-      "Basketpl@n ne publie pas encore de match joue pour cette categorie.",
+      "Aucun match joue publie pour cette categorie pour l'instant.",
     noScheduleTitle: "Aucun match publie",
     gameNumber: "Match",
   },
@@ -37,7 +37,7 @@ const copy = {
     upcomingTitle: "Proximos partidos",
     noResultsTitle: "Ningun resultado publicado",
     noResultsBody:
-      "Basketpl@n todavia no publica partidos jugados para esta categoria.",
+      "Todavia no hay partidos jugados publicados para esta categoria.",
     noScheduleTitle: "Ningun partido publicado",
     gameNumber: "Partido",
   },
@@ -47,7 +47,7 @@ const copy = {
     upcomingTitle: "Upcoming matches",
     noResultsTitle: "No results published",
     noResultsBody:
-      "Basketpl@n doesn't yet publish played matches for this category.",
+      "No played matches published yet for this category.",
     noScheduleTitle: "No matches published",
     gameNumber: "Match",
   },
