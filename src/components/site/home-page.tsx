@@ -109,13 +109,13 @@ export async function HomePage({ locale }: HomePageProps) {
                     {content.hero.copy}
                   </p>
                 </div>
-                <div className="mt-4 flex flex-wrap gap-2 sm:gap-3 sm:mt-8">
-                  <Link href="#next-match" className="button-base button-gold text-xs px-4 py-2.5 sm:text-sm">
+                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3 sm:mt-8">
+                  <Link href="#next-match" className="button-base button-gold text-xs px-4 py-2.5 sm:text-sm w-fit">
                     {content.hero.primaryCta}
                   </Link>
                   <Link
                     href={getSectionPath(locale, "team")}
-                    className="button-base button-ghost-gold text-xs px-4 py-2.5 sm:text-sm"
+                    className="button-base button-ghost-gold text-xs px-4 py-2.5 sm:text-sm w-fit"
                   >
                     {content.hero.secondaryCta}
                   </Link>
