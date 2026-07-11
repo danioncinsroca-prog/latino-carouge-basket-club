@@ -53,7 +53,7 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
                 </Link>
                 <Link
                   href={getSectionPath(locale, "matches")}
-                  className="button-base button-outline"
+                  className="button-base button-ghost-gold"
                 >
                   {section.jumpLabel}
                 </Link>
@@ -107,7 +107,7 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
                 </Link>
                 <Link
                   href={getSectionPath(locale, "matches")}
-                  className="button-base button-outline min-w-0 max-w-full w-full text-center sm:w-auto"
+                  className="button-base button-ghost-gold min-w-0 max-w-full w-full text-center sm:w-auto"
                   style={{ whiteSpace: "normal" }}
                 >
                   {section.jumpLabel}
@@ -171,7 +171,7 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
               </Link>
               <Link
                 href={backToSection}
-                className="button-base button-outline min-w-0 max-w-full w-full text-center sm:w-auto"
+                className="button-base button-ghost-gold min-w-0 max-w-full w-full text-center sm:w-auto"
                 style={{ whiteSpace: "normal" }}
               >
                 {section.jumpLabel}
