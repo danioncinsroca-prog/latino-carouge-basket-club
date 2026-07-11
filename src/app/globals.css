@@ -15,8 +15,13 @@
   --color-ink: #16253f;
   --color-muted: #625d55;
   --color-gold: #f0bc2b;
+  --color-gold-deep: #9b6200;
+  --color-gold-soft: #fff4d6;
   --color-orange: #d97c18;
   --color-line: #16253f;
+  --color-border-soft: #e3dac2;
+  --color-control: #faf7ee;
+  --color-control-border: #c9bd9e;
 }
 
 @theme inline {

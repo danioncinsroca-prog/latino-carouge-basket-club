@@ -259,12 +259,8 @@ type LocaleContent = {
     formBadge: string;
     formTitle: string;
     formIntro: string;
-    formCta: string;
     formCtaSecondary: string;
-    formCategoryLabel: string;
-    formCategoryPlaceholder: string;
     categoriesAvailable: string;
-    responseTime: string;
     bullets: string[];
     categories: Array<{
       code: string;
@@ -274,11 +270,10 @@ type LocaleContent = {
       name: string;
       email: string;
       phone: string;
-      phonePlaceholder: string;
       category: string;
       categoryPlaceholder: string;
       message: string;
-      messagePlaceholder: string;
+      messageHelp: string;
       consent: string;
       submit: string;
       successTitle: string;
@@ -684,23 +679,19 @@ export const siteContent: Record<Locale, LocaleContent> = {
       intro: "Trois profils clés dans la construction du jeu du club.",
     },
     recruitmentSection: {
-      kicker: "REJOINS LE CLUB",
+      kicker: "Rejoins le club",
       title: "On recrute",
       intro: "Tu veux jouer au basket à Carouge ? On cherche des joueurs motivés, tous niveaux confondus.",
-      ctaButton: "RÉSERVER MES ESSAIS GRATUITS",
+      ctaButton: "Réserver mes essais gratuits",
       ctaSecondary: "Deux séances d'essai gratuites pour découvrir le club, sans engagement.",
-      whyJoinKicker: "POURQUOI NOUS REJOINDRE",
-      categoriesKicker: "CHOISIS TA CATÉGORIE",
+      whyJoinKicker: "Pourquoi nous rejoindre",
+      categoriesKicker: "Choisis ta catégorie",
       categoriesIntro: "Toutes les catégories du mouvement jeunes, places disponibles pour la rentrée scolaire.",
-      formBadge: "2 SÉANCES OFFERTES · SANS ENGAGEMENT",
-      formTitle: "REJOINS L'ÉQUIPE",
+      formBadge: "2 séances offertes · sans engagement",
+      formTitle: "Rejoins l'équipe",
       formIntro: "Remplis le formulaire et on revient vers toi rapidement.",
-      formCta: "ENVOYER MA DEMANDE",
       formCtaSecondary: "Réponse sous 48 h · Aucun engagement",
-      formCategoryLabel: "Catégorie souhaitée",
-      formCategoryPlaceholder: "Sélectionne une catégorie",
-      categoriesAvailable: "PLACES DISPONIBLES",
-      responseTime: "Réponse sous 48 h · Aucun engagement",
+      categoriesAvailable: "Places disponibles",
       bullets: [
         "Encadrement qualifié, formateur diplômé",
         "Valeurs fortes : respect, solidarité, engagement",
@@ -719,14 +710,13 @@ export const siteContent: Record<Locale, LocaleContent> = {
       form: {
         name: "Nom complet",
         email: "Adresse e-mail",
-        phone: "Téléphone",
-        phonePlaceholder: "+41 XX XXX XX XX",
+        phone: "Téléphone (optionnel)",
         category: "Catégorie souhaitée",
-        categoryPlaceholder: "Sélectionne une catégorie",
-        message: "Message",
-        messagePlaceholder: "Optionnel · indique l'âge et l'expérience du joueur si tu le souhaites.",
+        categoryPlaceholder: "Choisis une catégorie",
+        message: "Message (optionnel)",
+        messageHelp: "Optionnel · indique l'âge et l'expérience du joueur si tu le souhaites.",
         consent: "J'autorise le club à conserver et utiliser les informations de ce formulaire pour traiter ma demande d'inscription.",
-        submit: "ENVOYER MA DEMANDE",
+        submit: "Envoyer ma demande",
         successTitle: "Message envoyé !",
         successMessage: "On revient vers toi dès que possible.",
         errorMessage: "Une erreur s'est produite. Réessaie.",
@@ -1213,23 +1203,19 @@ export const siteContent: Record<Locale, LocaleContent> = {
       intro: "Tres perfiles clave en la construcción del juego del club.",
     },
     recruitmentSection: {
-      kicker: "ÚNETE AL CLUB",
+      kicker: "Únete al club",
       title: "Buscamos jugadores",
       intro: "¿Quieres jugar al baloncesto en Carouge? Buscamos jugadores motivados, todos los niveles bienvenidos.",
-      ctaButton: "RESERVA MIS PRUEBAS GRATIS",
+      ctaButton: "Reserva mis pruebas gratis",
       ctaSecondary: "Dos sesiones de prueba gratuitas para conocer el club, sin compromiso.",
-      whyJoinKicker: "POR QUÉ UNIRNOS",
-      categoriesKicker: "ELIGE TU CATEGORÍA",
+      whyJoinKicker: "Por qué unirnos",
+      categoriesKicker: "Elige tu categoría",
       categoriesIntro: "Todas las categorías del movimiento juvenil, plazas disponibles para el inicio de curso.",
-      formBadge: "2 SESIONES GRATIS · SIN COMPROMISO",
-      formTitle: "ÚNETE AL EQUIPO",
+      formBadge: "2 sesiones gratis · sin compromiso",
+      formTitle: "Únete al equipo",
       formIntro: "Rellena el formulario y te respondemos lo antes posible.",
-      formCta: "ENVIAR MI SOLICITUD",
       formCtaSecondary: "Respuesta en 48 h · Sin compromiso",
-      formCategoryLabel: "Categoría deseada",
-      formCategoryPlaceholder: "Selecciona una categoría",
-      categoriesAvailable: "PLAZAS DISPONIBLES",
-      responseTime: "Respuesta en 48 h · Sin compromiso",
+      categoriesAvailable: "Plazas disponibles",
       bullets: [
         "Entrenador cualificado y titulado",
         "Valores fuertes: respeto, solidaridad, compromiso",
@@ -1248,14 +1234,13 @@ export const siteContent: Record<Locale, LocaleContent> = {
       form: {
         name: "Nombre completo",
         email: "Correo electrónico",
-        phone: "Teléfono",
-        phonePlaceholder: "+41 XX XXX XX XX",
+        phone: "Teléfono (opcional)",
         category: "Categoría deseada",
-        categoryPlaceholder: "Selecciona una categoría",
-        message: "Mensaje",
-        messagePlaceholder: "Opcional · indica la edad y experiencia del jugador si lo deseas.",
+        categoryPlaceholder: "Elige una categoría",
+        message: "Mensaje (opcional)",
+        messageHelp: "Opcional · indica la edad y experiencia del jugador si lo deseas.",
         consent: "Autorizo al club a conservar y utilizar la información de este formulario para procesar mi solicitud de inscripción.",
-        submit: "ENVIAR MI SOLICITUD",
+        submit: "Enviar mi solicitud",
         successTitle: "¡Mensaje enviado!",
         successMessage: "Te respondemos lo antes posible.",
         errorMessage: "Algo salió mal. Inténtalo de nuevo.",
