@@ -371,10 +371,10 @@ export async function HomePage({ locale }: HomePageProps) {
                     {content.recruitmentSection.categories.map((cat) => (
                       <label
                         key={cat.code}
-                        className="group relative flex min-h-32 cursor-pointer flex-col justify-between rounded-xl border p-4 transition duration-200 focus-within:outline-3 focus-within:outline-offset-3 focus-within:outline-[var(--color-gold)] border-[var(--color-border-soft)] bg-white text-[var(--color-ink)] shadow-[0_10px_26px_rgba(16,33,58,0.06)] hover:-translate-y-0.5 hover:border-[var(--color-gold)] hover:shadow-[0_16px_34px_rgba(16,33,58,0.11)]"
+                        className="group relative flex min-h-32 cursor-pointer flex-col justify-between rounded-xl border p-4 transition duration-200 focus-within:outline-3 focus-within:outline-offset-3 focus-within:outline-[var(--color-gold)] border-[var(--color-border-soft)] bg-white text-[var(--color-ink)] shadow-[0_10px_26px_rgba(16,33,58,0.06)] hover:-translate-y-0.5 hover:border-[var(--color-gold)] hover:shadow-[0_16px_34px_rgba(16,33,58,0.11)] has-[:checked]:border-[var(--color-gold)] has-[:checked]:bg-[var(--color-ink)] has-[:checked]:shadow-[0_16px_34px_rgba(16,33,58,0.18)]"
                       >
                         <div className="flex items-start justify-between gap-4">
-                          <span className="font-display text-3xl uppercase leading-none text-[var(--color-ink)]">
+                          <span className="font-display text-3xl uppercase leading-none text-[var(--color-ink)] group-has-[:checked]:text-[var(--color-gold)]">
                             {cat.code}
                           </span>
                           <input
@@ -386,10 +386,10 @@ export async function HomePage({ locale }: HomePageProps) {
                           />
                         </div>
                         <div>
-                          <div className="text-sm font-semibold leading-snug text-[var(--color-ink)]">
+                          <div className="text-sm font-semibold leading-snug text-[var(--color-ink)] group-has-[:checked]:text-white">
                             {cat.label}
                           </div>
-                          <div className="mt-2 font-condensed text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[var(--color-gold-deep)]">
+                          <div className="mt-2 font-condensed text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[var(--color-gold-deep)] group-has-[:checked]:text-[var(--color-gold)]">
                             {content.recruitmentSection.categoriesAvailable}
                           </div>
                         </div>
