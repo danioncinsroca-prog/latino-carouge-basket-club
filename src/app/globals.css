@@ -20,8 +20,8 @@
   --color-orange: #d97c18;
   --color-line: #16253f;
   --color-border-soft: #e3dac2;
-  --color-control: #faf7ee;
-  --color-control-border: #c9bd9e;
+  --color-control: #f7f8fa;
+  --color-control-border: #8793a3;
 }
 
 @theme inline {
