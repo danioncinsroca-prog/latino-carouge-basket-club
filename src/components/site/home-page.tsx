@@ -179,7 +179,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="matches"
-            className="border-t border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:py-16"
+            className="bg-[var(--color-panel)] py-14 sm:py-16"
           >
             <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
               <SectionHeading
@@ -234,7 +234,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <section
             id="effectif"
-            className="relative scroll-mt-20 overflow-hidden border-t border-white/12 bg-[var(--color-ink)] py-14 sm:scroll-mt-28 sm:py-16"
+            className="relative scroll-mt-20 overflow-hidden bg-[var(--color-ink)] py-14 sm:scroll-mt-28 sm:py-16"
           >
             <div aria-hidden className="absolute inset-0 bg-[var(--color-ink)]" />
             <div aria-hidden className="absolute inset-0 opacity-[0.96]">
@@ -280,7 +280,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="palmares"
-            className="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-14 sm:py-16"
+            className="bg-[var(--color-ink)] py-14 sm:py-16"
           >
             <div className="mb-8">
               <div className="ink-divider space-y-3 pt-5">
@@ -326,7 +326,7 @@ export async function HomePage({ locale }: HomePageProps) {
 
           <SectionShell
             id="recruitment"
-            className="border-y border-[var(--color-border-soft)] bg-[var(--color-surface)] py-16 sm:py-20 lg:py-24"
+            className="bg-[var(--color-surface)] py-16 sm:py-20 lg:py-24"
           >
             <div className="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(25rem,5fr)] lg:items-start lg:gap-12">
               {/* Left column: Content */}
@@ -385,7 +385,7 @@ export async function HomePage({ locale }: HomePageProps) {
                     {content.recruitmentSection.categories.map((cat) => (
                       <label
                         key={cat.code}
-                        className="group relative flex min-h-32 cursor-pointer flex-col justify-between rounded-xl border p-4 transition duration-200 focus-within:outline-3 focus-within:outline-offset-3 focus-within:outline-[var(--color-gold)] border-[var(--color-border-soft)] bg-white text-[var(--color-ink)] shadow-[0_10px_26px_rgba(16,33,58,0.06)] hover:-translate-y-0.5 hover:border-[var(--color-gold)] hover:shadow-[0_16px_34px_rgba(16,33,58,0.11)] has-[:checked]:border-[var(--color-gold)] has-[:checked]:bg-[var(--color-ink)] has-[:checked]:shadow-[0_16px_34px_rgba(16,33,58,0.18)]"
+                        className="group relative flex min-h-32 cursor-pointer flex-col justify-between rounded-xl p-4 transition duration-200 focus-within:outline-3 focus-within:outline-offset-3 focus-within:outline-[var(--color-gold)] bg-white text-[var(--color-ink)] shadow-[0_10px_26px_rgba(16,33,58,0.06)] hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(16,33,58,0.11)] has-[:checked]:bg-[var(--color-ink)] has-[:checked]:shadow-[0_16px_34px_rgba(16,33,58,0.18)]"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <span className="font-display text-3xl uppercase leading-none text-[var(--color-ink)] group-has-[:checked]:text-[var(--color-gold)]">
@@ -416,7 +416,7 @@ export async function HomePage({ locale }: HomePageProps) {
               {/* Right column: Form card */}
               <div
                 id="recruitment-form"
-                className="scroll-mt-16 rounded-2xl border border-[var(--color-control-border)] bg-white p-5 shadow-[0_22px_60px_rgba(16,33,58,0.10)] sm:p-7 lg:p-8"
+                className="scroll-mt-16 rounded-2xl bg-white p-5 shadow-[0_22px_60px_rgba(16,33,58,0.10)] sm:p-7 lg:p-8"
               >
                 <div className="border-b border-[var(--color-border-soft)] pb-6">
                   <div className="inline-flex rounded-full bg-[var(--color-gold-soft)] px-3 py-1.5 font-condensed text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[var(--color-gold-deep)]">

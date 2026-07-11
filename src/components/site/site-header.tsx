@@ -65,12 +65,12 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
               ))}
             </nav>
 
-            <div className="inline-flex shrink-0 border border-white/30">
+            <div className="inline-flex shrink-0 gap-1 rounded-lg bg-white/5 p-1">
               {localeLinks.map((option) =>
                 option.code === locale ? (
                   <span
                     key={option.code}
-                    className="bg-[var(--color-gold)] px-2 py-1.5 font-condensed text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[var(--color-ink)] sm:px-4 sm:py-2 sm:text-xs"
+                    className="rounded-md bg-[var(--color-gold)] px-2 py-1.5 font-condensed text-[0.65rem] font-bold uppercase tracking-[0.24em] text-[var(--color-ink)] sm:px-4 sm:py-2 sm:text-xs"
                   >
                     {option.code.toUpperCase()}
                   </span>
@@ -78,7 +78,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
                   <Link
                     key={option.code}
                     href={option.href}
-                    className="px-2 py-1.5 font-condensed text-[0.65rem] font-bold uppercase tracking-[0.24em] text-white/60 hover:bg-white/10 sm:px-4 sm:py-2 sm:text-xs"
+                    className="rounded-md px-2 py-1.5 font-condensed text-[0.65rem] font-bold uppercase tracking-[0.24em] text-white/60 transition hover:bg-white/10 sm:px-4 sm:py-2 sm:text-xs"
                   >
                     {option.code.toUpperCase()}
                   </Link>

@@ -43,13 +43,13 @@ export function TeamCourtShowcase({
   const labels = sectionLabels[locale];
 
   return (
-    <div className="grid gap-px border border-white/12 bg-white/8 grid-cols-1 lg:grid-cols-[0.42fr_0.58fr]">
+    <div className="grid gap-px bg-white/8 grid-cols-1 lg:grid-cols-[0.42fr_0.58fr]">
       <div className="bg-[var(--color-ink)] p-4 sm:p-6 lg:p-8">
         <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
           {labels.coach}
         </div>
 
-        <div className="mt-4 border-b border-white/12 pb-6">
+        <div className="mt-4 pb-6">
           <div className="font-display text-4xl uppercase leading-none text-[var(--color-cream)] sm:text-5xl">
             {coach.name}
           </div>
@@ -72,7 +72,7 @@ export function TeamCourtShowcase({
       </div>
 
       <div className="bg-[var(--color-ink)] p-6 sm:p-8">
-        <div className="border-b border-white/12 pb-6">
+        <div className="pb-6">
           <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
             {labels.players}
           </div>
@@ -81,7 +81,7 @@ export function TeamCourtShowcase({
           </div>
         </div>
 
-        <div className="mt-8 grid gap-px border border-white/12 bg-white/8 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-px bg-white/8 sm:grid-cols-2 xl:grid-cols-3">
           {roster.map((player) => (
             <div
               key={player.number}
@@ -91,7 +91,7 @@ export function TeamCourtShowcase({
                 <div className="font-condensed text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)]">
                   {player.position}
                 </div>
-                <div className="mt-3 flex items-end justify-between gap-4 border-b border-white/12 pb-3">
+                <div className="mt-3 flex items-end justify-between gap-4 pb-3">
                   <div className="font-display text-3xl uppercase leading-none text-[var(--color-cream)]">
                     {player.name}
                   </div>

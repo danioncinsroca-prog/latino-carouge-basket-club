@@ -320,7 +320,7 @@ function EmptyState({
   body?: string;
 }) {
   return (
-    <div className="border border-[var(--color-line)] bg-white px-5 py-8 text-center">
+    <div className="rounded-xl bg-white px-5 py-8 text-center shadow-md">
       <h2 className="font-display text-3xl uppercase leading-none text-[var(--color-ink)] sm:text-4xl">
         {title}
       </h2>
@@ -382,7 +382,7 @@ export function MatchCalendar({
 
   return (
     <div className="space-y-8">
-      <div className="border border-[var(--color-line)] bg-white p-4 sm:p-5">
+      <div className="rounded-xl bg-white p-4 shadow-md sm:p-5">
         <div className="font-condensed text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-muted)]">
           {labels.categorySelector}
         </div>
@@ -393,10 +393,10 @@ export function MatchCalendar({
               type="button"
               onClick={() => setSelectedCategoryId(category.id)}
               data-selected={category.id === activeCategoryId}
-              className={`shrink-0 border px-3 py-2 text-left font-condensed text-sm font-bold uppercase tracking-[0.08em] transition ${
+              className={`shrink-0 rounded-lg px-3 py-2 text-left font-condensed text-sm font-bold uppercase tracking-[0.08em] transition ${
                 category.id === activeCategoryId
-                  ? "border-[var(--color-ink)] bg-[var(--color-ink)] text-[var(--color-cream)]"
-                  : "border-[var(--color-line)] bg-[var(--color-panel)] text-[var(--color-ink)] hover:border-[var(--color-ink)]"
+                  ? "bg-[var(--color-ink)] text-[var(--color-cream)]"
+                  : "bg-[var(--color-panel)] text-[var(--color-ink)] hover:bg-[var(--color-cream)]/20"
               }`}
             >
               <span>{category.label}</span>

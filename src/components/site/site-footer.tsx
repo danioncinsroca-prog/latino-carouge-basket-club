@@ -50,7 +50,7 @@ export function SiteFooter({ locale }: SiteFooterProps) {
   return (
     <footer
       id="footer"
-      className="border-t border-[var(--color-line)] bg-[var(--color-ink)] text-[var(--color-cream)]"
+      className="bg-[var(--color-ink)] text-[var(--color-cream)]"
     >
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:gap-8 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-8">
         <div className="space-y-4">
@@ -69,19 +69,19 @@ export function SiteFooter({ locale }: SiteFooterProps) {
           <div className="flex flex-col gap-2">
             <Link
               href={getHomePath(locale)}
-              className="border border-[var(--color-cream)]/30 px-3 py-2 font-condensed text-xs font-bold uppercase tracking-[0.22em] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+              className="rounded-lg px-3 py-2 font-condensed text-xs font-bold uppercase tracking-[0.22em] transition hover:bg-[var(--color-gold)]/10 hover:text-[var(--color-gold)]"
             >
               {content.footer.homeLabel}
             </Link>
             <Link
               href={ticketHref}
-              className="border border-[var(--color-cream)]/30 px-3 py-2 font-condensed text-xs font-bold uppercase tracking-[0.22em] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+              className="rounded-lg px-3 py-2 font-condensed text-xs font-bold uppercase tracking-[0.22em] transition hover:bg-[var(--color-gold)]/10 hover:text-[var(--color-gold)]"
             >
               {content.footer.ticketingLabel}
             </Link>
             <Link
               href={getSectionPath(locale, "team")}
-              className="border border-[var(--color-cream)]/30 px-3 py-2 font-condensed text-xs font-bold uppercase tracking-[0.22em] hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+              className="rounded-lg px-3 py-2 font-condensed text-xs font-bold uppercase tracking-[0.22em] transition hover:bg-[var(--color-gold)]/10 hover:text-[var(--color-gold)]"
             >
               {content.sectionLinks.team}
             </Link>

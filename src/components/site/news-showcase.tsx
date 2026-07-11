@@ -26,7 +26,7 @@ function NewsCard({
 
   return (
     <article
-      className={`group relative overflow-hidden rounded-[1.05rem] border border-[rgba(22,37,63,0.14)] bg-[var(--color-ink)] shadow-[0_20px_40px_rgba(12,18,28,0.14)] ${
+      className={`group relative overflow-hidden rounded-xl bg-[var(--color-ink)] shadow-[0_20px_40px_rgba(12,18,28,0.14)] ${
         isFeature ? "min-h-[25rem] sm:min-h-[29rem]" : "min-h-[12rem] sm:min-h-[13.75rem]"
       }`}
     >

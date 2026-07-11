@@ -5,9 +5,9 @@ type PlaceholderTone = "ink" | "gold" | "panel";
 type PlaceholderSize = "hero" | "portrait" | "news" | "wide";
 
 const toneClasses: Record<PlaceholderTone, string> = {
-  ink: "bg-[var(--color-ink)] text-[var(--color-cream)] border-[var(--color-gold)]",
-  gold: "bg-[var(--color-gold)] text-[var(--color-ink)] border-[var(--color-ink)]",
-  panel: "bg-[var(--color-surface)] text-[var(--color-ink)] border-[var(--color-ink)]",
+  ink: "bg-[var(--color-ink)] text-[var(--color-cream)]",
+  gold: "bg-[var(--color-gold)] text-[var(--color-ink)]",
+  panel: "bg-[var(--color-surface)] text-[var(--color-ink)]",
 };
 
 const sizeClasses: Record<PlaceholderSize, string> = {
@@ -45,7 +45,7 @@ export function MediaPlaceholder({
   if (image) {
     return (
       <div
-        className={`relative overflow-hidden border ${sizeClasses[size]} ${className}`}
+        className={`relative overflow-hidden rounded-xl ${sizeClasses[size]} ${className}`}
       >
         <Image
           src={image.src}
@@ -67,7 +67,7 @@ export function MediaPlaceholder({
 
   return (
     <div
-      className={`relative flex w-full flex-col justify-between overflow-hidden border p-4 site-grid ${toneClasses[tone]} ${sizeClasses[size]} ${className}`}
+      className={`relative flex w-full flex-col justify-between overflow-hidden rounded-xl p-4 site-grid shadow-md ${toneClasses[tone]} ${sizeClasses[size]} ${className}`}
     >
       <div className="relative z-10 font-condensed text-[0.7rem] font-bold uppercase tracking-[0.24em]">
         {label}

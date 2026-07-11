@@ -70,7 +70,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
 
   return (
     <div
-      className="relative flex min-h-[200px] flex-col overflow-hidden rounded-[1rem] border border-[rgba(245,241,230,0.12)] sm:min-h-[228px] lg:min-h-[236px] sm:rounded-[1.15rem]"
+      className="relative flex min-h-[200px] flex-col overflow-hidden rounded-xl shadow-lg sm:min-h-[228px] lg:min-h-[236px] sm:rounded-2xl"
       style={{
         background:
           "linear-gradient(180deg, #183254 0%, #122742 48%, #0c1828 100%)",
@@ -88,7 +88,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-[1px] rounded-[0.95rem] border border-white/6 sm:rounded-[1rem]"
+        className="pointer-events-none absolute inset-[1px] rounded-[calc(0.75rem-1px)] shadow-inset-subtle sm:rounded-[calc(1rem-1px)]"
       />
 
       <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-1 px-2 py-4 sm:gap-3 sm:px-5 sm:py-6 lg:px-6 lg:py-7">
@@ -104,7 +104,7 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
             {displayDate}
           </div>
           <div
-            className="min-w-[6.8rem] border border-[rgba(255,216,120,0.14)] bg-black/90 px-1.5 py-[0.55rem] text-center font-scoreboard text-[1.7rem] leading-none tracking-[0.04em] text-[#ffd86f] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] sm:min-w-[11.2rem] sm:px-4 sm:py-[0.78rem] sm:text-[2.9rem]"
+            className="min-w-[6.8rem] bg-black/90 px-1.5 py-[0.55rem] text-center font-scoreboard text-[1.7rem] leading-none tracking-[0.04em] text-[#ffd86f] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] sm:min-w-[11.2rem] sm:px-4 sm:py-[0.78rem] sm:text-[2.9rem]"
             style={{
               textShadow:
                 "0 0 5px rgba(255,216,111,0.45), 0 0 14px rgba(255,216,111,0.22)",
@@ -143,7 +143,7 @@ export function UpcomingScoreboard({
 }) {
   if (fixtures.length === 0) {
     return (
-      <div className="border border-[var(--color-line)] bg-[var(--color-surface)] px-5 py-6 text-center sm:px-6 sm:py-8">
+      <div className="rounded-xl bg-[var(--color-surface)] px-5 py-6 text-center shadow-md sm:px-6 sm:py-8">
         <div className="font-display text-3xl uppercase leading-none text-[var(--color-ink)] sm:text-4xl">
           {emptyTitle ?? "Calendrier a venir"}
         </div>

@@ -190,7 +190,7 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
           </div>
         </section>
 
-        <section className="mt-14 border-y border-[var(--color-line)] bg-[var(--color-panel)] py-14 sm:mt-16 sm:py-16">
+        <section className="mt-14 bg-[var(--color-panel)] py-14 sm:mt-16 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {sectionKey === "team" ? (
               <TeamCourtShowcase

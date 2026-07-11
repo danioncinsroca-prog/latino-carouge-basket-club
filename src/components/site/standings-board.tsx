@@ -123,7 +123,7 @@ function StandingsTable({
   const labels = copy[locale];
 
   return (
-    <div className="overflow-x-auto border border-[var(--color-line)] bg-white">
+    <div className="overflow-x-auto rounded-xl bg-white shadow-md">
       <table className="w-full min-w-[1060px] border-collapse">
         <thead>
           <tr className="bg-white text-left">
@@ -250,7 +250,7 @@ export function StandingsBoard({
 
   if (standings.teams.length === 0) {
     return (
-      <div className="border border-[var(--color-line)] bg-white px-5 py-8 text-center">
+      <div className="rounded-xl bg-white px-5 py-8 text-center shadow-md">
         <h2 className="font-display text-4xl uppercase leading-none">
           {labels.noRankingTitle}
         </h2>
@@ -263,7 +263,7 @@ export function StandingsBoard({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 border border-[var(--color-line)] bg-white p-4 sm:p-5 lg:flex-row lg:items-end lg:justify-between">
+      <div className="flex flex-col gap-4 rounded-xl bg-white p-4 shadow-md sm:p-5 lg:flex-row lg:items-end lg:justify-between">
         <div className="min-w-0">
           <div className="font-condensed text-xs font-bold uppercase tracking-[0.22em] text-[var(--color-muted)]">
             {labels.teamSelector}
@@ -276,10 +276,10 @@ export function StandingsBoard({
                 data-team-id={team.id}
                 data-selected={team.id === selectedTeam?.id}
                 onClick={() => setSelectedTeamId(team.id)}
-                className={`shrink-0 border px-3 py-2 text-left font-condensed text-sm font-bold uppercase tracking-[0.08em] transition ${
+                className={`shrink-0 rounded-lg px-3 py-2 text-left font-condensed text-sm font-bold uppercase tracking-[0.08em] transition ${
                   team.id === selectedTeam?.id
-                    ? "border-[var(--color-ink)] bg-[var(--color-ink)] text-[var(--color-cream)]"
-                    : "border-[var(--color-line)] bg-[var(--color-panel)] text-[var(--color-ink)] hover:border-[var(--color-ink)]"
+                    ? "bg-[var(--color-ink)] text-[var(--color-cream)]"
+                    : "bg-[var(--color-panel)] text-[var(--color-ink)] hover:bg-[var(--color-cream)]/20"
                 }`}
               >
                 <span>{team.label}</span>
@@ -346,7 +346,7 @@ export function StandingsBoard({
       {selectedView ? (
         <StandingsTable rows={selectedView.rows} locale={locale} />
       ) : (
-        <div className="border border-[var(--color-line)] bg-white px-5 py-10 text-center">
+        <div className="rounded-xl bg-white px-5 py-10 text-center shadow-md">
           <h2 className="font-display text-4xl uppercase leading-none">
             {labels.noRankingTitle}
           </h2>

@@ -27,7 +27,7 @@ type RecruitmentFormContent = {
 };
 
 const inputClassName =
-  "mt-2 min-h-13 w-full rounded-lg border border-[var(--color-control-border)] bg-[var(--color-control)] px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[var(--color-muted)] hover:border-[var(--color-ink)]/55 focus:border-[var(--color-ink)] focus:ring-4 focus:ring-[var(--color-gold)]/25 disabled:cursor-not-allowed disabled:opacity-60";
+  "mt-2 min-h-13 w-full rounded-lg bg-[var(--color-control)] px-4 py-3 text-base text-[var(--color-ink)] outline-none transition placeholder:text-[var(--color-muted)] focus:ring-4 focus:ring-[var(--color-gold)]/25 disabled:cursor-not-allowed disabled:opacity-60 shadow-sm";
 
 export function RecruitmentForm({
   content,
@@ -44,7 +44,7 @@ export function RecruitmentForm({
   return (
     <div>
       {state.success && (
-        <div className="mt-6 rounded-lg border border-[var(--color-gold)] bg-[var(--color-gold-soft)] p-6">
+        <div className="mt-6 rounded-lg bg-[var(--color-gold-soft)] p-6 shadow-md">
           <h4 className="font-display text-2xl uppercase leading-none text-[var(--color-ink)]">
             {content.form.successTitle}
           </h4>
@@ -55,7 +55,7 @@ export function RecruitmentForm({
       )}
 
       {state.error && !state.success && (
-        <div className="mt-6 rounded-lg border border-red-300 bg-red-50 p-6">
+        <div className="mt-6 rounded-lg bg-red-50 p-6 shadow-md">
           <p className="text-sm font-semibold text-red-800">
             {content.form.errorMessage}
           </p>
