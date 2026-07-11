@@ -254,9 +254,7 @@ type LocaleContent = {
     ctaButton: string;
     ctaSecondary: string;
     whyJoinKicker: string;
-    whyJoinTitle: string;
     categoriesKicker: string;
-    categoriesTitle: string;
     categoriesIntro: string;
     formBadge: string;
     formTitle: string;
@@ -692,10 +690,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
       ctaButton: "RÉSERVER MES ESSAIS GRATUITS",
       ctaSecondary: "Deux séances d'essai gratuites pour découvrir le club, sans engagement.",
       whyJoinKicker: "POURQUOI NOUS REJOINDRE",
-      whyJoinTitle: "Pourquoi nous rejoindre",
       categoriesKicker: "CHOISIS TA CATÉGORIE",
-      categoriesTitle: "Choisis ta catégorie",
-      categoriesIntro: "Sélectionne la catégorie qui te convient.",
+      categoriesIntro: "Toutes les catégories du mouvement jeunes, places disponibles pour la rentrée scolaire.",
       formBadge: "2 SÉANCES OFFERTES · SANS ENGAGEMENT",
       formTitle: "REJOINS L'ÉQUIPE",
       formIntro: "Remplis le formulaire et on revient vers toi rapidement.",
@@ -1223,10 +1219,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
       ctaButton: "RESERVA MIS PRUEBAS GRATIS",
       ctaSecondary: "Dos sesiones de prueba gratuitas para conocer el club, sin compromiso.",
       whyJoinKicker: "POR QUÉ UNIRNOS",
-      whyJoinTitle: "Por qué unirnos",
       categoriesKicker: "ELIGE TU CATEGORÍA",
-      categoriesTitle: "Elige tu categoría",
-      categoriesIntro: "Selecciona la categoría que se adapte a ti.",
+      categoriesIntro: "Todas las categorías del movimiento juvenil, plazas disponibles para el inicio de curso.",
       formBadge: "2 SESIONES GRATIS · SIN COMPROMISO",
       formTitle: "ÚNETE AL EQUIPO",
       formIntro: "Rellena el formulario y te respondemos lo antes posible.",

@@ -322,9 +322,9 @@ export async function HomePage({ locale }: HomePageProps) {
                 <div className="space-y-8 sm:space-y-10">
                   {/* Header with kicker, title, intro */}
                   <div className="space-y-3 sm:space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="h-px flex-1 bg-[var(--color-gold)]" />
-                      <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem] whitespace-nowrap">
+                    <div className="space-y-2">
+                      <div className="h-0.5 w-16 bg-[var(--color-gold)]" />
+                      <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
                         {content.recruitmentSection.kicker}
                       </div>
                     </div>
@@ -351,13 +351,8 @@ export async function HomePage({ locale }: HomePageProps) {
 
                   {/* Why Join Us section */}
                   <div className="space-y-4 sm:space-y-5">
-                    <div className="space-y-1.5">
-                      <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
-                        {content.recruitmentSection.whyJoinKicker}
-                      </div>
-                      <h3 className="font-display text-xl uppercase leading-none text-[var(--color-ink)] sm:text-2xl">
-                        {content.recruitmentSection.whyJoinTitle}
-                      </h3>
+                    <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
+                      {content.recruitmentSection.whyJoinKicker}
                     </div>
                     {/* Numbered bullets in 2-column grid */}
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
@@ -380,9 +375,6 @@ export async function HomePage({ locale }: HomePageProps) {
                       <div className="font-condensed text-[0.65rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
                         {content.recruitmentSection.categoriesKicker}
                       </div>
-                      <h3 className="font-display text-xl uppercase leading-none text-[var(--color-ink)] sm:text-2xl">
-                        {content.recruitmentSection.categoriesTitle}
-                      </h3>
                       <p className="text-xs text-[var(--color-ink)]/70 sm:text-sm">
                         {content.recruitmentSection.categoriesIntro}
                       </p>
