@@ -42,7 +42,7 @@ export function SiteHeader({ locale, currentSection }: SiteHeaderProps) {
               priority
               className="sm:h-[76px] sm:w-[76px]"
             />
-            <div className="space-y-0.5">
+            <div className="hidden space-y-0.5 min-[480px]:block">
               <div className="font-condensed text-[0.6rem] font-bold uppercase tracking-[0.24em] text-[var(--color-gold)] sm:text-[0.72rem]">
                 {content.header.badge}
               </div>

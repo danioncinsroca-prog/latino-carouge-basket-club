@@ -97,12 +97,12 @@ export async function HomePage({ locale }: HomePageProps) {
                 className="object-cover object-right sm:object-center"
               />
             </div>
-            <div className="relative z-10 mx-auto max-w-7xl px-4 flex flex-col justify-end flex-1 sm:px-6 lg:px-8">
-              <div className="max-w-3xl space-y-4 sm:space-y-6 pb-16">
+            <div className="relative z-10 flex flex-1 items-end px-0 sm:px-8 lg:items-center lg:px-[clamp(3rem,7vw,9rem)]">
+              <div className="w-full max-w-xl space-y-4 bg-[#062c5a]/95 px-4 py-8 sm:space-y-6 sm:bg-transparent sm:px-0 sm:pb-16 lg:max-w-[min(52vw,58rem)] lg:py-0">
                 <div className="space-y-3 sm:space-y-6">
                   <h1
                     className="font-display uppercase leading-[0.9] text-[var(--color-cream)]"
-                    style={{ fontSize: "clamp(1.75rem, 5vw, 5rem)" }}
+                    style={{ fontSize: "clamp(2.5rem, 4.6vw, 5.75rem)" }}
                   >
                     {clubConfig.shortName}
                   </h1>
