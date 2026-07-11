@@ -369,11 +369,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
     meta: {
       homeTitle: "Club de basket à Carouge",
       homeDescription:
-        "Landing bilingue FR/ES pour LATINO CAROUGE BASKET CLUB : prochain match, effectif, actualités, matchs et résultats.",
+        "Site officiel du LATINO CAROUGE BASKET CLUB : équipes, calendrier, actualités, classement et résultats.",
       sectionDescriptions: {
         team: "Effectif, coach principal et structure sportive du club.",
-        news: "Actualités du club et rythme éditorial matchday.",
-        matches: "Calendrier, prochain match et future billetterie.",
+        news: "Actualités, événements et temps forts du club.",
+        matches: "Calendrier et prochains matchs du club.",
         standings: "Classement automatisé de chaque équipe du club.",
         history: "Résultats du club par équipe, catégorie et mois.",
       },
@@ -384,10 +384,10 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     nav: frNav("fr"),
     hero: {
-      badge: "Basket local. Identité forte. Structure prête.",
-      claim: "Club bilingue. Matchday direct. Présence nette.",
+      badge: "Basket local · Carouge · Genève",
+      claim: "Un club. Une équipe. Une même passion.",
       copy:
-        "Le club pose une base claire : prochain match en haut, effectif visible, actualités lisibles et navigation prête pour grandir sans refaire la structure.",
+        "Retrouvez les équipes, les prochains matchs et toute l’actualité du Latino Carouge Basket Club.",
       primaryCta: "Voir le prochain match",
       secondaryCta: "Voir l’équipe",
     },
@@ -396,34 +396,34 @@ export const siteContent: Record<Locale, LocaleContent> = {
       opponentLabel: "Adversaire",
       versus: "vs",
       copy:
-        "Le bloc matchday reste prioritaire. Le calendrier partagé peut alimenter cette zone sans casser la home.",
+        "Toutes les informations pour suivre la prochaine rencontre du club.",
       cta: "Voir les matchs",
     },
     snapshot: {
-      kicker: "Base du club",
-      title: "Une landing prête pour le terrain",
+      kicker: "Le club",
+      title: "Le basket au cœur de Carouge",
       intro:
-        "Le site prend une direction simple : être utile le jour du match, lisible pour les familles et immédiatement identifiable comme un club de basket basé à Carouge.",
+        "Un club bilingue, ouvert aux familles et animé par la même envie de jouer, progresser et partager.",
       items: [
         {
           label: "Base",
           value: "Carouge",
-          detail: "Ancrage local à Genève avec une lecture claire côté club et supporters.",
+          detail: "Un club de proximité ancré dans la vie sportive genevoise.",
         },
         {
           label: "Langues",
           value: "FR / ES",
-          detail: "Architecture bilingue propre, avec URLs séparées et contenu prêt à évoluer.",
+          detail: "Les informations du club sont disponibles en français et en espagnol.",
         },
         {
           label: "Focus",
-          value: "Matchday",
-          detail: "Prochain match, effectif, actualités et résultats visibles dès la home.",
+          value: "Compétition",
+          detail: "Matchs, équipes, actualités et résultats réunis au même endroit.",
         },
         {
           label: "Calendrier",
-          value: "Connectable",
-          detail: "Le site peut recevoir automatiquement les prochains matchs depuis un agenda partagé.",
+          value: "À jour",
+          detail: "Les prochains rendez-vous du club sont faciles à retrouver.",
         },
       ],
     },
@@ -439,7 +439,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       name: "Coach principal",
       role: "Direction sportive",
       bio:
-        "Bloc éditorial prévu pour présenter la vision du coach, le style de jeu et le cadre compétitif sans dépendre d’un portrait final.",
+        "Découvrez prochainement le parcours du coach, sa vision du jeu et ses objectifs pour l’équipe.",
     },
     roster: [
       {
@@ -506,17 +506,17 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     newsSection: {
       kicker: "Actualités",
-      title: "Des cartes éditoriales simples et sportives",
+      title: "La vie du club, sur et en dehors du terrain",
       intro:
-        "Les actualités existent déjà en preview sur la home, mais la structure redirige aussi vers une page dédiée sans lien cassé.",
+        "Matchs, entraînements, événements et temps forts : suivez ce qui fait vivre le club.",
       viewAll: "Voir les actualités",
     },
     news: [
       {
         dateLabel: "Août 2026",
-        title: "Une base visuelle carrée pour lancer la saison",
+        title: "Une nouvelle saison se prépare à Carouge",
         excerpt:
-          "Le site est conçu pour accueillir les vrais visuels du club plus tard, sans refaire la grille ni les proportions.",
+          "Les équipes se préparent à retrouver le terrain pour une saison placée sous le signe du collectif.",
         image: {
           src: "/stock/team-huddle.jpg",
           alt: "Joueurs de basket rassemblés en cercle avant un match.",
@@ -527,7 +527,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         dateLabel: "Septembre 2026",
         title: "Le groupe prend forme à Carouge",
         excerpt:
-          "La section effectif est prête à recevoir le coach, les joueurs et les premiers profils matchday.",
+          "Joueurs, entraîneurs et bénévoles se mobilisent pour lancer la saison dans les meilleures conditions.",
         image: {
           src: "/stock/indoor-practice.jpg",
           alt: "Séance d'entraînement de basket en salle avec coach et joueuses.",
@@ -536,9 +536,9 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
       {
         dateLabel: "Septembre 2026",
-        title: "Calendrier et matchs : la couche utile d’abord",
+        title: "Les premiers rendez-vous de la saison",
         excerpt:
-          "Le prochain match reste visible en haut de page pour garder une logique claire et locale.",
+          "Retrouvez bientôt les dates des prochaines rencontres et venez soutenir les équipes du club.",
         image: {
           src: "/stock/dunk-action.jpg",
           alt: "Action de dunk pendant un match de basket devant le public.",
@@ -554,7 +554,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       viewAll: "Voir tous les matchs",
       emptyTitle: "Aucun match officiel publié",
       emptyBody:
-        "Pas de prochain match publié pour l'instant. Cette page se met à jour dès que le calendrier est disponible.",
+        "Le calendrier sera publié dès que les prochaines rencontres seront confirmées.",
       soonLabel: "Bientôt disponible",
     },
     fixtures: [
@@ -763,11 +763,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
       coach: {
         label: "COACH PORTRAIT",
-        note: "Slot prévu pour le portrait officiel du coach.",
+        note: "Portrait officiel du coach à venir.",
       },
       news: {
         label: "NEWS IMAGE",
-        note: "Slot éditorial prêt pour photo ou affiche matchday.",
+        note: "Photo de l’actualité du club à venir.",
         image: {
           src: "/stock/indoor-practice.jpg",
           alt: "Séance de basket en salle avec groupe et coach.",
@@ -784,13 +784,13 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     sectionPages: {
       team: {
-        badge: "Page équipe",
+        badge: "Le club",
         title: "Équipe",
         intro:
-          "Cette page est déjà routée pour accueillir l’effectif complet, le coach et les fiches joueurs dès que les contenus finaux arrivent.",
-        comingSoon: "Version détaillée en préparation.",
-        backHome: "Retour à la home",
-        jumpLabel: "Retour à l’aperçu équipe",
+          "Découvrez les catégories, le comité et les personnes qui font vivre le club au quotidien.",
+        comingSoon: "Les portraits de l’équipe seront bientôt disponibles.",
+        backHome: "Retour à l’accueil",
+        jumpLabel: "Voir l’équipe",
         placeholder: {
           label: "PHOTO ÉQUIPE",
           note: "Emplacement prévu pour visuel collectif ou portrait principal.",
@@ -802,13 +802,13 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       news: {
-        badge: "Page actualités",
+        badge: "La vie du club",
         title: "Actualités",
         intro:
-          "La page actualités est prête à devenir un vrai hub éditorial, mais elle existe déjà sans casser la navigation.",
-        comingSoon: "Version éditoriale longue en préparation.",
-        backHome: "Retour à la home",
-        jumpLabel: "Retour aux actualités home",
+          "Retrouvez les matchs, les événements et les moments forts du Latino Carouge Basket Club.",
+        comingSoon: "De nouvelles actualités arrivent bientôt.",
+        backHome: "Retour à l’accueil",
+        jumpLabel: "Voir les dernières actualités",
         placeholder: {
           label: "ACTU FEATURE",
           note: "Emplacement prévu pour la prochaine image éditoriale forte.",
@@ -820,16 +820,16 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       matches: {
-        badge: "Page matchs",
+        badge: "Saison 2026–2027",
         title: "Matchs",
         intro:
-          "La page matchs prépare la couche opérationnelle : calendrier et prochains rendez-vous du club.",
-        comingSoon: "Version calendrier complet en préparation.",
-        backHome: "Retour à la home",
-        jumpLabel: "Retour au prochain match",
+          "Consultez les prochaines rencontres et venez encourager les équipes du club.",
+        comingSoon: "Le calendrier complet sera publié prochainement.",
+        backHome: "Retour à l’accueil",
+        jumpLabel: "Voir le prochain match",
         placeholder: {
-          label: "CALENDRIER SLOT",
-          note: "Zone prête pour intégration calendrier ou visuel matchday.",
+          label: "CALENDRIER",
+          note: "Les prochaines rencontres seront affichées ici.",
           image: {
             src: "/stock/hero-matchday.jpg",
             alt: "Photo d'un match de basket dans une grande arène.",
@@ -838,12 +838,12 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       standings: {
-        badge: "Page classement",
+        badge: "Saison 2026–2027",
         title: "Classement",
         intro:
-          "Le classement de chaque équipe, mis à jour automatiquement et consultable par catégorie.",
-        comingSoon: "Le classement se met à jour après chaque match.",
-        backHome: "Retour à la home",
+          "Suivez la position de chaque équipe du club dans son championnat.",
+        comingSoon: "Mise à jour après chaque journée de championnat.",
+        backHome: "Retour à l’accueil",
         jumpLabel: "Voir les matchs",
         placeholder: {
           label: "CLASSEMENT",
@@ -856,16 +856,16 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       history: {
-        badge: "Page resultats",
-        title: "Resultats",
+        badge: "Les matchs du club",
+        title: "Résultats",
         intro:
           "Tous les résultats du club, classés par équipe, catégorie et mois.",
-        comingSoon: "L'archive se met à jour après chaque match.",
-        backHome: "Retour à la home",
+        comingSoon: "Les derniers scores seront publiés ici.",
+        backHome: "Retour à l’accueil",
         jumpLabel: "Voir les matchs",
         placeholder: {
           label: "ARCHIVE PANEL",
-          note: "Zone prévue pour futures stats, saisons ou filtres.",
+          note: "Les résultats par équipe et par saison seront affichés ici.",
           image: {
             src: "/stock/news-2.jpg",
             alt: "Photo de basket en salle avec public.",
@@ -877,7 +877,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
     footer: {
       kicker: "LATINO CAROUGE BASKET CLUB",
       copy:
-        "Base bilingue FR / ES, architecture prête pour images réelles, calendrier partagé, pages détaillées et croissance éditoriale.",
+        "Le club de basket bilingue de Carouge, ouvert à toutes les générations.",
       quickLinksTitle: "Liens rapides",
       homeLabel: "Home",
       ticketingLabel: "Calendrier / matchs",
@@ -894,11 +894,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
     meta: {
       homeTitle: "Club de baloncesto en Carouge",
       homeDescription:
-        "Landing bilingüe FR/ES para LATINO CAROUGE BASKET CLUB: próximo partido, plantilla, noticias, partidos y resultados.",
+        "Web oficial del LATINO CAROUGE BASKET CLUB: equipos, calendario, noticias, clasificación y resultados.",
       sectionDescriptions: {
         team: "Plantilla, entrenador principal y base deportiva del club.",
-        news: "Noticias del club y ritmo editorial matchday.",
-        matches: "Calendario, próximo partido y futura billetterie.",
+        news: "Noticias, eventos y grandes momentos del club.",
+        matches: "Calendario y próximos partidos del club.",
         standings: "Clasificación automatizada de cada equipo del club.",
         history: "Resultados del club por equipo, categoría y mes.",
       },
@@ -909,10 +909,10 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     nav: esNav("es"),
     hero: {
-      badge: "Basket local. Identidad fuerte. Estructura lista.",
-      claim: "Club bilingüe. Matchday directo. Presencia clara.",
+      badge: "Baloncesto local · Carouge · Ginebra",
+      claim: "Un club. Un equipo. Una misma pasión.",
       copy:
-        "El club arranca con una base clara: próximo partido arriba, plantilla visible, noticias legibles y navegación preparada para crecer sin rehacer la estructura.",
+        "Consulta los equipos, los próximos partidos y toda la actualidad del Latino Carouge Basket Club.",
       primaryCta: "Ver el próximo partido",
       secondaryCta: "Ver el equipo",
     },
@@ -921,34 +921,34 @@ export const siteContent: Record<Locale, LocaleContent> = {
       opponentLabel: "Rival",
       versus: "vs",
       copy:
-        "El bloque de matchday sigue siendo prioritario. El calendario compartido puede alimentar esta zona sin romper la home.",
+        "Toda la información para seguir el próximo encuentro del club.",
       cta: "Ver partidos",
     },
     snapshot: {
-      kicker: "Base del club",
-      title: "Una landing preparada para la pista",
+      kicker: "El club",
+      title: "El baloncesto en el corazón de Carouge",
       intro:
-        "La web toma una dirección simple: ser útil el día de partido, legible para familias y reconocible al instante como club de baloncesto de Carouge.",
+        "Un club bilingüe, abierto a las familias y unido por las ganas de jugar, crecer y compartir.",
       items: [
         {
           label: "Base",
           value: "Carouge",
-          detail: "Anclaje local en Ginebra con lectura clara para club y afición.",
+          detail: "Un club cercano y arraigado en la vida deportiva de Ginebra.",
         },
         {
           label: "Idiomas",
           value: "FR / ES",
-          detail: "Arquitectura bilingüe limpia, con URLs separadas y contenido escalable.",
+          detail: "La información del club está disponible en francés y español.",
         },
         {
           label: "Foco",
-          value: "Matchday",
-          detail: "Próximo partido, plantilla, noticias y resultados visibles desde la home.",
+          value: "Competición",
+          detail: "Partidos, equipos, noticias y resultados reunidos en un solo lugar.",
         },
         {
           label: "Calendario",
-          value: "Conectable",
-          detail: "La web puede recibir automáticamente los próximos partidos desde un calendario compartido.",
+          value: "Al día",
+          detail: "Los próximos compromisos del club son fáciles de encontrar.",
         },
       ],
     },
@@ -964,7 +964,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       name: "Entrenador principal",
       role: "Dirección deportiva",
       bio:
-        "Bloque editorial preparado para presentar la visión del entrenador, el estilo de juego y el marco competitivo sin depender aún del retrato final.",
+        "Muy pronto podrás conocer la trayectoria del entrenador, su visión del juego y sus objetivos para el equipo.",
     },
     roster: [
       {
@@ -1031,17 +1031,17 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     newsSection: {
       kicker: "Noticias",
-      title: "Tarjetas editoriales simples y deportivas",
+      title: "La vida del club, dentro y fuera de la pista",
       intro:
-        "Las noticias ya existen en preview dentro de la home, pero la estructura también redirige a una página dedicada sin enlaces rotos.",
+        "Partidos, entrenamientos, eventos y grandes momentos: sigue todo lo que da vida al club.",
       viewAll: "Ver noticias",
     },
     news: [
       {
         dateLabel: "Agosto 2026",
-        title: "Una base visual dura para lanzar la temporada",
+        title: "Una nueva temporada se prepara en Carouge",
         excerpt:
-          "La web está pensada para recibir más tarde las imágenes reales del club sin rehacer ni la grilla ni las proporciones.",
+          "Los equipos se preparan para volver a la pista en una temporada marcada por el juego colectivo.",
         image: {
           src: "/stock/team-huddle.jpg",
           alt: "Jugadores de baloncesto reunidos en círculo antes de un partido.",
@@ -1052,7 +1052,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         dateLabel: "Septiembre 2026",
         title: "El grupo empieza a tomar forma en Carouge",
         excerpt:
-          "La sección de plantilla ya está lista para recibir entrenador, jugadores y primeros perfiles matchday.",
+          "Jugadores, entrenadores y voluntarios trabajan juntos para comenzar la temporada en las mejores condiciones.",
         image: {
           src: "/stock/indoor-practice.jpg",
           alt: "Entrenamiento de baloncesto en pabellón con entrenador y jugadoras.",
@@ -1061,9 +1061,9 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
       {
         dateLabel: "Septiembre 2026",
-        title: "Calendario y partidos: primero la capa útil",
+        title: "Los primeros encuentros de la temporada",
         excerpt:
-          "El próximo partido sigue visible arriba para mantener una lógica clara y local.",
+          "Muy pronto podrás consultar las próximas fechas y venir a animar a los equipos del club.",
         image: {
           src: "/stock/dunk-action.jpg",
           alt: "Acción de mate durante un partido de baloncesto con público.",
@@ -1079,7 +1079,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       viewAll: "Ver todos los partidos",
       emptyTitle: "Ningún partido oficial publicado",
       emptyBody:
-        "Todavía no hay próximo partido publicado. Esta página se actualiza en cuanto el calendario esté disponible.",
+        "El calendario se publicará cuando estén confirmados los próximos encuentros.",
       soonLabel: "Próximamente",
     },
     fixtures: [
@@ -1288,11 +1288,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
       coach: {
         label: "RETRATO ENTRENADOR",
-        note: "Slot reservado para el retrato oficial del entrenador.",
+        note: "Retrato oficial del entrenador próximamente.",
       },
       news: {
         label: "IMAGEN NOTICIA",
-        note: "Slot editorial preparado para foto o cartel matchday.",
+        note: "Próximamente, una nueva imagen de la actualidad del club.",
         image: {
           src: "/stock/indoor-practice.jpg",
           alt: "Entrenamiento de baloncesto en pabellón con grupo y entrenador.",
@@ -1309,13 +1309,13 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     sectionPages: {
       team: {
-        badge: "Página equipo",
+        badge: "El club",
         title: "Equipo",
         intro:
-          "Esta página ya está conectada para alojar la plantilla completa, el entrenador y las fichas de jugadores cuando lleguen los contenidos finales.",
-        comingSoon: "Versión detallada en preparación.",
-        backHome: "Volver a la home",
-        jumpLabel: "Volver al preview del equipo",
+          "Conoce las categorías, el comité y las personas que hacen avanzar el club cada día.",
+        comingSoon: "Los perfiles del equipo estarán disponibles muy pronto.",
+        backHome: "Volver al inicio",
+        jumpLabel: "Ver el equipo",
         placeholder: {
           label: "FOTO EQUIPO",
           note: "Espacio previsto para imagen colectiva o retrato principal.",
@@ -1327,13 +1327,13 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       news: {
-        badge: "Página noticias",
+        badge: "La vida del club",
         title: "Noticias",
         intro:
-          "La página de noticias está lista para convertirse en un hub editorial real, pero ya existe sin romper la navegación.",
-        comingSoon: "Versión editorial larga en preparación.",
-        backHome: "Volver a la home",
-        jumpLabel: "Volver a noticias en home",
+          "Descubre los partidos, los eventos y los mejores momentos del Latino Carouge Basket Club.",
+        comingSoon: "Muy pronto publicaremos nuevas noticias.",
+        backHome: "Volver al inicio",
+        jumpLabel: "Ver las últimas noticias",
         placeholder: {
           label: "ACTU FEATURE",
           note: "Espacio previsto para la próxima imagen editorial fuerte.",
@@ -1345,16 +1345,16 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       matches: {
-        badge: "Página partidos",
+        badge: "Temporada 2026–2027",
         title: "Partidos",
         intro:
-          "La página de partidos prepara la capa operativa: calendario y próximos encuentros del club.",
-        comingSoon: "Versión completa de calendario en preparación.",
-        backHome: "Volver a la home",
-        jumpLabel: "Volver al próximo partido",
+          "Consulta los próximos encuentros y ven a animar a los equipos del club.",
+        comingSoon: "El calendario completo se publicará próximamente.",
+        backHome: "Volver al inicio",
+        jumpLabel: "Ver el próximo partido",
         placeholder: {
-          label: "CALENDARIO SLOT",
-          note: "Zona lista para integración de calendario o visual de matchday.",
+          label: "CALENDARIO",
+          note: "Los próximos encuentros aparecerán aquí.",
           image: {
             src: "/stock/hero-matchday.jpg",
             alt: "Foto de partido de baloncesto en una gran arena.",
@@ -1363,12 +1363,12 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       standings: {
-        badge: "Página clasificación",
+        badge: "Temporada 2026–2027",
         title: "Clasificación",
         intro:
-          "La clasificación de cada equipo, actualizada automáticamente y disponible por categoría.",
-        comingSoon: "La clasificación se actualiza después de cada partido.",
-        backHome: "Volver a la home",
+          "Sigue la posición de cada equipo del club en su campeonato.",
+        comingSoon: "Actualización después de cada jornada de liga.",
+        backHome: "Volver al inicio",
         jumpLabel: "Ver partidos",
         placeholder: {
           label: "CLASIFICACIÓN",
@@ -1381,16 +1381,16 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       history: {
-        badge: "Página resultados",
+        badge: "Los partidos del club",
         title: "Resultados",
         intro:
           "Todos los resultados del club, agrupados por equipo, categoría y mes.",
-        comingSoon: "El archivo se actualiza después de cada partido.",
-        backHome: "Volver a la home",
+        comingSoon: "Publicaremos aquí los últimos marcadores.",
+        backHome: "Volver al inicio",
         jumpLabel: "Ver partidos",
         placeholder: {
           label: "ARCHIVE PANEL",
-          note: "Zona prevista para futuras stats, temporadas o filtros.",
+          note: "Los resultados por equipo y temporada aparecerán aquí.",
           image: {
             src: "/stock/news-2.jpg",
             alt: "Foto de baloncesto en sala con público.",
@@ -1402,7 +1402,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
     footer: {
       kicker: "LATINO CAROUGE BASKET CLUB",
       copy:
-        "Base bilingüe FR / ES, arquitectura lista para imágenes reales, calendario compartido, páginas detalladas y crecimiento editorial.",
+        "El club de baloncesto bilingüe de Carouge, abierto a todas las generaciones.",
       quickLinksTitle: "Enlaces rápidos",
       homeLabel: "Home",
       ticketingLabel: "Calendario / partidos",
@@ -1419,11 +1419,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
     meta: {
       homeTitle: "Basketball Club in Carouge",
       homeDescription:
-        "Bilingual FR/ES landing for LATINO CAROUGE BASKET CLUB: next match, roster, news, matches and results.",
+        "Official LATINO CAROUGE BASKET CLUB website: teams, schedule, news, standings and results.",
       sectionDescriptions: {
         team: "Roster, head coach and sports structure of the club.",
-        news: "Club news and matchday editorial rhythm.",
-        matches: "Calendar, next match and future ticketing.",
+        news: "Club news, events and highlights.",
+        matches: "Schedule and upcoming club games.",
         standings: "Automated standings for every team in the club.",
         history: "Club results by team, category and month.",
       },
@@ -1434,10 +1434,10 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     nav: enNav("en"),
     hero: {
-      badge: "Local basketball. Strong identity. Ready structure.",
-      claim: "Bilingual club. Matchday direct. Clear presence.",
+      badge: "Local basketball · Carouge · Geneva",
+      claim: "One club. One team. One shared passion.",
       copy:
-        "The club starts with a clear foundation: next match at the top, roster visible, news readable and navigation ready to grow without rebuilding the structure.",
+        "Find the teams, upcoming games and all the latest news from Latino Carouge Basket Club.",
       primaryCta: "See next match",
       secondaryCta: "View the team",
     },
@@ -1446,34 +1446,34 @@ export const siteContent: Record<Locale, LocaleContent> = {
       opponentLabel: "Opponent",
       versus: "vs",
       copy:
-        "The matchday block stays priority. A shared calendar can feed this zone without breaking the home.",
+        "Everything you need to follow the club’s next game.",
       cta: "View matches",
     },
     snapshot: {
-      kicker: "Club foundation",
-      title: "A landing ready for the court",
+      kicker: "The club",
+      title: "Basketball at the heart of Carouge",
       intro:
-        "The site takes a simple direction: be useful on match day, readable for families and instantly recognizable as a basketball club based in Carouge.",
+        "A multilingual, family-friendly club united by the desire to play, improve and share the game.",
       items: [
         {
           label: "Base",
           value: "Carouge",
-          detail: "Local anchor in Geneva with clear reading for club and fans.",
+          detail: "A community club rooted in Geneva’s sporting life.",
         },
         {
           label: "Languages",
           value: "FR / ES / EN",
-          detail: "Clean bilingual architecture, with separate URLs and scalable content.",
+          detail: "Club information is available in French, Spanish and English.",
         },
         {
           label: "Focus",
-          value: "Matchday",
-          detail: "Next match, roster, news and results visible from the home.",
+          value: "Competition",
+          detail: "Games, teams, news and results brought together in one place.",
         },
         {
           label: "Calendar",
-          value: "Connectable",
-          detail: "The site can automatically receive upcoming matches from a shared calendar.",
+          value: "Up to date",
+          detail: "The club’s upcoming fixtures are always easy to find.",
         },
       ],
     },
@@ -1489,7 +1489,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       name: "Head Coach",
       role: "Sports Direction",
       bio:
-        "Editorial block prepared to present the coach's vision, playing style and competitive framework without relying on a final portrait yet.",
+        "Learn more soon about the coach’s background, playing philosophy and goals for the team.",
     },
     roster: [
       {
@@ -1556,17 +1556,17 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     newsSection: {
       kicker: "News",
-      title: "Simple and sports editorial cards",
+      title: "Club life, on and off the court",
       intro:
-        "News already exists in preview on the home, but the structure also redirects to a dedicated page without broken links.",
+        "Games, training sessions, events and highlights: follow everything happening around the club.",
       viewAll: "View news",
     },
     news: [
       {
         dateLabel: "August 2026",
-        title: "A solid visual base to launch the season",
+        title: "A new season takes shape in Carouge",
         excerpt:
-          "The site is designed to welcome the real club visuals later, without redoing the grid or proportions.",
+          "The teams are preparing to return to the court for a season built around collective play.",
         image: {
           src: "/stock/team-huddle.jpg",
           alt: "Basketball players gathered in a circle before a match.",
@@ -1577,7 +1577,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         dateLabel: "September 2026",
         title: "The group taking shape in Carouge",
         excerpt:
-          "The roster section is ready to receive the coach, players and first matchday profiles.",
+          "Players, coaches and volunteers are working together to start the season strongly.",
         image: {
           src: "/stock/indoor-practice.jpg",
           alt: "Basketball training session in a gymnasium with coach and players.",
@@ -1586,9 +1586,9 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
       {
         dateLabel: "September 2026",
-        title: "Calendar and matches: useful layer first",
+        title: "The first fixtures of the season",
         excerpt:
-          "The next match stays visible at the top to maintain clear and local logic.",
+          "Upcoming dates will be available soon so you can come and support the club’s teams.",
         image: {
           src: "/stock/dunk-action.jpg",
           alt: "Dunk action during a basketball match with audience.",
@@ -1604,7 +1604,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       viewAll: "View all matches",
       emptyTitle: "No official match published",
       emptyBody:
-        "No upcoming match published yet. This page updates once the calendar is available.",
+        "The schedule will be published as soon as the upcoming fixtures are confirmed.",
       soonLabel: "Coming soon",
     },
     fixtures: [
@@ -1813,11 +1813,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
       coach: {
         label: "COACH PORTRAIT",
-        note: "Slot reserved for the official coach portrait.",
+        note: "Official coach portrait coming soon.",
       },
       news: {
         label: "NEWS IMAGE",
-        note: "Editorial slot ready for photo or matchday poster.",
+        note: "A new club news image is coming soon.",
         image: {
           src: "/stock/indoor-practice.jpg",
           alt: "Basketball training session in gymnasium with group and coach.",
@@ -1834,11 +1834,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     sectionPages: {
       team: {
-        badge: "Team page",
+        badge: "The club",
         title: "Team",
         intro:
-          "This page is already routed to host the full roster, coach and player cards when final content arrives.",
-        comingSoon: "Detailed version in preparation.",
+          "Meet the categories, committee and people who keep the club moving every day.",
+        comingSoon: "Team profiles will be available soon.",
         backHome: "Back to home",
         jumpLabel: "Back to team overview",
         placeholder: {
@@ -1852,11 +1852,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       news: {
-        badge: "News page",
+        badge: "Club life",
         title: "News",
         intro:
-          "The news page is ready to become a real editorial hub, but it already exists without breaking navigation.",
-        comingSoon: "Long editorial version in preparation.",
+          "Catch up on games, events and highlights from Latino Carouge Basket Club.",
+        comingSoon: "More club news is coming soon.",
         backHome: "Back to home",
         jumpLabel: "Back to news on home",
         placeholder: {
@@ -1870,16 +1870,16 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       matches: {
-        badge: "Matches page",
+        badge: "2026–2027 season",
         title: "Matches",
         intro:
-          "The matches page prepares the operational layer: calendar and upcoming club events.",
-        comingSoon: "Full calendar version in preparation.",
+          "Check the upcoming fixtures and come support the club’s teams.",
+        comingSoon: "The full schedule will be published soon.",
         backHome: "Back to home",
         jumpLabel: "Back to next match",
         placeholder: {
-          label: "CALENDAR SLOT",
-          note: "Area ready for calendar integration or matchday visual.",
+          label: "SCHEDULE",
+          note: "Upcoming fixtures will appear here.",
           image: {
             src: "/stock/hero-matchday.jpg",
             alt: "Basketball match photo in a large arena.",
@@ -1888,11 +1888,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       standings: {
-        badge: "Standings page",
+        badge: "2026–2027 season",
         title: "Standings",
         intro:
-          "Every team's standings, updated automatically and viewable by category.",
-        comingSoon: "Standings update after every match.",
+          "Follow each club team’s position in its league.",
+        comingSoon: "Updated after every round of league games.",
         backHome: "Back to home",
         jumpLabel: "View matches",
         placeholder: {
@@ -1906,16 +1906,16 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       },
       history: {
-        badge: "Results page",
+        badge: "Club games",
         title: "Results",
         intro:
           "All club results, grouped by team, category and month.",
-        comingSoon: "The archive updates after every match.",
+        comingSoon: "The latest scores will be published here.",
         backHome: "Back to home",
         jumpLabel: "View matches",
         placeholder: {
           label: "ARCHIVE PANEL",
-          note: "Area reserved for future stats, seasons or filters.",
+          note: "Results by team and season will appear here.",
           image: {
             src: "/stock/news-2.jpg",
             alt: "Basketball photo in gym with audience.",
@@ -1927,7 +1927,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
     footer: {
       kicker: "LATINO CAROUGE BASKET CLUB",
       copy:
-        "Bilingual FR / ES / EN base, architecture ready for real images, shared calendar, detailed pages and editorial growth.",
+        "Carouge’s multilingual basketball club, open to every generation.",
       quickLinksTitle: "Quick links",
       homeLabel: "Home",
       ticketingLabel: "Calendar / matches",
