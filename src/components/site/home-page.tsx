@@ -402,7 +402,7 @@ export async function HomePage({ locale }: HomePageProps) {
               {/* Right column: Form card */}
               <div
                 id="recruitment-form"
-                className="scroll-mt-16 rounded-2xl border border-[var(--color-border-soft)] bg-white p-5 shadow-[0_22px_60px_rgba(16,33,58,0.10)] sm:p-7 lg:p-8"
+                className="scroll-mt-16 rounded-2xl border border-[var(--color-control-border)] bg-white p-5 shadow-[0_22px_60px_rgba(16,33,58,0.10)] sm:p-7 lg:p-8"
               >
                 <div className="border-b border-[var(--color-border-soft)] pb-6">
                   <div className="inline-flex rounded-full bg-[var(--color-gold-soft)] px-3 py-1.5 font-condensed text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[var(--color-gold-deep)]">
