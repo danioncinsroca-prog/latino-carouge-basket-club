@@ -34,8 +34,8 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
       <div className="min-h-screen bg-[var(--color-cream)] text-[var(--color-ink)]">
         <SiteHeader locale={locale} currentSection={sectionKey} />
 
-        <main className="pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12">
-          <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <main className="pt-8 sm:pt-10 lg:pt-12">
+          <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-16 lg:px-8">
             <div className="max-w-3xl space-y-2">
               <div className="meta-kicker">{section.badge}</div>
               <h1 className="mt-6 font-display text-5xl uppercase leading-none sm:text-6xl">
@@ -78,8 +78,8 @@ export async function SectionPage({ locale, sectionKey }: SectionPageProps) {
       <div className="min-h-screen bg-[var(--color-cream)] text-[var(--color-ink)]">
         <SiteHeader locale={locale} currentSection={sectionKey} />
 
-        <main className="pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12">
-          <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <main className="pt-8 sm:pt-10 lg:pt-12">
+          <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-16 lg:px-8">
             <div className="min-w-0 space-y-2">
               <div className="meta-kicker">{section.badge}</div>
               <h1 className="mt-6 font-display text-5xl uppercase leading-none sm:text-6xl">
