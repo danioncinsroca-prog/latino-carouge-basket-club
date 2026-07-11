@@ -111,7 +111,7 @@ export async function HomePage({ locale }: HomePageProps) {
                   </p>
                 </div>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3 sm:mt-8">
-                  <Link href="#next-match" className="button-base button-gold text-xs px-4 py-2.5 sm:text-sm w-fit">
+                  <Link href="#matches" className="button-base button-gold text-xs px-4 py-2.5 sm:text-sm w-fit">
                     {content.hero.primaryCta}
                   </Link>
                   <Link
@@ -124,58 +124,6 @@ export async function HomePage({ locale }: HomePageProps) {
               </div>
             </div>
           </section>
-
-          <SectionShell
-            id="next-match"
-            className="bg-[var(--color-ink)] text-[var(--color-cream)]"
-            innerClassName="py-0"
-          >
-            <div className="grid gap-6 px-4 py-6 sm:gap-8 sm:px-6 sm:py-10 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:items-center lg:gap-8 lg:px-8 lg:py-12">
-              <div className="min-w-0">
-                  <div className="font-condensed text-[0.6rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
-                    {content.nextMatch.label}
-                  </div>
-                  <div className="mt-3 font-display text-3xl uppercase leading-[1.08] [overflow-wrap:anywhere] sm:mt-4 sm:text-5xl lg:text-6xl">
-                    {nextMatch?.dateLabel ?? content.fixturesSection.emptyTitle}
-                  </div>
-                  <div className="mt-2 font-condensed text-lg font-bold text-[var(--color-cream)]/84 sm:mt-3 sm:text-2xl">
-                    {nextMatch?.timeLabel ?? content.fixturesSection.soonLabel}
-                  </div>
-                </div>
-
-              <div
-                aria-hidden
-                className="hidden font-display text-2xl uppercase text-[var(--color-gold)] sm:text-3xl lg:text-4xl lg:block"
-              >
-                {content.nextMatch.versus}
-              </div>
-
-              <div className="min-w-0 border-t border-[var(--color-cream)]/15 pt-6 sm:pt-8 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
-                  <div className="font-condensed text-[0.6rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)] sm:text-[0.72rem]">
-                    {nextMatch?.status ?? content.fixturesSection.kicker}
-                  </div>
-                  <div className="mt-3 font-display text-3xl uppercase leading-none [overflow-wrap:anywhere] sm:mt-3 sm:text-5xl lg:text-6xl">
-                    {nextMatch?.opponent ?? "Latino Carouge"}
-                  </div>
-                  <div className="mt-1.5 font-condensed text-sm font-bold uppercase tracking-[0.14em] text-[var(--color-cream)]/84 sm:mt-2 sm:text-lg">
-                    {content.nextMatch.opponentLabel}
-                  </div>
-                  <div className="mt-2 text-xs text-[var(--color-cream)]/78 sm:mt-3 sm:text-sm">
-                    {nextMatch?.venue ?? content.fixturesSection.emptyBody}
-                  </div>
-                  {clubConfig.externalLinks.ticketingUrl && (
-                    <div className="mt-6">
-                      <Link
-                        href={clubConfig.externalLinks.ticketingUrl}
-                        className="button-base button-gold"
-                      >
-                        {content.nextMatch.cta}
-                      </Link>
-                    </div>
-                  )}
-              </div>
-            </div>
-          </SectionShell>
 
           <SectionShell
             id="matches"
