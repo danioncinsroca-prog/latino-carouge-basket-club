@@ -67,6 +67,9 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
   const opponentLogoSrc =
     fixture.opponentLogoSrc ?? getTeamLogoSrc(fixture.opponent);
   const displayDate = getDisplayDate(fixture);
+  const hasScore = fixture.homeScore !== undefined && fixture.awayScore !== undefined;
+  const teamScore = fixture.homeTeam === teamName ? fixture.homeScore : fixture.awayScore;
+  const opponentScore = fixture.homeTeam === teamName ? fixture.awayScore : fixture.homeScore;
 
   return (
     <div
@@ -110,10 +113,10 @@ function ScoreboardCard({ fixture }: { fixture: Fixture }) {
                 "0 0 5px rgba(255,216,111,0.45), 0 0 14px rgba(255,216,111,0.22)",
             }}
           >
-            {fixture.timeLabel}
+            {hasScore ? `${teamScore} - ${opponentScore}` : fixture.timeLabel}
           </div>
           <div className="font-condensed text-[2rem] font-bold uppercase leading-none tracking-[-0.02em] text-[var(--color-gold)] sm:text-[2.8rem]">
-            VS
+            {hasScore ? (fixture.scoreStatus ?? "FIN") : "VS"}
           </div>
         </div>
 

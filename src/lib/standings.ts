@@ -582,7 +582,11 @@ function getTableCells(row: string) {
 }
 
 function cleanBasketplanTeamName(value: string) {
-  return value.replace(/\s*\([^)]*\)\s*$/g, "").replace(/\s+/g, " ").trim();
+  return value
+    .replace(/\s*\([^)]*\)\s*$/g, "")
+    .replace(/\s+3LCM\s*$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function cleanHtmlText(value: string) {
