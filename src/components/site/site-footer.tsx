@@ -54,9 +54,6 @@ export function SiteFooter({ locale }: SiteFooterProps) {
     >
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:gap-8 sm:px-6 lg:grid-cols-[1.3fr_1fr_1fr] lg:px-8">
         <div className="space-y-4">
-          <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
-            {content.footer.kicker}
-          </div>
           <div className="font-display text-4xl uppercase leading-none">
             {clubConfig.name}
           </div>
