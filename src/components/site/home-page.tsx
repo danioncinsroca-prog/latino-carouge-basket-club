@@ -88,7 +88,7 @@ export async function HomePage({ locale }: HomePageProps) {
           <section className="relative overflow-hidden min-h-[90dvh] flex flex-col">
             <div aria-hidden className="absolute inset-0">
               <Image
-                src="/hero.png"
+                src="/hero-hq.png"
                 alt=""
                 fill
                 priority
