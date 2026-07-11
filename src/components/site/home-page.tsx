@@ -87,13 +87,13 @@ export async function HomePage({ locale }: HomePageProps) {
           <section className="relative overflow-hidden py-12 sm:py-20 lg:py-32">
             <div aria-hidden className="absolute inset-0">
               <Image
-                src="/stock/hero-bg.png"
+                src="/stock/hero-dunk-illustration.png"
                 alt=""
                 fill
                 priority
                 unoptimized
                 sizes="100vw"
-                className="object-cover object-[center_35%]"
+                className="object-cover object-right sm:object-center"
               />
             </div>
             <div className="relative z-10 mx-auto max-w-7xl px-4 pb-6 sm:pb-8 sm:px-6 lg:pb-10 lg:px-8">
