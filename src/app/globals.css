@@ -213,8 +213,8 @@ img {
 }
 
 .button-gold:hover {
-  background: color-mix(in srgb, var(--color-ink) 72%, var(--color-gold) 28%);
-  color: var(--color-cream);
+  background: var(--color-gold-soft);
+  color: var(--color-ink);
 }
 
 .button-outline {
