@@ -41,6 +41,16 @@ const copy = {
     noScheduleTitle: "Ningun partido publicado",
     gameNumber: "Partido",
   },
+  en: {
+    categorySelector: "Category",
+    resultsTitle: "Past matches",
+    upcomingTitle: "Upcoming matches",
+    noResultsTitle: "No results published",
+    noResultsBody:
+      "Basketpl@n doesn't yet publish played matches for this category.",
+    noScheduleTitle: "No matches published",
+    gameNumber: "Match",
+  },
 } as const;
 
 function getInitials(name: string) {
@@ -164,17 +174,17 @@ function TeamLogo({ name, logoSrc }: { name: string; logoSrc?: string }) {
   const src = logoSrc ?? getTeamLogoSrc(name);
 
   return (
-    <span className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-[rgba(22,37,63,0.14)] sm:h-12 sm:w-12">
+    <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-[rgba(22,37,63,0.14)] sm:h-14 sm:w-14 lg:h-16 lg:w-16">
       {src ? (
         <Image
           src={src}
           alt={`${name} logo`}
           fill
-          sizes="48px"
+          sizes="(max-width: 640px) 48px, (max-width: 1024px) 56px, 64px"
           className="object-contain p-1.5"
         />
       ) : (
-        <span className="font-display text-sm uppercase leading-none text-[var(--color-ink)] sm:text-base">
+        <span className="font-display text-sm uppercase leading-none text-[var(--color-ink)] sm:text-base lg:text-lg">
           {getInitials(name)}
         </span>
       )}
