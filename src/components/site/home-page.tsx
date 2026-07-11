@@ -85,7 +85,7 @@ export async function HomePage({ locale }: HomePageProps) {
         <SiteHeader locale={locale} />
 
         <main>
-          <section className="relative overflow-hidden py-12 sm:py-20 lg:py-32">
+          <section className="relative overflow-hidden min-h-[100dvh] flex flex-col">
             <div aria-hidden className="absolute inset-0">
               <Image
                 src="/stock/hero-dunk-illustration.png"
@@ -97,8 +97,8 @@ export async function HomePage({ locale }: HomePageProps) {
                 className="object-cover object-right sm:object-center"
               />
             </div>
-            <div className="relative z-10 mx-auto max-w-7xl px-4 pb-6 sm:pb-8 sm:px-6 lg:pb-10 lg:px-8">
-              <div className="max-w-3xl space-y-4 sm:space-y-6">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 flex flex-col justify-center flex-1 sm:px-6 lg:px-8">
+              <div className="max-w-3xl space-y-4 sm:space-y-6 py-12">
                 <div className="space-y-3 sm:space-y-6">
                   <h1
                     className="font-display uppercase leading-[0.9] text-[var(--color-cream)]"
@@ -232,10 +232,23 @@ export async function HomePage({ locale }: HomePageProps) {
             </div>
           </SectionShell>
 
-          <SectionShell
+          <section
             id="effectif"
-            className="scroll-mt-20 border-t border-white/12 bg-[var(--color-ink)] py-14 sm:scroll-mt-28 sm:py-16"
+            className="relative scroll-mt-20 overflow-hidden border-t border-white/12 bg-[var(--color-ink)] py-14 sm:scroll-mt-28 sm:py-16"
           >
+            <div aria-hidden className="absolute inset-0 bg-[var(--color-ink)]" />
+            <div aria-hidden className="absolute inset-0 opacity-[0.96]">
+              <Image
+                src="/stock/featured-players-bg.png"
+                alt=""
+                fill
+                quality={100}
+                unoptimized
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            </div>
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                 <div className="ink-divider space-y-3 pt-5">
                   <div className="font-condensed text-[0.72rem] font-bold uppercase tracking-[0.26em] text-[var(--color-gold)]">
@@ -262,7 +275,8 @@ export async function HomePage({ locale }: HomePageProps) {
                   teamCategories={content.teamCategories}
                 />
               </div>
-          </SectionShell>
+            </div>
+          </section>
 
           <SectionShell
             id="palmares"
