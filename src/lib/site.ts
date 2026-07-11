@@ -340,8 +340,8 @@ export const clubConfig: {
 const frNav = (locale: Locale): NavItem[] => [
   { label: "Club", href: `/${locale}#club` },
   { label: "Équipe", href: `/${locale}#effectif` },
-  { label: "Actualités", href: getSectionPath(locale, "news") },
   { label: "Calendrier", href: `/${locale}#next-match` },
+  { label: "Actualités", href: getSectionPath(locale, "news") },
   { label: "Classement", href: getSectionPath(locale, "standings") },
   { label: "Resultats", href: getSectionPath(locale, "history") },
 ];
@@ -349,8 +349,8 @@ const frNav = (locale: Locale): NavItem[] => [
 const esNav = (locale: Locale): NavItem[] => [
   { label: "Club", href: `/${locale}#club` },
   { label: "Equipo", href: `/${locale}#effectif` },
-  { label: "Noticias", href: getSectionPath(locale, "news") },
   { label: "Calendario", href: `/${locale}#next-match` },
+  { label: "Noticias", href: getSectionPath(locale, "news") },
   { label: "Clasificación", href: getSectionPath(locale, "standings") },
   { label: "Resultados", href: getSectionPath(locale, "history") },
 ];
@@ -358,8 +358,8 @@ const esNav = (locale: Locale): NavItem[] => [
 const enNav = (locale: Locale): NavItem[] => [
   { label: "Club", href: `/${locale}#club` },
   { label: "Team", href: `/${locale}#effectif` },
-  { label: "News", href: getSectionPath(locale, "news") },
   { label: "Calendar", href: `/${locale}#next-match` },
+  { label: "News", href: getSectionPath(locale, "news") },
   { label: "Standings", href: getSectionPath(locale, "standings") },
   { label: "Results", href: getSectionPath(locale, "history") },
 ];
