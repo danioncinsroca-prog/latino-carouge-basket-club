@@ -88,13 +88,13 @@ export async function HomePage({ locale }: HomePageProps) {
           <section className="relative overflow-hidden min-h-[90dvh] flex flex-col">
             <div aria-hidden className="absolute inset-0">
               <Image
-                src="/stock/hero-dunk-illustration.png"
+                src="/hero.png"
                 alt=""
                 fill
                 priority
                 unoptimized
                 sizes="100vw"
-                className="object-cover object-right sm:object-center"
+                className="object-cover object-[90%_center] sm:object-center"
               />
             </div>
             <div className="relative z-10 flex flex-1 items-end px-0 sm:px-8 lg:items-center lg:px-[clamp(3rem,7vw,9rem)]">
