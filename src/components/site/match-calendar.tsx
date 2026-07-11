@@ -68,7 +68,12 @@ function normalizeCategoryId(fixture: Fixture) {
 }
 
 function getFixtureTime(date: Date, locale: Locale) {
-  return new Intl.DateTimeFormat(locale === "fr" ? "fr-CH" : "es-CH", {
+  const localeMap: Record<Locale, string> = {
+    fr: "fr-CH",
+    es: "es-CH",
+    en: "en-GB",
+  };
+  return new Intl.DateTimeFormat(localeMap[locale], {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
@@ -87,7 +92,12 @@ function getRowDateLabel(fixture: Fixture, locale: Locale) {
     return fixture.shortDate.toUpperCase();
   }
 
-  return new Intl.DateTimeFormat(locale === "fr" ? "fr-CH" : "es-CH", {
+  const localeMap: Record<Locale, string> = {
+    fr: "fr-CH",
+    es: "es-CH",
+    en: "en-GB",
+  };
+  return new Intl.DateTimeFormat(localeMap[locale], {
     weekday: "short",
     day: "2-digit",
     month: "short",
@@ -106,7 +116,12 @@ function getMonthLabel(fixture: Fixture, locale: Locale) {
     return fixture.dateLabel.toUpperCase();
   }
 
-  return new Intl.DateTimeFormat(locale === "fr" ? "fr-CH" : "es-CH", {
+  const localeMap: Record<Locale, string> = {
+    fr: "fr-CH",
+    es: "es-CH",
+    en: "en-GB",
+  };
+  return new Intl.DateTimeFormat(localeMap[locale], {
     month: "long",
     year: "numeric",
     timeZone: "Europe/Zurich",

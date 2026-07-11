@@ -27,6 +27,11 @@ const sectionLabels: Record<
     players: "Jugadores",
     rosterTitle: "Plantilla",
   },
+  en: {
+    coach: "Head Coach",
+    players: "Players",
+    rosterTitle: "Roster",
+  },
 };
 
 export function TeamCourtShowcase({

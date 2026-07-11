@@ -171,9 +171,11 @@ export function RecruitmentForm({
               className="button-base button-gold min-h-13 w-full px-5 py-4 text-sm disabled:cursor-not-allowed disabled:opacity-65 sm:text-base"
             >
               {isPending
-                ? locale === "fr"
-                  ? "En cours..."
-                  : "Enviando..."
+                ? {
+                    fr: "En cours...",
+                    es: "Enviando...",
+                    en: "Sending...",
+                  }[locale]
                 : content.form.submit}
             </button>
             <p className="mt-3 text-center text-xs font-medium text-[var(--color-muted)]">

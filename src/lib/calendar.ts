@@ -100,6 +100,18 @@ const calendarCopy = {
     allDay: "Toda la jornada",
     round: "Jornada",
   },
+  en: {
+    home: "Home",
+    away: "Away",
+    scheduled: "Scheduled",
+    calendar: "Calendar",
+    league: "League",
+    cup: "Cup",
+    friendly: "Friendly",
+    playoffs: "Playoffs",
+    allDay: "All day",
+    round: "Round",
+  },
 } as const;
 
 export const getResolvedSchedule = cache(
@@ -847,7 +859,12 @@ function inferPhase(event: ParsedCalendarEvent, locale: Locale) {
 }
 
 function formatLongDate(date: ParsedDate, locale: Locale) {
-  return new Intl.DateTimeFormat(locale === "fr" ? "fr-CH" : "es-CH", {
+  const localeMap: Record<Locale, string> = {
+    fr: "fr-CH",
+    es: "es-CH",
+    en: "en-GB",
+  };
+  return new Intl.DateTimeFormat(localeMap[locale], {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -856,7 +873,12 @@ function formatLongDate(date: ParsedDate, locale: Locale) {
 }
 
 function formatShortDate(date: ParsedDate, locale: Locale) {
-  const parts = new Intl.DateTimeFormat(locale === "fr" ? "fr-CH" : "es-CH", {
+  const localeMap: Record<Locale, string> = {
+    fr: "fr-CH",
+    es: "es-CH",
+    en: "en-GB",
+  };
+  const parts = new Intl.DateTimeFormat(localeMap[locale], {
     day: "2-digit",
     month: "short",
     timeZone: date.formatTimeZone,
@@ -870,7 +892,12 @@ function formatShortDate(date: ParsedDate, locale: Locale) {
 }
 
 function formatTimeLabel(date: ParsedDate, locale: Locale) {
-  return new Intl.DateTimeFormat(locale === "fr" ? "fr-CH" : "es-CH", {
+  const localeMap: Record<Locale, string> = {
+    fr: "fr-CH",
+    es: "es-CH",
+    en: "en-GB",
+  };
+  return new Intl.DateTimeFormat(localeMap[locale], {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,

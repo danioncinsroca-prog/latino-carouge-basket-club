@@ -5,12 +5,12 @@ import { submitContactForm } from "./actions";
 import type { Locale } from "@/lib/site";
 
 const positions = [
-  { value: "meneur", label: { fr: "Meneur", es: "Base" } },
-  { value: "arriere", label: { fr: "Arrière", es: "Escolta" } },
-  { value: "ailier", label: { fr: "Ailier", es: "Alero" } },
-  { value: "ailier-fort", label: { fr: "Ailier fort", es: "Ala-pívot" } },
-  { value: "pivot", label: { fr: "Pivot", es: "Pívot" } },
-  { value: "autre", label: { fr: "Autre", es: "Otro" } },
+  { value: "meneur", label: { fr: "Meneur", es: "Base", en: "Point Guard" } },
+  { value: "arriere", label: { fr: "Arrière", es: "Escolta", en: "Shooting Guard" } },
+  { value: "ailier", label: { fr: "Ailier", es: "Alero", en: "Small Forward" } },
+  { value: "ailier-fort", label: { fr: "Ailier fort", es: "Ala-pívot", en: "Power Forward" } },
+  { value: "pivot", label: { fr: "Pivot", es: "Pívot", en: "Center" } },
+  { value: "autre", label: { fr: "Autre", es: "Otro", en: "Other" } },
 ];
 
 type ContactPageContent = {
@@ -140,9 +140,13 @@ export function ContactForm({
               className="mt-2 w-full rounded border border-[var(--color-line)] bg-white px-4 py-3 text-[var(--color-ink)] focus:border-[var(--color-gold)] focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]/20 disabled:bg-[var(--color-surface)]"
             >
               <option value="">
-                {locale === "fr"
-                  ? "Sélectionne une position"
-                  : "Selecciona una posición"}
+                {
+                  {
+                    fr: "Sélectionne une position",
+                    es: "Selecciona una posición",
+                    en: "Choose a position",
+                  }[locale]
+                }
               </option>
               {positions.map((pos) => (
                 <option key={pos.value} value={pos.value}>
@@ -196,9 +200,11 @@ export function ContactForm({
             className="button-base button-gold w-full text-base py-3 disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {isPending
-              ? locale === "fr"
-                ? "En cours..."
-                : "Enviando..."
+              ? {
+                  fr: "En cours...",
+                  es: "Enviando...",
+                  en: "Sending...",
+                }[locale]
               : content.form.submit}
           </button>
         </form>

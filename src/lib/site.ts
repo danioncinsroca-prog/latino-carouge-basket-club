@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const locales = ["fr", "es"] as const;
+export const locales = ["fr", "es", "en"] as const;
 export type Locale = (typeof locales)[number];
 
 export const sectionKeys = ["team", "news", "matches", "standings", "history"] as const;
@@ -301,11 +301,11 @@ type LocaleContent = {
 };
 
 export const sectionSlugs: Record<SectionKey, Record<Locale, string>> = {
-  team: { fr: "equipe", es: "equipo" },
-  news: { fr: "actualites", es: "noticias" },
-  matches: { fr: "matchs", es: "partidos" },
-  standings: { fr: "classement", es: "clasificacion" },
-  history: { fr: "historique", es: "historico" },
+  team: { fr: "equipe", es: "equipo", en: "team" },
+  news: { fr: "actualites", es: "noticias", en: "news" },
+  matches: { fr: "matchs", es: "partidos", en: "matches" },
+  standings: { fr: "classement", es: "clasificacion", en: "standings" },
+  history: { fr: "historique", es: "historico", en: "results" },
 };
 
 export const clubConfig: {
@@ -352,6 +352,15 @@ const esNav = (locale: Locale): NavItem[] => [
   { label: "Calendario", href: `/${locale}#next-match` },
   { label: "Clasificación", href: getSectionPath(locale, "standings") },
   { label: "Resultados", href: getSectionPath(locale, "history") },
+];
+
+const enNav = (locale: Locale): NavItem[] => [
+  { label: "Club", href: `/${locale}#club` },
+  { label: "Team", href: `/${locale}#effectif` },
+  { label: "News", href: getSectionPath(locale, "news") },
+  { label: "Calendar", href: `/${locale}#next-match` },
+  { label: "Standings", href: getSectionPath(locale, "standings") },
+  { label: "Results", href: getSectionPath(locale, "history") },
 ];
 
 export const siteContent: Record<Locale, LocaleContent> = {
@@ -1403,6 +1412,530 @@ export const siteContent: Record<Locale, LocaleContent> = {
         "Un calendario compartido puede alimentar automáticamente los próximos partidos del club.",
     },
   },
+  en: {
+    meta: {
+      homeTitle: "Basketball Club in Carouge",
+      homeDescription:
+        "Bilingual FR/ES landing for LATINO CAROUGE BASKET CLUB: next match, roster, news, matches and results.",
+      sectionDescriptions: {
+        team: "Roster, head coach and sports structure of the club.",
+        news: "Club news and matchday editorial rhythm.",
+        matches: "Calendar, next match and future ticketing.",
+        standings: "Automated Basketpl@n standings by club team.",
+        history: "Basketpl@n results by team, category and month.",
+      },
+    },
+    header: {
+      badge: "Carouge · Geneva · FR / ES / EN",
+      primaryCta: "Calendar",
+    },
+    nav: enNav("en"),
+    hero: {
+      badge: "Local basketball. Strong identity. Ready structure.",
+      claim: "Bilingual club. Matchday direct. Clear presence.",
+      copy:
+        "The club starts with a clear foundation: next match at the top, roster visible, news readable and navigation ready to grow without rebuilding the structure.",
+      primaryCta: "See next match",
+      secondaryCta: "View the team",
+    },
+    nextMatch: {
+      label: "Next match",
+      opponentLabel: "Opponent",
+      versus: "vs",
+      copy:
+        "The matchday block stays priority. A shared calendar can feed this zone without breaking the home.",
+      cta: "View matches",
+    },
+    snapshot: {
+      kicker: "Club foundation",
+      title: "A landing ready for the court",
+      intro:
+        "The site takes a simple direction: be useful on match day, readable for families and instantly recognizable as a basketball club based in Carouge.",
+      items: [
+        {
+          label: "Base",
+          value: "Carouge",
+          detail: "Local anchor in Geneva with clear reading for club and fans.",
+        },
+        {
+          label: "Languages",
+          value: "FR / ES / EN",
+          detail: "Clean bilingual architecture, with separate URLs and scalable content.",
+        },
+        {
+          label: "Focus",
+          value: "Matchday",
+          detail: "Next match, roster, news and results visible from the home.",
+        },
+        {
+          label: "Calendar",
+          value: "Connectable",
+          detail: "The site can automatically receive upcoming matches from a shared calendar.",
+        },
+      ],
+    },
+    team: {
+      kicker: "Committee + Categories",
+      title: "The structure that sustains the club",
+      intro:
+        "An overview of who runs the club day-to-day and the categories that form the sports project.",
+      viewAll: "View team page",
+    },
+    coach: {
+      label: "Head Coach",
+      name: "Head Coach",
+      role: "Sports Direction",
+      bio:
+        "Editorial block prepared to present the coach's vision, playing style and competitive framework without relying on a final portrait yet.",
+    },
+    roster: [
+      {
+        number: "4",
+        name: "Marco Reyes",
+        position: "Point Guard",
+        note: "Tempo control and first reads.",
+      },
+      {
+        number: "7",
+        name: "Diego Fuentes",
+        position: "Shooting Guard",
+        note: "Pressure on first line and exterior spacing.",
+      },
+      {
+        number: "9",
+        name: "Carlos Méndez",
+        position: "Small Forward",
+        note: "Cuts, transition and wing defense.",
+      },
+      {
+        number: "11",
+        name: "Luis Herrera",
+        position: "Power Forward",
+        note: "Interior presence and high screens.",
+      },
+      {
+        number: "13",
+        name: "Rafael Torres",
+        position: "Center",
+        note: "Circle protection and defensive rebound.",
+      },
+      {
+        number: "18",
+        name: "Andrés Vega",
+        position: "Rotation",
+        note: "Bench energy and multi-position intensity.",
+      },
+    ],
+    committee: {
+      label: "Committee",
+      intro:
+        "A team committed every day to organize the club's life and move it forward.",
+      members: [
+        { name: "Name pending", role: "President" },
+        { name: "Name pending", role: "Vice President" },
+        { name: "Name pending", role: "Sports Manager" },
+        { name: "Name pending", role: "Treasurer" },
+        { name: "Name pending", role: "Secretary" },
+      ],
+    },
+    teamCategories: {
+      label: "Categories",
+      imagePending: "TEAM IMAGE COMING SOON",
+      comingSoon: "COMING SOON",
+      items: [
+        { name: "U10", status: "active" },
+        { name: "U18", status: "active" },
+        { name: "U16", status: "active" },
+        { name: "U14", status: "active" },
+        { name: "Senior", status: "active" },
+        { name: "Women's Team", status: "coming-soon" },
+      ],
+    },
+    newsSection: {
+      kicker: "News",
+      title: "Simple and sports editorial cards",
+      intro:
+        "News already exists in preview on the home, but the structure also redirects to a dedicated page without broken links.",
+      viewAll: "View news",
+    },
+    news: [
+      {
+        dateLabel: "August 2026",
+        title: "A solid visual base to launch the season",
+        excerpt:
+          "The site is designed to welcome the real club visuals later, without redoing the grid or proportions.",
+        image: {
+          src: "/stock/team-huddle.jpg",
+          alt: "Basketball players gathered in a circle before a match.",
+          position: "center center",
+        },
+      },
+      {
+        dateLabel: "September 2026",
+        title: "The group taking shape in Carouge",
+        excerpt:
+          "The roster section is ready to receive the coach, players and first matchday profiles.",
+        image: {
+          src: "/stock/indoor-practice.jpg",
+          alt: "Basketball training session in a gymnasium with coach and players.",
+          position: "center 38%",
+        },
+      },
+      {
+        dateLabel: "September 2026",
+        title: "Calendar and matches: useful layer first",
+        excerpt:
+          "The next match stays visible at the top to maintain clear and local logic.",
+        image: {
+          src: "/stock/dunk-action.jpg",
+          alt: "Dunk action during a basketball match with audience.",
+          position: "center 26%",
+        },
+      },
+    ],
+    fixturesSection: {
+      kicker: "Upcoming",
+      title: "Next matches always in sight",
+      intro:
+        "The visitor doesn't have to search for where the team plays next. The site makes the short calendar visible immediately.",
+      viewAll: "View all matches",
+      emptyTitle: "No official match published",
+      emptyBody:
+        "Basketpl@n does not yet list upcoming matches for Latino Carouge. The page will update automatically when the calendar is published.",
+    },
+    fixtures: [
+      {
+        opponent: "Guest Team",
+        dateLabel: "September 20, 2026",
+        shortDate: "20 SEP",
+        timeLabel: "18:00",
+        venue: "Gym to confirm · Carouge",
+        phase: "Opening",
+        status: "Home",
+        isoDate: "2026-09-20T18:00:00+02:00",
+      },
+      {
+        opponent: "Geneva Collective",
+        dateLabel: "September 27, 2026",
+        shortDate: "27 SEP",
+        timeLabel: "16:30",
+        venue: "Geneva · Away",
+        phase: "League",
+        status: "Away",
+      },
+      {
+        opponent: "Rivière Basket",
+        dateLabel: "October 4, 2026",
+        shortDate: "04 OCT",
+        timeLabel: "19:30",
+        venue: "Carouge · Gym to confirm",
+        phase: "League",
+        status: "Home",
+      },
+    ],
+    historySection: {
+      kicker: "Results",
+      title: "Already played results",
+      intro:
+        "Already played scores are grouped by category and by month.",
+      viewAll: "View results",
+      table: {
+        date: "Date",
+        match: "Match",
+        score: "Score",
+      },
+    },
+    results: [
+      {
+        dateLabel: "June 12, 2026",
+        opponent: "Rhône Collective",
+        score: "71 — 66",
+      },
+      {
+        dateLabel: "June 5, 2026",
+        opponent: "Local Team B",
+        score: "64 — 68",
+      },
+      {
+        dateLabel: "May 29, 2026",
+        opponent: "Union Ville",
+        score: "79 — 72",
+      },
+      {
+        dateLabel: "May 22, 2026",
+        opponent: "Rivière Basket",
+        score: "58 — 61",
+      },
+    ],
+    palmares: [
+      {
+        year: "2009",
+        title: "Foundation",
+        description: "Club birth in Carouge. Bilingual identity established from the start.",
+        type: "milestone",
+      },
+      {
+        year: "2023",
+        title: "First tournament",
+        description: "First participation in Geneva's community tournament.",
+        type: "cup",
+      },
+      {
+        year: "2024",
+        title: "Local Cup",
+        description: "First title — victory in the neighborhood cup.",
+        type: "trophy",
+      },
+      {
+        year: "2025",
+        title: "Season Record",
+        description: "Best performance in regular season since foundation.",
+        type: "medal",
+      },
+    ],
+    palmaresSection: {
+      kicker: "",
+      title: "Trophies & History",
+      intro: "Key milestones of the club since its foundation in Carouge.",
+    },
+    partnersSection: {
+      label: "Our partners",
+      logos: [
+        { name: "Swiss Basketball", src: "/partners/swiss-basketball.png", width: 160 },
+        { name: "République et Canton de Genève", src: "/partners/canton-geneve.webp", width: 56 },
+        { name: "ACGBA", src: "/partners/acgba.png", width: 120 },
+        { name: "Ville de Carouge", src: "/partners/ville-carouge.png", width: 140 },
+      ],
+    },
+    featuredPlayers: [
+      {
+        number: "4",
+        name: "Marco Reyes",
+        position: "Point Guard",
+        highlight: "Offensive game orchestrator. Tempo, reading and first passes.",
+        stat: { label: "assists / match", value: "7.2" },
+      },
+      {
+        number: "7",
+        name: "Diego Fuentes",
+        position: "Shooting Guard",
+        highlight: "Exterior scoring and constant pressure on the opponent's first line.",
+        stat: { label: "points / match", value: "15.4" },
+      },
+      {
+        number: "11",
+        name: "Luis Herrera",
+        position: "Power Forward",
+        highlight: "Interior dominance. High screens and defensive rebound.",
+        stat: { label: "rebounds / match", value: "9.1" },
+      },
+    ],
+    featuredPlayersSection: {
+      kicker: "Featured Players",
+      title: "Those who build the collective",
+      intro: "Three key profiles in building the club's game.",
+    },
+    recruitmentSection: {
+      kicker: "Join the club",
+      title: "We're recruiting",
+      intro: "Want to play basketball in Carouge? We're looking for motivated players, all levels welcome.",
+      ctaButton: "Reserve my free trials",
+      ctaSecondary: "Two free trial sessions to discover the club, no commitment.",
+      whyJoinKicker: "Why join us",
+      categoriesKicker: "Choose your category",
+      categoriesIntro: "All youth movement categories, places available for the school year.",
+      formBadge: "2 free sessions · no commitment",
+      formTitle: "Join the team",
+      formIntro: "Fill out the form and we'll get back to you quickly.",
+      formCtaSecondary: "Response within 48 h · No commitment",
+      categoriesAvailable: "Available places",
+      bullets: [
+        "Qualified and certified coaching",
+        "Strong values: respect, solidarity, commitment",
+        "Training adapted to each age and level",
+        "Family-friendly atmosphere",
+        "Championships and tournaments throughout the season",
+      ],
+      categories: [
+        { code: "U8", label: "Mini Basketball" },
+        { code: "U10", label: "Learning and fun" },
+        { code: "U12", label: "Progression and team" },
+        { code: "U14", label: "Development and intensity" },
+        { code: "U16", label: "Competition and rigor" },
+        { code: "U18+", label: "Seniors and recreation" },
+      ],
+      form: {
+        name: "Full name",
+        email: "Email address",
+        phone: "Phone (optional)",
+        category: "Desired category",
+        categoryPlaceholder: "Choose a category",
+        message: "Message (optional)",
+        messageHelp: "Optional · indicate player age and experience if desired.",
+        consent: "I authorize the club to retain and use the information from this form to process my registration request.",
+        submit: "Send my request",
+        successTitle: "Message sent!",
+        successMessage: "We'll get back to you as soon as possible.",
+        errorMessage: "Something went wrong. Try again.",
+      },
+    },
+    contactPage: {
+      badge: "Contact",
+      title: "Join the team",
+      intro: "Fill out the form and we'll get back to you quickly.",
+      form: {
+        name: "Full name",
+        email: "Email address",
+        phone: "Phone (optional)",
+        position: "Desired position",
+        message: "Message",
+        consent: "I authorize the club to retain and use the information from this form to process my registration request.",
+        submit: "Send",
+        successTitle: "Message sent!",
+        successMessage: "We'll be in touch soon.",
+        errorMessage: "An error occurred. Try again.",
+      },
+    },
+    placeholders: {
+      hero: {
+        label: "MATCHDAY VISUAL",
+        note: "Solid block ready for the future main image of the club.",
+        caption: "Main placeholder",
+        image: {
+          src: "/stock/hero-matchday.jpg",
+          alt: "Basketball match photo in a large gymnasium.",
+          position: "center center",
+        },
+      },
+      coach: {
+        label: "COACH PORTRAIT",
+        note: "Slot reserved for the official coach portrait.",
+      },
+      news: {
+        label: "NEWS IMAGE",
+        note: "Editorial slot ready for photo or matchday poster.",
+        image: {
+          src: "/stock/indoor-practice.jpg",
+          alt: "Basketball training session in gymnasium with group and coach.",
+          position: "center 34%",
+        },
+      },
+    },
+    sectionLinks: {
+      team: "Team",
+      news: "News",
+      matches: "Matches",
+      standings: "Standings",
+      history: "Results",
+    },
+    sectionPages: {
+      team: {
+        badge: "Team page",
+        title: "Team",
+        intro:
+          "This page is already routed to host the full roster, coach and player cards when final content arrives.",
+        comingSoon: "Detailed version in preparation.",
+        backHome: "Back to home",
+        jumpLabel: "Back to team overview",
+        placeholder: {
+          label: "TEAM PHOTO",
+          note: "Space reserved for team image or main portrait.",
+          image: {
+            src: "/stock/team-huddle.jpg",
+            alt: "Group of players gathered before a basketball match.",
+            position: "center center",
+          },
+        },
+      },
+      news: {
+        badge: "News page",
+        title: "News",
+        intro:
+          "The news page is ready to become a real editorial hub, but it already exists without breaking navigation.",
+        comingSoon: "Long editorial version in preparation.",
+        backHome: "Back to home",
+        jumpLabel: "Back to news on home",
+        placeholder: {
+          label: "NEWS FEATURE",
+          note: "Space reserved for the next strong editorial image.",
+          image: {
+            src: "/stock/dunk-action.jpg",
+            alt: "Strong basketball action with dunk and audience in background.",
+            position: "center 24%",
+          },
+        },
+      },
+      matches: {
+        badge: "Matches page",
+        title: "Matches",
+        intro:
+          "The matches page prepares the operational layer: calendar and upcoming club events.",
+        comingSoon: "Full calendar version in preparation.",
+        backHome: "Back to home",
+        jumpLabel: "Back to next match",
+        placeholder: {
+          label: "CALENDAR SLOT",
+          note: "Area ready for calendar integration or matchday visual.",
+          image: {
+            src: "/stock/hero-matchday.jpg",
+            alt: "Basketball match photo in a large arena.",
+            position: "center center",
+          },
+        },
+      },
+      standings: {
+        badge: "Standings page",
+        title: "Standings",
+        intro:
+          "Automated Basketpl@n standings for Latino Carouge teams with view switching by category.",
+        comingSoon: "Automatic sync from Basketpl@n.",
+        backHome: "Back to home",
+        jumpLabel: "View matches",
+        placeholder: {
+          label: "STANDINGS",
+          note: "Automated table by team and competition.",
+          image: {
+            src: "/stock/hero-matchday.jpg",
+            alt: "Basketball match photo in a large arena.",
+            position: "center center",
+          },
+        },
+      },
+      history: {
+        badge: "Results page",
+        title: "Results",
+        intro:
+          "Basketpl@n results are grouped by team, category and month with already played scores.",
+        comingSoon: "Archive synced from Basketpl@n.",
+        backHome: "Back to home",
+        jumpLabel: "View matches",
+        placeholder: {
+          label: "ARCHIVE PANEL",
+          note: "Area reserved for future stats, seasons or filters.",
+          image: {
+            src: "/stock/news-2.jpg",
+            alt: "Basketball photo in gym with audience.",
+            position: "center center",
+          },
+        },
+      },
+    },
+    footer: {
+      kicker: "LATINO CAROUGE BASKET CLUB",
+      copy:
+        "Bilingual FR / ES / EN base, architecture ready for real images, shared calendar, detailed pages and editorial growth.",
+      quickLinksTitle: "Quick links",
+      homeLabel: "Home",
+      ticketingLabel: "Calendar / matches",
+      contactTitle: "Contact us",
+      contactPhone: "+41 78 758 71 54",
+      contactEmail: "basket-club-latino-carouge@bluewin.ch",
+      statusTitle: "Project status",
+      contactStatus: "Join us: places available for all categories.",
+      ticketingStatus:
+        "A shared calendar can automatically feed the club's upcoming matches.",
+    },
+  },
 };
 
 export function isLocale(value: string): value is Locale {
@@ -1414,7 +1947,12 @@ export function getHomePath(locale: Locale) {
 }
 
 export function getAlternateLocale(locale: Locale): Locale {
-  return locale === "fr" ? "es" : "fr";
+  const localeMap: Record<Locale, Locale> = {
+    fr: "es",
+    es: "en",
+    en: "fr",
+  };
+  return localeMap[locale];
 }
 
 export function getSectionPath(locale: Locale, sectionKey: SectionKey) {

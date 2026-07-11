@@ -48,6 +48,27 @@ const copy = {
       difference: "Diferencia",
     },
   },
+  en: {
+    teamSelector: "Team",
+    phaseSelector: "Competition",
+    noRanking: "Basketpl@n doesn't yet publish standings for this team.",
+    noRankingTitle: "Standings not published",
+    source: "View on Basketpl@n",
+    publishedSeason: "Published season",
+    unavailable: "Not published",
+    columns: {
+      position: "Position",
+      team: "Team",
+      points: "Points",
+      played: "Played",
+      wins: "Wins",
+      losses: "Losses",
+      forfeits: "FF",
+      pointsFor: "Points for",
+      pointsAgainst: "Points against",
+      difference: "Difference",
+    },
+  },
 } as const;
 
 function TeamMark({ row }: { row: StandingRow }) {
