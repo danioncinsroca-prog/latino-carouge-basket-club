@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState, type FormEvent } from "react";
 import { submitContactForm } from "@/app/[locale]/contact/actions";
 import type { Locale } from "@/lib/site";
 
@@ -32,14 +32,33 @@ const inputClassName =
 export function RecruitmentForm({
   content,
   locale,
+  selectedCategory,
+  onSelectCategory,
 }: {
   content: RecruitmentFormContent;
   locale: Locale;
+  selectedCategory: string;
+  onSelectCategory: (code: string) => void;
 }) {
   const [state, formAction, isPending] = useActionState(submitContactForm, {
     success: false,
     error: undefined,
   });
+  const [categoryError, setCategoryError] = useState(false);
+
+  const selectedCategoryData = content.categories.find(
+    (cat) => cat.code === selectedCategory
+  );
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    if (!selectedCategory) {
+      event.preventDefault();
+      setCategoryError(true);
+      document
+        .getElementById("recruitment-categories")
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
 
   return (
     <div>
@@ -63,7 +82,7 @@ export function RecruitmentForm({
       )}
 
       {!state.success && (
-        <form action={formAction} className="mt-6 space-y-5">
+        <form action={formAction} onSubmit={handleSubmit} className="mt-6 space-y-5">
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <label htmlFor="recruitment-form-name" className="block text-sm font-semibold text-[var(--color-ink)]">
@@ -110,26 +129,46 @@ export function RecruitmentForm({
               />
             </div>
             <div>
-              <label htmlFor="recruitment-form-category" className="block text-sm font-semibold text-[var(--color-ink)]">
-                {content.form.category}
-              </label>
-              <select
-                id="recruitment-form-category"
-                name="position"
-                required
-                disabled={isPending}
-                className={`${inputClassName} appearance-auto`}
-                defaultValue=""
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="block text-sm font-semibold text-[var(--color-ink)]">
+                  {content.form.category}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onSelectCategory("");
+                    document
+                      .getElementById("recruitment-categories")
+                      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                  }}
+                  className="text-xs font-semibold text-[var(--color-gold-deep)] underline-offset-2 hover:underline"
+                >
+                  {selectedCategoryData
+                    ? { fr: "Modifier", es: "Modificar", en: "Change" }[locale]
+                    : { fr: "Choisir", es: "Elegir", en: "Choose" }[locale]}
+                </button>
+              </div>
+              <div
+                className={`${inputClassName} flex items-center ${
+                  categoryError && !selectedCategory ? "ring-2 ring-red-400" : ""
+                }`}
               >
-                <option value="" disabled>
-                  {content.form.categoryPlaceholder}
-                </option>
-                {content.categories.map((cat) => (
-                  <option key={cat.code} value={cat.code}>
-                    {cat.code} · {cat.label}
-                  </option>
-                ))}
-              </select>
+                {selectedCategoryData
+                  ? `${selectedCategoryData.code} · ${selectedCategoryData.label}`
+                  : content.form.categoryPlaceholder}
+              </div>
+              <input type="hidden" name="position" value={selectedCategory} />
+              {categoryError && !selectedCategory && (
+                <p className="mt-1.5 text-xs font-medium text-red-600">
+                  {
+                    {
+                      fr: "Choisis une catégorie ci-contre avant d'envoyer.",
+                      es: "Elige una categoría antes de enviar.",
+                      en: "Pick a category before sending.",
+                    }[locale]
+                  }
+                </p>
+              )}
             </div>
           </div>
 
