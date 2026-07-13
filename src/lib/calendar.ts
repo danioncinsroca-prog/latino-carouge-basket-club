@@ -133,8 +133,14 @@ export const getResolvedSchedule = cache(
 
         const rawCalendar = await response.text();
         const fixtures = parseCalendarToFixtures(rawCalendar, locale);
+        const pastFixtures = await getBasketplanPastFixtures(locale).catch(
+          (pastError) => {
+            console.error("Failed to load past results from Basketpl@n", pastError);
+            return [];
+          },
+        );
 
-        if (fixtures.length === 0) {
+        if (fixtures.length === 0 && pastFixtures.length === 0) {
           return {
             fixtures: [],
             pastFixtures: [],
@@ -145,7 +151,7 @@ export const getResolvedSchedule = cache(
 
         return {
           fixtures,
-          pastFixtures: [],
+          pastFixtures,
           source: "calendar",
           calendarUrlConfigured: true,
         };
@@ -191,6 +197,37 @@ function getCalendarFeedUrl() {
   }
 
   return null;
+}
+
+async function getBasketplanPastFixtures(locale: Locale) {
+  const now = new Date();
+  const currentRange = {
+    from: getBasketplanSeasonStart(now),
+    to: getBasketplanSeasonEnd(now),
+  };
+
+  const pastFixtures = await fetchBasketplanFixturesForRange(
+    { from: currentRange.from, to: now },
+    locale,
+    "past",
+  );
+
+  if (pastFixtures.length > 0) {
+    return pastFixtures;
+  }
+
+  const previousSeasonEnd = new Date(
+    Date.UTC(currentRange.to.getUTCFullYear() - 1, 5, 30, 12, 0, 0),
+  );
+  const previousSeasonStart = new Date(
+    Date.UTC(previousSeasonEnd.getUTCFullYear() - 1, 6, 1, 12, 0, 0),
+  );
+
+  return fetchBasketplanFixturesForRange(
+    { from: previousSeasonStart, to: previousSeasonEnd },
+    locale,
+    "past",
+  );
 }
 
 async function getBasketplanSchedule(locale: Locale) {
